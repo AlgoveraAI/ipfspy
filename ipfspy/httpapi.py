@@ -6,17 +6,23 @@ __all__ = ['add_items', 'ls_items', 'get_items', 'cat_items', 'pin_add', 'pin_ls
            'mfs_write', 'get_peers', 'dht_find_peer', 'dht_value_provider', 'dht_get_value']
 
 # Cell
+#hide
+from typing import Union, List
+
 import requests
 import json
 from fastcore.all import *
 import pandas as pd
 
-from immerse.utils import *
+from .utils import *
+
+from ipfshttpclient.multipart import stream_files, stream_directory
 
 # Cell
 def add_items(
     coreurl:str, # Core URL to use
-    filepath:str, # Path to the file/directory to be added to IPFS
+    filepath:Union[str, List[str]], # Path to the file/directory to be added to IPFS
+    directory:bool=False, # Is filepath a directory
     wrap_with_directory:str='false', # True if path is a directory
     recursive:str='false', # Add directory paths recursively
     chunker:str='size-262144', # Chunking algorithm, size-[bytes], rabin-[min]-[avg]-[max] or buzhash
@@ -39,19 +45,18 @@ def add_items(
     params['cid-version'] = cid_version
     params.update(kwargs)
 
-    if recursive == 'false':
-        files = {
-            'file': open(filepath, 'rb'),
-        }
+    if not directory:
+        chunk_size = int(chunker.split('-')[1])
+        data, headers = stream_files(filepath, chunk_size=chunk_size)
 
     else:
-        files = {
-            str(fn.name) : open(str(fn), 'rb') for fn in Path(filepath).ls()
-        }
+        chunk_size = int(chunker.split('-')[1])
+        data, headers = stream_directory(filepath, chunk_size=chunk_size)
 
     response = requests.post(f'{coreurl}/add',
                              params=params,
-                             files=files)
+                             data=data,
+                             headers=headers)
     try:
         print("Added", filepath, "to IPFS - ","Response", response.status_code)
         return response, parse_response(response)
@@ -78,7 +83,6 @@ def ls_items(
 
     return requests.post(f'{coreurl}/ls', params=params)
 
-# Cell
 
 # doesnt save the file in the output folder given
 def get_items(
