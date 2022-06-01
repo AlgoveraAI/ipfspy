@@ -9,11 +9,14 @@ entries:
     - output: web,pdf
       title: Overview
       url: /
+    - output: web,pdf
+      title: utils
+      url: utils.html
     - external_url: httpapi.html
       output: web,pdf
       title: HTTP API
     - output: web,pdf
-      title: estuaryapi
+      title: Main Estuary API
       url: estuaryapi.html
     output: web
     title: ipfspy
