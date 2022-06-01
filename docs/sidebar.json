@@ -1,7 +1,8 @@
 {
   "ipfspy": {
     "Overview": "/",
+    "utils": "utils.html",
     "HTTP API": "httpapi.html",
-    "estuaryapi": "estuaryapi.html"
+    "Main Estuary API": "estuaryapi.html"
   }
 }
