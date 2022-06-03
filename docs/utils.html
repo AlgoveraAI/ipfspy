@@ -47,7 +47,7 @@ nb_path: "nbs\00_utils.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_coreurl" class="doc_header"><code>get_coreurl</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/utils.py#L12" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_coreurl</code>(<strong><code>local</code></strong>:<code>bool</code>=<em><code>True</code></em>)</p>
+<h4 id="get_coreurl" class="doc_header"><code>get_coreurl</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/utils.py#L13" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_coreurl</code>(<strong><code>local</code></strong>:<code>bool</code>=<em><code>True</code></em>)</p>
 </blockquote>
 <p>Set the core url for convenience</p>
 <table>
@@ -96,7 +96,7 @@ nb_path: "nbs\00_utils.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="parse_response" class="doc_header"><code>parse_response</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/utils.py#L22" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>parse_response</code>(<strong><code>response</code></strong>)</p>
+<h4 id="parse_response" class="doc_header"><code>parse_response</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/utils.py#L23" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>parse_response</code>(<strong><code>response</code></strong>)</p>
 </blockquote>
 <p>Parse response object into JSON</p>
 <table>
@@ -113,6 +113,153 @@ nb_path: "nbs\00_utils.ipynb"
 <td></td>
 <td></td>
 <td>Response object</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="dag_get" class="doc_header"><code>dag_get</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/utils.py#L35" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>dag_get</code>(<strong><code>coreurl</code></strong>:<code>str</code>, <strong><code>path</code></strong>:<code>str</code>, <strong><code>output_codec</code></strong>:<code>str</code>=<em><code>'dag-cbor'</code></em>)</p>
+</blockquote>
+<p>Get a DAG node from IPFS.</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="cat_items" class="doc_header"><code>cat_items</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/utils.py#L49" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>cat_items</code>(<strong><code>coreurl</code></strong>:<code>str</code>, <strong><code>cid</code></strong>:<code>str</code>, <strong>**<code>kwargs</code></strong>)</p>
+</blockquote>
+<p>Show IPFS object data</p>
+<table>
+<thead><tr>
+<th></th>
+<th>Type</th>
+<th>Default</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>coreurl</code></strong></td>
+<td><code>str</code></td>
+<td></td>
+<td><em>No Content</em></td>
+</tr>
+<tr>
+<td><strong><code>cid</code></strong></td>
+<td><code>str</code></td>
+<td></td>
+<td>The path to the IPFS object(s) to be outputted</td>
+</tr>
+<tr>
+<td><strong><code>kwargs</code></strong></td>
+<td></td>
+<td></td>
+<td><em>No Content</em></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h2 id="DownloadDir" class="doc_header"><code>class</code> <code>DownloadDir</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/utils.py#L63" class="source_link" style="float:right">[source]</a></h2><blockquote><p><code>DownloadDir</code>(<strong><code>coreurl</code></strong>:<code>str</code>, <strong><code>root_cid</code></strong>:<code>str</code>, <strong><code>output_fol</code></strong>:<code>str</code>)</p>
+</blockquote>
+<p>Download a IPFS directory to your local disk</p>
+<table>
+<thead><tr>
+<th></th>
+<th>Type</th>
+<th>Default</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>coreurl</code></strong></td>
+<td><code>str</code></td>
+<td></td>
+<td><em>No Content</em></td>
+</tr>
+<tr>
+<td><strong><code>root_cid</code></strong></td>
+<td><code>str</code></td>
+<td></td>
+<td>Root CID of the directory</td>
+</tr>
+<tr>
+<td><strong><code>output_fol</code></strong></td>
+<td><code>str</code></td>
+<td></td>
+<td>Path to save in your local disk</td>
 </tr>
 </tbody>
 </table>
