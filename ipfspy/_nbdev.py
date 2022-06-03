@@ -4,10 +4,12 @@ __all__ = ["index", "modules", "custom_doc_links", "git_url"]
 
 index = {"get_coreurl": "00_utils.ipynb",
          "parse_response": "00_utils.ipynb",
+         "dag_get": "00_utils.ipynb",
+         "cat_items": "01_httpapi.ipynb",
+         "DownloadDir": "00_utils.ipynb",
          "add_items": "01_httpapi.ipynb",
          "ls_items": "01_httpapi.ipynb",
          "get_items": "01_httpapi.ipynb",
-         "cat_items": "01_httpapi.ipynb",
          "pin_add": "01_httpapi.ipynb",
          "pin_ls": "01_httpapi.ipynb",
          "pin_rm": "01_httpapi.ipynb",

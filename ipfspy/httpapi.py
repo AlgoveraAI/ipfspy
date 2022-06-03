@@ -13,6 +13,7 @@ import requests
 import json
 from fastcore.all import *
 import pandas as pd
+import dag_cbor
 
 from .utils import *
 
