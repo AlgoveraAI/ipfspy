@@ -4,7 +4,7 @@ __all__ = ['est_get_viewer', 'list_pins', 'add_pin', 'get_pin', 'replace_pin', '
            'add_content', 'list_colls', 'list_coll_content', 'list_content_path', 'add_content_path', 'add_key',
            'add_data', 'add_cid', 'add_car', 'make_deal', 'view_data_cid', 'list_data', 'list_deals', 'get_deal_status',
            'get_node_stats', 'get_deal_data', 'get_miner_ask', 'get_failure_logs', 'get_deal_logs',
-           'get_provider_stats', 'list_providers']
+           'get_provider_stats', 'list_providers', 'get_data']
 
 # Cell
 #export
@@ -441,4 +441,17 @@ def list_providers():
     "List Estuary providers"
 
     response = requests.get('https://api.estuary.tech/public/miners')
+    return response.json()
+
+# Cell
+def get_data(
+    cid: str, # Data CID
+    path_name: str # Path and filename to store the file at
+):
+    "Download data from Estuary CID"
+
+    url = f'https://dweb.link/ipfs/{cid}'
+    response = requests.get(url, allow_redirects=True)  # to get content
+    with open(path_name, 'wb') as f:
+        f.write(response.content)
     return response.json()

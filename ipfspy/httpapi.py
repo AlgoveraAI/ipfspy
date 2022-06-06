@@ -497,6 +497,13 @@ def mfs_write(
     return requests.post(f"{coreurl}/files/write",params=params, files=files)
 
 # Cell
+def ipns_view(
+    ipns_hash:str # IPNS address where the files are stored
+):
+    'View files published to IPNS'
+    return requests.get(f'https://gateway.ipfs.io/ipns/{ipns_hash}')
+
+# Cell
 def get_peers(
     coreurl,
     verbose='true', # Display all extra information

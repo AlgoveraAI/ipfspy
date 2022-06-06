@@ -35,6 +35,7 @@ index = {"get_coreurl": "00_utils.ipynb",
          "mfs_rm": "01_httpapi.ipynb",
          "mfs_stat": "01_httpapi.ipynb",
          "mfs_write": "01_httpapi.ipynb",
+         "ipns_view": "01_httpapi.ipynb",
          "get_peers": "01_httpapi.ipynb",
          "dht_find_peer": "01_httpapi.ipynb",
          "dht_value_provider": "01_httpapi.ipynb",
@@ -66,7 +67,8 @@ index = {"get_coreurl": "00_utils.ipynb",
          "get_failure_logs": "02_estuaryapi.ipynb",
          "get_deal_logs": "02_estuaryapi.ipynb",
          "get_provider_stats": "02_estuaryapi.ipynb",
-         "list_providers": "02_estuaryapi.ipynb"}
+         "list_providers": "02_estuaryapi.ipynb",
+         "get_data": "02_estuaryapi.ipynb"}
 
 modules = ["utils.py",
            "httpapi.py",
