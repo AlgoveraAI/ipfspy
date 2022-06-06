@@ -16,7 +16,7 @@ entries:
       output: web,pdf
       title: HTTP API
     - output: web,pdf
-      title: Main Estuary API
+      title: Title
       url: estuaryapi.html
     output: web
     title: ipfspy

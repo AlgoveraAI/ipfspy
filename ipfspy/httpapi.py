@@ -3,7 +3,7 @@
 __all__ = ['add_items', 'ls_items', 'get_items', 'cat_items', 'pin_add', 'pin_ls', 'pin_rm', 'rspin_add', 'rspin_ls',
            'rspin_rm', 'rpin_add', 'rpin_ls', 'rpin_rm', 'block_get', 'block_put', 'block_rm', 'block_stat',
            'mfs_chcid', 'mfs_cp', 'mfs_flush', 'mfs_ls', 'mfs_mkdir', 'mfs_mv', 'mfs_read', 'mfs_rm', 'mfs_stat',
-           'mfs_write', 'get_peers', 'dht_find_peer', 'dht_value_provider', 'dht_get_value']
+           'mfs_write', 'ipns_view', 'get_peers', 'dht_find_peer', 'dht_value_provider', 'dht_get_value']
 
 # Cell
 #hide
@@ -453,6 +453,13 @@ def mfs_write(
     params.update(kwargs)
 
     return requests.post(f"{coreurl}/files/write",params=params, files=files)
+
+# Cell
+def ipns_view(
+    ipns_hash:str # IPNS address where the files are stored
+):
+    'View files published to IPNS'
+    return requests.get(f'https://gateway.ipfs.io/ipns/{ipns_hash}')
 
 # Cell
 def get_peers(
