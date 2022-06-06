@@ -7,6 +7,10 @@ __all__ = ['est_get_viewer', 'list_pins', 'add_pin', 'get_pin', 'replace_pin', '
            'get_provider_stats', 'list_providers', 'get_data']
 
 # Cell
+#export
+import requests
+
+# Cell
 def est_get_viewer(
     api_key: str # Your Estuary API key
 ):
