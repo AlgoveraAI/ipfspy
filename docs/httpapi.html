@@ -46,7 +46,7 @@ nb_path: "nbs/01_httpapi.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="add_items" class="doc_header"><code>add_items</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L23" class="source_link" style="float:right">[source]</a></h4>
+<h4 id="add_items" class="doc_header"><code>add_items</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L24" class="source_link" style="float:right">[source]</a></h4>
 <blockquote>
 <p><code>add_items</code>(<strong><code>coreurl</code></strong>:<code>str</code>, <strong><code>filepath</code></strong>:<code>Union</code>[<code>str</code>, <code>typing.List[str]</code>], <strong><code>directory</code></strong>:<code>bool</code>=<em><code>False</code></em>, <strong><code>wrap_with_directory</code></strong>:<code>str</code>=<em><code>'false'</code></em>, <strong><code>recursive</code></strong>:<code>str</code>=<em><code>'false'</code></em>, <strong><code>chunker</code></strong>:<code>str</code>=<em><code>'size-262144'</code></em>, <strong><code>pin</code></strong>:<code>str</code>=<em><code>'true'</code></em>, <strong><code>hash_</code></strong>:<code>str</code>=<em><code>'sha2-256'</code></em>, <strong><code>progress</code></strong>:<code>str</code>=<em><code>'true'</code></em>, <strong><code>silent</code></strong>:<code>str</code>=<em><code>'false'</code></em>, <strong><code>cid_version</code></strong>:<code>int</code>=<em><code>0</code></em>, <strong>**<code>kwargs</code></strong>)</p>
 </blockquote>
@@ -87,7 +87,7 @@ nb_path: "nbs/01_httpapi.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="ls_items" class="doc_header"><code>ls_items</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L70" class="source_link" style="float:right">[source]</a></h4>
+<h4 id="ls_items" class="doc_header"><code>ls_items</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L71" class="source_link" style="float:right">[source]</a></h4>
 <blockquote>
 <p><code>ls_items</code>(<strong><code>coreurl</code></strong>:<code>str</code>, <strong><code>ipfspath</code></strong>:<code>str</code>, <strong><code>resolve_type</code></strong>:<code>str</code>=<em><code>'true'</code></em>, <strong><code>size</code></strong>:<code>str</code>=<em><code>'true'</code></em>, <strong>**<code>kwargs</code></strong>)</p>
 </blockquote>
@@ -121,7 +121,7 @@ nb_path: "nbs/01_httpapi.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_items" class="doc_header"><code>get_items</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L89" class="source_link" style="float:right">[source]</a></h4>
+<h4 id="get_items" class="doc_header"><code>get_items</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L90" class="source_link" style="float:right">[source]</a></h4>
 <blockquote>
 <p><code>get_items</code>(<strong><code>coreurl</code></strong>:<code>str</code>, <strong><code>cid</code></strong>:<code>str</code>, <strong><code>output</code></strong>:<code>str</code>=<em><code>''</code></em>, <strong>**<code>kwargs</code></strong>)</p>
 </blockquote>
@@ -154,7 +154,7 @@ nb_path: "nbs/01_httpapi.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="cat_items" class="doc_header"><code>cat_items</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L107" class="source_link" style="float:right">[source]</a></h4>
+<h4 id="cat_items" class="doc_header"><code>cat_items</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L108" class="source_link" style="float:right">[source]</a></h4>
 <blockquote>
 <p><code>cat_items</code>(<strong><code>coreurl</code></strong>:<code>str</code>, <strong><code>cid</code></strong>:<code>str</code>, <strong>**<code>kwargs</code></strong>)</p>
 </blockquote>
@@ -243,7 +243,7 @@ nb_path: "nbs/01_httpapi.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">response</span><span class="p">,</span> <span class="n">jsonobject</span> <span class="o">=</span> <span class="n">add_items</span><span class="p">(</span><span class="n">coreurl</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;../README.md&quot;</span><span class="p">,</span> <span class="n">wrap_with_directory</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">response</span><span class="p">,</span> <span class="n">jsonobject</span> <span class="o">=</span> <span class="n">add_items</span><span class="p">(</span><span class="n">coreurl</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;../README.md&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -292,10 +292,7 @@ nb_path: "nbs/01_httpapi.ipynb"
 <pre>[{&#39;Name&#39;: &#39;README.md&#39;, &#39;Bytes&#39;: 1179},
  {&#39;Name&#39;: &#39;README.md&#39;,
   &#39;Hash&#39;: &#39;QmUfwG4P6EA5xbD3De5bS7XKcBion8ReQj7m9ZjxaPvq3B&#39;,
-  &#39;Size&#39;: &#39;1190&#39;},
- {&#39;Name&#39;: &#39;&#39;,
-  &#39;Hash&#39;: &#39;QmUco54S3KrbQgXubzDSg1HAU4gCqNtsmwXui63nTDdaqM&#39;,
-  &#39;Size&#39;: &#39;1246&#39;}]</pre>
+  &#39;Size&#39;: &#39;1190&#39;}]</pre>
 </div>
 
 </div>
@@ -750,55 +747,87 @@ nb_path: "nbs/01_httpapi.ipynb"
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
-<div class="input">
 
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">dag_export</span><span class="p">(</span>
-    <span class="n">coreurl</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span>
-    <span class="n">path</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span>
-    <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
-<span class="p">):</span>
-    <span class="s1">&#39;Streams the selected DAG as a .car stream on stdout.&#39;</span>
-    
-    <span class="n">params</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="n">params</span><span class="p">[</span><span class="s1">&#39;arg&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">path</span>
-    <span class="n">params</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
-    
-    <span class="k">return</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">coreurl</span><span class="si">}</span><span class="s1">/dag/export&#39;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
 
 
-<span class="k">def</span> <span class="nf">dag_get</span><span class="p">(</span>
-    <span class="n">coreurl</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span>
-    <span class="n">path</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span>
-    <span class="n">output_codec</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;dag-cbor&#39;</span><span class="p">,</span>
-<span class="p">):</span>
-    <span class="s1">&#39;Get a DAG node from IPFS.&#39;</span>
-    
-    <span class="n">params</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="n">params</span><span class="p">[</span><span class="s1">&#39;arg&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">path</span>
-    <span class="n">params</span><span class="p">[</span><span class="s1">&#39;output-codec&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">output_codec</span>
-    
-    <span class="k">return</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">coreurl</span><span class="si">}</span><span class="s1">/dag/get&#39;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="dag_export" class="doc_header"><code>dag_export</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L122" class="source_link" style="float:right">[source]</a></h4>
+<blockquote>
+<p><code>dag_export</code>(<strong><code>coreurl</code></strong>:<code>str</code>, <strong><code>path</code></strong>:<code>str</code>, <strong>**<code>kwargs</code></strong>)</p>
+</blockquote>
+<p>Streams the selected DAG as a .car stream on stdout.</p>
 
+</div>
 
-<span class="k">def</span> <span class="nf">dag_stat</span><span class="p">(</span>
-    <span class="n">coreurl</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span>
-    <span class="n">path</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span>
-    <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span> 
-<span class="p">):</span>
-    <span class="s1">&#39;Gets stats for a DAG.&#39;</span>
-    
-    <span class="n">params</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="n">params</span><span class="p">[</span><span class="s1">&#39;arg&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">path</span>
-    <span class="n">params</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
-    
-    <span class="k">return</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">coreurl</span><span class="si">}</span><span class="s1">/dag/stat&#39;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
-</pre></div>
+</div>
 
-    </div>
 </div>
 </div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="dag_get" class="doc_header"><code>dag_get</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L136" class="source_link" style="float:right">[source]</a></h4>
+<blockquote>
+<p><code>dag_get</code>(<strong><code>coreurl</code></strong>:<code>str</code>, <strong><code>path</code></strong>:<code>str</code>, <strong><code>output_codec</code></strong>:<code>str</code>=<em><code>'dag-cbor'</code></em>)</p>
+</blockquote>
+<p>Get a DAG node from IPFS.</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="dag_stat" class="doc_header"><code>dag_stat</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L150" class="source_link" style="float:right">[source]</a></h4>
+<blockquote>
+<p><code>dag_stat</code>(<strong><code>coreurl</code></strong>:<code>str</code>, <strong><code>path</code></strong>:<code>str</code>, <strong>**<code>kwargs</code></strong>)</p>
+</blockquote>
+<p>Gets stats for a DAG.</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
 
 </div>
     {% endraw %}
@@ -933,7 +962,7 @@ nb_path: "nbs/01_httpapi.ipynb"
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><a href="/ipfspy/utils.html#dag_get"><code>dag_get</code></a> method returns a <code>dict</code> with <code>data</code> and <code>links</code>. <code>data</code> is not exciting for a directory. Under the <code>links</code>, we can see files/directories that are in the uploaded directory.</p>
+<p><a href="/ipfspy/httpapi.html#dag_get"><code>dag_get</code></a> method returns a <code>dict</code> with <code>data</code> and <code>links</code>. <code>data</code> is not exciting for a directory. Under the <code>links</code>, we can see files/directories that are in the uploaded directory.</p>
 <p>Let's see the number of files/directories in the links</p>
 
 </div>
@@ -1263,7 +1292,7 @@ nb_path: "nbs/01_httpapi.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="pin_add" class="doc_header"><code>pin_add</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L121" class="source_link" style="float:right">[source]</a></h4>
+<h4 id="pin_add" class="doc_header"><code>pin_add</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L164" class="source_link" style="float:right">[source]</a></h4>
 <blockquote>
 <p><code>pin_add</code>(<strong><code>coreurl</code></strong>:<code>str</code>, <strong><code>ipfspath</code></strong>:<code>str</code>, <strong><code>recursive</code></strong>:<code>str</code>=<em><code>'true'</code></em>)</p>
 </blockquote>
@@ -1295,7 +1324,7 @@ nb_path: "nbs/01_httpapi.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="pin_ls" class="doc_header"><code>pin_ls</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L135" class="source_link" style="float:right">[source]</a></h4>
+<h4 id="pin_ls" class="doc_header"><code>pin_ls</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L178" class="source_link" style="float:right">[source]</a></h4>
 <blockquote>
 <p><code>pin_ls</code>(<strong><code>coreurl</code></strong>:<code>str</code>, <strong><code>type_</code></strong>:<code>str</code>=<em><code>'all'</code></em>, <strong>**<code>kwargs</code></strong>)</p>
 </blockquote>
@@ -1327,7 +1356,7 @@ nb_path: "nbs/01_httpapi.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="pin_rm" class="doc_header"><code>pin_rm</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L149" class="source_link" style="float:right">[source]</a></h4>
+<h4 id="pin_rm" class="doc_header"><code>pin_rm</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L192" class="source_link" style="float:right">[source]</a></h4>
 <blockquote>
 <p><code>pin_rm</code>(<strong><code>coreurl</code></strong>:<code>str</code>, <strong><code>ipfspath</code></strong>:<code>str</code>, <strong><code>recursive</code></strong>:<code>str</code>=<em><code>'true'</code></em>, <strong>**<code>kwargs</code></strong>)</p>
 </blockquote>
@@ -1394,6 +1423,22 @@ nb_path: "nbs/01_httpapi.ipynb"
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;{&#34;Pins&#34;:[&#34;QmUfwG4P6EA5xbD3De5bS7XKcBion8ReQj7m9ZjxaPvq3B&#34;]}\n&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -1440,7 +1485,7 @@ nb_path: "nbs/01_httpapi.ipynb"
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>There are about 130 items in the pinned list</p>
+<p>There are about 157 items in the pinned list</p>
 
 </div>
 </div>
@@ -1456,6 +1501,22 @@ nb_path: "nbs/01_httpapi.ipynb"
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>157</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -1483,6 +1544,22 @@ nb_path: "nbs/01_httpapi.ipynb"
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;Type&#39;: &#39;recursive&#39;}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -1490,9 +1567,9 @@ nb_path: "nbs/01_httpapi.ipynb"
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>What does the <code>Type</code> : <code>recursive</code> means?</p>
 <ul>
-<li>Direct pins, which pin just a single block and no others in relation to it.</li>
-<li>Recursive pins, which pin a given block and all of its children.</li>
-<li>Indirect pins, which are the result of a given block's parent being pinned recursively.</li>
+<li>Direct pins - which pin just a single block and no others in relation to it.</li>
+<li>Recursive pins - which pin a given block and all of its children.</li>
+<li>Indirect pins - which are the result of a given block's parent being pinned recursively.</li>
 </ul>
 
 </div>
@@ -1512,6 +1589,55 @@ nb_path: "nbs/01_httpapi.ipynb"
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>200</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">response</span><span class="o">.</span><span class="n">content</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>b&#39;{&#34;Pins&#34;:[&#34;QmUfwG4P6EA5xbD3De5bS7XKcBion8ReQj7m9ZjxaPvq3B&#34;]}\n&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -1526,6 +1652,22 @@ nb_path: "nbs/01_httpapi.ipynb"
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>200</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -1570,6 +1712,22 @@ nb_path: "nbs/01_httpapi.ipynb"
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;Type&#39;: &#39;indirect&#39;}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -1590,7 +1748,7 @@ nb_path: "nbs/01_httpapi.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="rspin_add" class="doc_header"><code>rspin_add</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L165" class="source_link" style="float:right">[source]</a></h4>
+<h4 id="rspin_add" class="doc_header"><code>rspin_add</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L208" class="source_link" style="float:right">[source]</a></h4>
 <blockquote>
 <p><code>rspin_add</code>(<strong><code>coreurl</code></strong>:<code>str</code>, <strong><code>service_name</code></strong>:<code>str</code>, <strong><code>service_edpt</code></strong>:<code>str</code>, <strong><code>service_key</code></strong>:<code>str</code>)</p>
 </blockquote>
@@ -1623,7 +1781,7 @@ nb_path: "nbs/01_httpapi.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="rspin_ls" class="doc_header"><code>rspin_ls</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L179" class="source_link" style="float:right">[source]</a></h4>
+<h4 id="rspin_ls" class="doc_header"><code>rspin_ls</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L222" class="source_link" style="float:right">[source]</a></h4>
 <blockquote>
 <p><code>rspin_ls</code>(<strong><code>coreurl</code></strong>:<code>str</code>, <strong>**<code>kwargs</code></strong>)</p>
 </blockquote>
@@ -1650,7 +1808,7 @@ nb_path: "nbs/01_httpapi.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="rspin_rm" class="doc_header"><code>rspin_rm</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L191" class="source_link" style="float:right">[source]</a></h4>
+<h4 id="rspin_rm" class="doc_header"><code>rspin_rm</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L234" class="source_link" style="float:right">[source]</a></h4>
 <blockquote>
 <p><code>rspin_rm</code>(<strong><code>coreurl</code></strong>:<code>str</code>, <strong><code>service_name</code></strong>:<code>str</code>)</p>
 </blockquote>
@@ -1771,6 +1929,23 @@ nb_path: "nbs/01_httpapi.ipynb"
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[{&#39;RemoteServices&#39;: [{&#39;Service&#39;: &#39;pinata&#39;,
+    &#39;ApiEndpoint&#39;: &#39;https://api.pinata.cloud/psa&#39;}]}]</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -1791,7 +1966,7 @@ nb_path: "nbs/01_httpapi.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="rpin_add" class="doc_header"><code>rpin_add</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L204" class="source_link" style="float:right">[source]</a></h4>
+<h4 id="rpin_add" class="doc_header"><code>rpin_add</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L247" class="source_link" style="float:right">[source]</a></h4>
 <blockquote>
 <p><code>rpin_add</code>(<strong><code>coreurl</code></strong>, <strong><code>ipfspath</code></strong>:<code>str</code>, <strong><code>service</code></strong>:<code>str</code>, <strong><code>background</code></strong>:<code>str</code>=<em><code>'false'</code></em>, <strong>**<code>kwargs</code></strong>)</p>
 </blockquote>
@@ -1825,7 +2000,7 @@ nb_path: "nbs/01_httpapi.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="rpin_ls" class="doc_header"><code>rpin_ls</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L222" class="source_link" style="float:right">[source]</a></h4>
+<h4 id="rpin_ls" class="doc_header"><code>rpin_ls</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L265" class="source_link" style="float:right">[source]</a></h4>
 <blockquote>
 <p><code>rpin_ls</code>(<strong><code>coreurl</code></strong>:<code>str</code>, <strong><code>service</code></strong>:<code>str</code>, <strong>**<code>kwargs</code></strong>)</p>
 </blockquote>
@@ -1857,7 +2032,7 @@ nb_path: "nbs/01_httpapi.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="rpin_rm" class="doc_header"><code>rpin_rm</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L236" class="source_link" style="float:right">[source]</a></h4>
+<h4 id="rpin_rm" class="doc_header"><code>rpin_rm</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L279" class="source_link" style="float:right">[source]</a></h4>
 <blockquote>
 <p><code>rpin_rm</code>(<strong><code>coreurl</code></strong>:<code>str</code>, <strong><code>service</code></strong>:<code>str</code>, <strong>**<code>kwargs</code></strong>)</p>
 </blockquote>
@@ -1899,10 +2074,26 @@ nb_path: "nbs/01_httpapi.ipynb"
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">response</span> <span class="o">=</span> <span class="n">rpin_add</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s1">&#39;QmUfwG4P6EA5xbD3De5bS7XKcBion8ReQj7m9ZjxaPvq3B&#39;</span><span class="p">,</span> <span class="s1">&#39;pinata&#39;</span><span class="p">);</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">response</span> <span class="o">=</span> <span class="n">rpin_add</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s1">&#39;QmTT8vwdbnP9Ls8bSY1LMyW4a8bEwTYZa5izEoJMBtTPfb&quot;&#39;</span><span class="p">,</span> <span class="s1">&#39;pinata&#39;</span><span class="p">);</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>500</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -1920,6 +2111,22 @@ nb_path: "nbs/01_httpapi.ipynb"
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;{&#34;Message&#34;:&#34;invalid path \\&#34;QmTT8vwdbnP9Ls8bSY1LMyW4a8bEwTYZa5izEoJMBtTPfb\\\\\\&#34;\\&#34;: selected encoding not supported&#34;,&#34;Code&#34;:0,&#34;Type&#34;:&#34;error&#34;}\n&#39;</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -1964,6 +2171,22 @@ nb_path: "nbs/01_httpapi.ipynb"
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;{&#34;Message&#34;:&#34;empty response from remote pinning service: Get \\&#34;https://api.pinata.cloud/psa/pins?limit=10\\u0026status=pinned\\&#34;: dial tcp: lookup api.pinata.cloud: no such host&#34;,&#34;Code&#34;:0,&#34;Type&#34;:&#34;error&#34;}\n&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -1984,7 +2207,7 @@ nb_path: "nbs/01_httpapi.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="block_get" class="doc_header"><code>block_get</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L251" class="source_link" style="float:right">[source]</a></h4>
+<h4 id="block_get" class="doc_header"><code>block_get</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L294" class="source_link" style="float:right">[source]</a></h4>
 <blockquote>
 <p><code>block_get</code>(<strong><code>coreurl</code></strong>, <strong><code>arg</code></strong>:<code>str</code>)</p>
 </blockquote>
@@ -2015,7 +2238,7 @@ nb_path: "nbs/01_httpapi.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="block_put" class="doc_header"><code>block_put</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L264" class="source_link" style="float:right">[source]</a></h4>
+<h4 id="block_put" class="doc_header"><code>block_put</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L307" class="source_link" style="float:right">[source]</a></h4>
 <blockquote>
 <p><code>block_put</code>(<strong><code>coreurl</code></strong>, <strong><code>filepath</code></strong>:<code>str</code>, <strong><code>mhtype</code></strong>:<code>str</code>=<em><code>'sha2-256'</code></em>, <strong><code>mhlen</code></strong>:<code>int</code>=<em><code>-1</code></em>, <strong><code>pin</code></strong>:<code>str</code>=<em><code>'false'</code></em>, <strong>**<code>kwargs</code></strong>)</p>
 </blockquote>
@@ -2050,7 +2273,7 @@ nb_path: "nbs/01_httpapi.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="block_rm" class="doc_header"><code>block_rm</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L283" class="source_link" style="float:right">[source]</a></h4>
+<h4 id="block_rm" class="doc_header"><code>block_rm</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L326" class="source_link" style="float:right">[source]</a></h4>
 <blockquote>
 <p><code>block_rm</code>(<strong><code>coreurl</code></strong>, <strong><code>arg</code></strong>:<code>str</code>, <strong><code>force</code></strong>:<code>str</code>=<em><code>'false'</code></em>, <strong><code>quiet</code></strong>:<code>str</code>=<em><code>'false'</code></em>)</p>
 </blockquote>
@@ -2083,7 +2306,7 @@ nb_path: "nbs/01_httpapi.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="block_stat" class="doc_header"><code>block_stat</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L299" class="source_link" style="float:right">[source]</a></h4>
+<h4 id="block_stat" class="doc_header"><code>block_stat</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L342" class="source_link" style="float:right">[source]</a></h4>
 <blockquote>
 <p><code>block_stat</code>(<strong><code>coreurl</code></strong>, <strong><code>arg</code></strong>:<code>str</code>)</p>
 </blockquote>
@@ -2137,6 +2360,20 @@ nb_path: "nbs/01_httpapi.ipynb"
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Added ../test/adult_data.csv to IPFS -  Response 200
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -2158,6 +2395,40 @@ nb_path: "nbs/01_httpapi.ipynb"
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[{&#39;Name&#39;: &#39;adult_data.csv&#39;, &#39;Bytes&#39;: 262144},
+ {&#39;Name&#39;: &#39;adult_data.csv&#39;, &#39;Bytes&#39;: 524288},
+ {&#39;Name&#39;: &#39;adult_data.csv&#39;, &#39;Bytes&#39;: 786432},
+ {&#39;Name&#39;: &#39;adult_data.csv&#39;, &#39;Bytes&#39;: 1048576},
+ {&#39;Name&#39;: &#39;adult_data.csv&#39;, &#39;Bytes&#39;: 1310720},
+ {&#39;Name&#39;: &#39;adult_data.csv&#39;, &#39;Bytes&#39;: 1572864},
+ {&#39;Name&#39;: &#39;adult_data.csv&#39;, &#39;Bytes&#39;: 1835008},
+ {&#39;Name&#39;: &#39;adult_data.csv&#39;, &#39;Bytes&#39;: 2097152},
+ {&#39;Name&#39;: &#39;adult_data.csv&#39;, &#39;Bytes&#39;: 2359296},
+ {&#39;Name&#39;: &#39;adult_data.csv&#39;, &#39;Bytes&#39;: 2621440},
+ {&#39;Name&#39;: &#39;adult_data.csv&#39;, &#39;Bytes&#39;: 2883584},
+ {&#39;Name&#39;: &#39;adult_data.csv&#39;, &#39;Bytes&#39;: 3145728},
+ {&#39;Name&#39;: &#39;adult_data.csv&#39;, &#39;Bytes&#39;: 3407872},
+ {&#39;Name&#39;: &#39;adult_data.csv&#39;, &#39;Bytes&#39;: 3670016},
+ {&#39;Name&#39;: &#39;adult_data.csv&#39;, &#39;Bytes&#39;: 3932160},
+ {&#39;Name&#39;: &#39;adult_data.csv&#39;, &#39;Bytes&#39;: 3974475},
+ {&#39;Name&#39;: &#39;adult_data.csv&#39;,
+  &#39;Hash&#39;: &#39;QmZnxARhJWsCbTxiAzoRhnxHgMtoEkNJNS8DGLCBEMvm4V&#39;,
+  &#39;Size&#39;: &#39;3975476&#39;}]</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -2219,6 +2490,20 @@ nb_path: "nbs/01_httpapi.ipynb"
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Number of blocks: 16
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -2240,6 +2525,36 @@ nb_path: "nbs/01_httpapi.ipynb"
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>[{&#39;Name&#39;: &#39;&#39;,
+  &#39;Hash&#39;: &#39;Qmc7fYo65HLt1bwN6GudwZfq5MrAGYQ2wwsQ9y1fh6zNz9&#39;,
+  &#39;Size&#39;: 262144,
+  &#39;Type&#39;: 2,
+  &#39;Target&#39;: &#39;&#39;},
+ {&#39;Name&#39;: &#39;&#39;,
+  &#39;Hash&#39;: &#39;QmY1DtAnTrDX3KPgHFMPk6Zapa53s1fCapXChLBN9sMSQ4&#39;,
+  &#39;Size&#39;: 262144,
+  &#39;Type&#39;: 2,
+  &#39;Target&#39;: &#39;&#39;},
+ {&#39;Name&#39;: &#39;&#39;,
+  &#39;Hash&#39;: &#39;QmY6TEEHe4WiJVAcY6Lo9shWfc8WVQHV6HtBE8HaEfYykV&#39;,
+  &#39;Size&#39;: 262144,
+  &#39;Type&#39;: 2,
+  &#39;Target&#39;: &#39;&#39;}]</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -2284,6 +2599,30 @@ nb_path: "nbs/01_httpapi.ipynb"
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>age, workclass, fnlwgt, education, education-num, marital-status, occupation, relationship, race, se
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>262144</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -2315,6 +2654,31 @@ nb_path: "nbs/01_httpapi.ipynb"
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>nited-States, &lt;=50K
+28, Private, 201175, 11th, 7, Never-married, Machine-op-inspct, Not-in-family, B
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>262144</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -2359,37 +2723,19 @@ nb_path: "nbs/01_httpapi.ipynb"
 </div>
 </div>
 
-</div>
-    {% endraw %}
+<div class="output_wrapper">
+<div class="output">
 
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
+<div class="output_area">
 
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">response</span> <span class="o">=</span> <span class="n">block_put</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="p">)</span>
-</pre></div>
 
-    </div>
-</div>
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;\n\x8a\x80\x10\x08\x02\x12\x80\x80\x10age, workclass, fnlwgt, education, education-num, marital-status, occupation, relationship, race, sex, capital-gain, capital-loss, hours-per-week, native-country, salary\n39, State-gov, 77516, Bachelors, 13, Never-married, Adm-clerical, Not-in-family, White, Male, 2174, 0, 40, United-States&#39;</pre>
 </div>
 
 </div>
-    {% endraw %}
 
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">response</span><span class="o">.</span><span class="n">text</span>
-</pre></div>
-
-    </div>
 </div>
 </div>
 
@@ -2433,6 +2779,22 @@ nb_path: "nbs/01_httpapi.ipynb"
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;{&#34;Key&#34;:&#34;QmSmcEgnU4B8LGrf1LN8DBjndNmptDgabh2L5vvM5nsYsZ&#34;,&#34;Size&#34;:1179}\n&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -2470,6 +2832,22 @@ nb_path: "nbs/01_httpapi.ipynb"
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;{&#34;Key&#34;:&#34;QmSmcEgnU4B8LGrf1LN8DBjndNmptDgabh2L5vvM5nsYsZ&#34;,&#34;Size&#34;:1179}\n&#39;</pre>
+</div>
+
+</div>
+
 </div>
 </div>
 
@@ -2513,6 +2891,139 @@ nb_path: "nbs/01_httpapi.ipynb"
 </div>
 </div>
 
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;{&#34;Hash&#34;:&#34;QmSmcEgnU4B8LGrf1LN8DBjndNmptDgabh2L5vvM5nsYsZ&#34;}\n&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="IPNS">IPNS<a class="anchor-link" href="#IPNS"> </a></h2>
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">ipns_publish</span><span class="p">(</span>
+    <span class="n">coreurl</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> 
+    <span class="n">ipfspath</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="c1"># IPFS path of the object to be published</span>
+    <span class="n">resolve</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="c1"># Check if the given path can be resolved before publishing</span>
+    <span class="n">key</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;self&#39;</span><span class="p">,</span> <span class="c1"># Name of the key to be used or a valid PeerID, as listed by `ipfs key list -l`</span>
+    <span class="n">ipns_base</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;base36&#39;</span><span class="p">,</span> <span class="c1"># Encoding used for keys: Can either be a multibase encoded CID or a base58btc encoded multihash</span>
+    <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="s1">&#39;Publish IPNS names.&#39;</span>
+    
+    <span class="n">params</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">params</span><span class="p">[</span><span class="s1">&#39;arg&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ipfspath</span>
+    <span class="n">params</span><span class="p">[</span><span class="s1">&#39;resolve&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">resolve</span>
+    <span class="n">params</span><span class="p">[</span><span class="s1">&#39;key&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">key</span>
+    <span class="n">params</span><span class="p">[</span><span class="s1">&#39;ipns-base&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ipns_base</span>
+    <span class="n">params</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">coreurl</span><span class="si">}</span><span class="s1">/name/publish&#39;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="ipns_view" class="doc_header"><code>ipns_view</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L509" class="source_link" style="float:right">[source]</a></h4>
+<blockquote>
+<p><code>ipns_view</code>(<strong><code>ipns_hash</code></strong>:<code>str</code>)</p>
+</blockquote>
+<p>View files published to IPNS</p>
+<p>||Type|Default|Details|
+|---|---|---|---|
+|<strong><code>ipns_hash</code></strong>|<code>str</code>||IPNS address where the files are stored|</p>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Publish-under-a-IPNS-naming-system">Publish under a IPNS naming system<a class="anchor-link" href="#Publish-under-a-IPNS-naming-system"> </a></h3>
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">response</span> <span class="o">=</span> <span class="n">ipns_publish</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="s1">&#39;QmSmcEgnU4B8LGrf1LN8DBjndNmptDgabh2L5vvM5nsYsZ&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">response</span><span class="o">.</span><span class="n">content</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
 </div>
     {% endraw %}
 
@@ -2533,7 +3044,7 @@ nb_path: "nbs/01_httpapi.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="mfs_chcid" class="doc_header"><code>mfs_chcid</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L312" class="source_link" style="float:right">[source]</a></h4>
+<h4 id="mfs_chcid" class="doc_header"><code>mfs_chcid</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L363" class="source_link" style="float:right">[source]</a></h4>
 <blockquote>
 <p><code>mfs_chcid</code>(<strong><code>coreurl</code></strong>:<code>str</code>, <strong><code>path</code></strong>:<code>str</code>=<em><code>'/'</code></em>, <strong><code>cid_version</code></strong>:<code>int</code>=<em><code>0</code></em>, <strong>**<code>kwargs</code></strong>)</p>
 </blockquote>
@@ -2566,7 +3077,7 @@ nb_path: "nbs/01_httpapi.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="mfs_cp" class="doc_header"><code>mfs_cp</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L329" class="source_link" style="float:right">[source]</a></h4>
+<h4 id="mfs_cp" class="doc_header"><code>mfs_cp</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L380" class="source_link" style="float:right">[source]</a></h4>
 <blockquote>
 <p><code>mfs_cp</code>(<strong><code>coreurl</code></strong>:<code>str</code>, <strong><code>source_path</code></strong>:<code>str</code>, <strong><code>dest_path</code></strong>:<code>str</code>, <strong>**<code>kwargs</code></strong>)</p>
 </blockquote>
@@ -2599,7 +3110,7 @@ nb_path: "nbs/01_httpapi.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="mfs_flush" class="doc_header"><code>mfs_flush</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L345" class="source_link" style="float:right">[source]</a></h4>
+<h4 id="mfs_flush" class="doc_header"><code>mfs_flush</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L396" class="source_link" style="float:right">[source]</a></h4>
 <blockquote>
 <p><code>mfs_flush</code>(<strong><code>coreurl</code></strong>:<code>str</code>, <strong><code>path</code></strong>:<code>str</code>=<em><code>'/'</code></em>)</p>
 </blockquote>
@@ -2630,7 +3141,7 @@ nb_path: "nbs/01_httpapi.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="mfs_ls" class="doc_header"><code>mfs_ls</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L356" class="source_link" style="float:right">[source]</a></h4>
+<h4 id="mfs_ls" class="doc_header"><code>mfs_ls</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L407" class="source_link" style="float:right">[source]</a></h4>
 <blockquote>
 <p><code>mfs_ls</code>(<strong><code>coreurl</code></strong>:<code>str</code>, <strong><code>path</code></strong>:<code>str</code>=<em><code>'/'</code></em>, <strong>**<code>kwargs</code></strong>)</p>
 </blockquote>
@@ -2662,7 +3173,7 @@ nb_path: "nbs/01_httpapi.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="mfs_mkdir" class="doc_header"><code>mfs_mkdir</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L370" class="source_link" style="float:right">[source]</a></h4>
+<h4 id="mfs_mkdir" class="doc_header"><code>mfs_mkdir</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L421" class="source_link" style="float:right">[source]</a></h4>
 <blockquote>
 <p><code>mfs_mkdir</code>(<strong><code>coreurl</code></strong>:<code>str</code>, <strong><code>path</code></strong>:<code>str</code>, <strong>**<code>kwargs</code></strong>)</p>
 </blockquote>
@@ -2694,7 +3205,7 @@ nb_path: "nbs/01_httpapi.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="mfs_mv" class="doc_header"><code>mfs_mv</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L384" class="source_link" style="float:right">[source]</a></h4>
+<h4 id="mfs_mv" class="doc_header"><code>mfs_mv</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L435" class="source_link" style="float:right">[source]</a></h4>
 <blockquote>
 <p><code>mfs_mv</code>(<strong><code>coreurl</code></strong>:<code>str</code>, <strong><code>source_path</code></strong>:<code>str</code>, <strong><code>dest_path</code></strong>:<code>str</code>)</p>
 </blockquote>
@@ -2726,7 +3237,7 @@ nb_path: "nbs/01_httpapi.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="mfs_read" class="doc_header"><code>mfs_read</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L397" class="source_link" style="float:right">[source]</a></h4>
+<h4 id="mfs_read" class="doc_header"><code>mfs_read</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L448" class="source_link" style="float:right">[source]</a></h4>
 <blockquote>
 <p><code>mfs_read</code>(<strong><code>coreurl</code></strong>:<code>str</code>, <strong><code>path</code></strong>, <strong>**<code>kwargs</code></strong>)</p>
 </blockquote>
@@ -2758,7 +3269,7 @@ nb_path: "nbs/01_httpapi.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="mfs_rm" class="doc_header"><code>mfs_rm</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L411" class="source_link" style="float:right">[source]</a></h4>
+<h4 id="mfs_rm" class="doc_header"><code>mfs_rm</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L462" class="source_link" style="float:right">[source]</a></h4>
 <blockquote>
 <p><code>mfs_rm</code>(<strong><code>coreurl</code></strong>:<code>str</code>, <strong><code>path</code></strong>, <strong>**<code>kwargs</code></strong>)</p>
 </blockquote>
@@ -2790,7 +3301,7 @@ nb_path: "nbs/01_httpapi.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="mfs_stat" class="doc_header"><code>mfs_stat</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L425" class="source_link" style="float:right">[source]</a></h4>
+<h4 id="mfs_stat" class="doc_header"><code>mfs_stat</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L476" class="source_link" style="float:right">[source]</a></h4>
 <blockquote>
 <p><code>mfs_stat</code>(<strong><code>coreurl</code></strong>:<code>str</code>, <strong><code>path</code></strong>, <strong>**<code>kwargs</code></strong>)</p>
 </blockquote>
@@ -2822,7 +3333,7 @@ nb_path: "nbs/01_httpapi.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="mfs_write" class="doc_header"><code>mfs_write</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L439" class="source_link" style="float:right">[source]</a></h4>
+<h4 id="mfs_write" class="doc_header"><code>mfs_write</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L490" class="source_link" style="float:right">[source]</a></h4>
 <blockquote>
 <p><code>mfs_write</code>(<strong><code>coreurl</code></strong>:<code>str</code>, <strong><code>path</code></strong>, <strong><code>filepath</code></strong>, <strong>**<code>kwargs</code></strong>)</p>
 </blockquote>
@@ -2966,46 +3477,6 @@ nb_path: "nbs/01_httpapi.ipynb"
 </div>
     {% endraw %}
 
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="IPNS">IPNS<a class="anchor-link" href="#IPNS"> </a></h2>
-</div>
-</div>
-</div>
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">ipns_publish</span><span class="p">(</span>
-    <span class="n">coreurl</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> 
-    <span class="n">ipfspath</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="c1"># IPFS path of the object to be published</span>
-    <span class="n">resolve</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;true&#39;</span><span class="p">,</span> <span class="c1"># Check if the given path can be resolved before publishing</span>
-    <span class="n">key</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;self&#39;</span><span class="p">,</span> <span class="c1"># Name of the key to be used or a valid PeerID, as listed by `ipfs key list -l`</span>
-    <span class="n">ipns_base</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;base36&#39;</span><span class="p">,</span> <span class="c1"># Encoding used for keys: Can either be a multibase encoded CID or a base58btc encoded multihash</span>
-    <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
-<span class="p">):</span>
-    <span class="s1">&#39;Publish IPNS names.&#39;</span>
-    
-    <span class="n">params</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="n">params</span><span class="p">[</span><span class="s1">&#39;arg&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ipfspath</span>
-    <span class="n">params</span><span class="p">[</span><span class="s1">&#39;resolve&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">resolve</span>
-    <span class="n">params</span><span class="p">[</span><span class="s1">&#39;key&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">key</span>
-    <span class="n">params</span><span class="p">[</span><span class="s1">&#39;ipns-base&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ipns_base</span>
-    <span class="n">params</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
-    
-    <span class="k">return</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">coreurl</span><span class="si">}</span><span class="s1">/name/publish&#39;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
@@ -3017,7 +3488,7 @@ nb_path: "nbs/01_httpapi.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="ipns_view" class="doc_header"><code>ipns_view</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L458" class="source_link" style="float:right">[source]</a></h4>
+<h4 id="ipns_view" class="doc_header"><code>ipns_view</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L509" class="source_link" style="float:right">[source]</a></h4>
 <blockquote>
 <p><code>ipns_view</code>(<strong><code>ipns_hash</code></strong>:<code>str</code>)</p>
 </blockquote>
@@ -3060,7 +3531,7 @@ nb_path: "nbs/01_httpapi.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_peers" class="doc_header"><code>get_peers</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L465" class="source_link" style="float:right">[source]</a></h4>
+<h4 id="get_peers" class="doc_header"><code>get_peers</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L516" class="source_link" style="float:right">[source]</a></h4>
 <blockquote>
 <p><code>get_peers</code>(<strong><code>coreurl</code></strong>, <strong><code>verbose</code></strong>=<em><code>'true'</code></em>, <strong><code>streams</code></strong>=<em><code>'false'</code></em>, <strong><code>latency</code></strong>=<em><code>'false'</code></em>, <strong><code>direction</code></strong>=<em><code>'false'</code></em>)</p>
 </blockquote>
@@ -3147,7 +3618,7 @@ nb_path: "nbs/01_httpapi.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="dht_find_peer" class="doc_header"><code>dht_find_peer</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L483" class="source_link" style="float:right">[source]</a></h4>
+<h4 id="dht_find_peer" class="doc_header"><code>dht_find_peer</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L534" class="source_link" style="float:right">[source]</a></h4>
 <blockquote>
 <p><code>dht_find_peer</code>(<strong><code>coreurl</code></strong>:<code>str</code>, <strong><code>key</code></strong>:<code>str</code>, <strong><code>verbose</code></strong>:<code>str</code>=<em><code>'true'</code></em>)</p>
 </blockquote>
@@ -3179,7 +3650,7 @@ nb_path: "nbs/01_httpapi.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="dht_value_provider" class="doc_header"><code>dht_value_provider</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L496" class="source_link" style="float:right">[source]</a></h4>
+<h4 id="dht_value_provider" class="doc_header"><code>dht_value_provider</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L547" class="source_link" style="float:right">[source]</a></h4>
 <blockquote>
 <p><code>dht_value_provider</code>(<strong><code>coreurl</code></strong>:<code>str</code>, <strong><code>key</code></strong>:<code>str</code>, <strong><code>verbose</code></strong>:<code>str</code>=<em><code>'true'</code></em>)</p>
 </blockquote>
@@ -3211,7 +3682,7 @@ nb_path: "nbs/01_httpapi.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="dht_get_value" class="doc_header"><code>dht_get_value</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L509" class="source_link" style="float:right">[source]</a></h4>
+<h4 id="dht_get_value" class="doc_header"><code>dht_get_value</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/httpapi.py#L560" class="source_link" style="float:right">[source]</a></h4>
 <blockquote>
 <p><code>dht_get_value</code>(<strong><code>coreurl</code></strong>:<code>str</code>, <strong><code>key</code></strong>:<code>str</code>, <strong><code>verbose</code></strong>:<code>str</code>=<em><code>'true'</code></em>)</p>
 </blockquote>
