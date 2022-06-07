@@ -3,6 +3,7 @@
     "Overview": "/",
     "utils": "utils.html",
     "HTTP API": "httpapi.html",
-    "Estuary": "estuaryapi.html"
+    "Estuary": "estuaryapi.html",
+    "Pinata": "pinataapi.html"
   }
 }
