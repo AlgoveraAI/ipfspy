@@ -14,7 +14,7 @@ entries:
       url: utils.html
     - output: web,pdf
       title: HTTP API
-	url: httpapi.html
+      url: httpapi.html
     - output: web,pdf
       title: Estuary
       url: estuaryapi.html
