@@ -12,12 +12,15 @@ entries:
     - output: web,pdf
       title: utils
       url: utils.html
-    - external_url: httpapi.html
-      output: web,pdf
+    - output: web,pdf
       title: HTTP API
+	url: httpapi.html
     - output: web,pdf
       title: Estuary
       url: estuaryapi.html
+    - output: web,pdf
+      title: Pinata
+      url: pinataapi.html
     output: web
     title: ipfspy
   output: web
