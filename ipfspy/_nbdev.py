@@ -68,11 +68,21 @@ index = {"get_coreurl": "00_utils.ipynb",
          "get_deal_logs": "02_estuaryapi.ipynb",
          "get_provider_stats": "02_estuaryapi.ipynb",
          "list_providers": "02_estuaryapi.ipynb",
-         "get_data": "02_estuaryapi.ipynb"}
+         "get_data": "02_estuaryapi.ipynb",
+         "upload_file": "03_pinataapi.ipynb",
+         "pin": "03_pinataapi.ipynb",
+         "unpin": "03_pinataapi.ipynb",
+         "edit_hash": "03_pinataapi.ipynb",
+         "pin_policy": "03_pinataapi.ipynb",
+         "globalpin_policy": "03_pinataapi.ipynb",
+         "get_pinned_jobs": "03_pinataapi.ipynb",
+         "get_pinned_files": "03_pinataapi.ipynb",
+         "get_datausage": "03_pinataapi.ipynb"}
 
 modules = ["utils.py",
            "httpapi.py",
-           "estuaryapi.py"]
+           "estuaryapi.py",
+           "pinataapi.py"]
 
 doc_url = "algoveraai.github.io/ipfspy//ipfspy/"
 
