@@ -9,15 +9,43 @@ from fastcore.all import *
 import pandas as pd
 import dag_cbor
 
+GATEWAYS_API_READ = [
+    "http://127.0.0.1:8080/api/v0",
+    "http://127.0.0.1:5001/api/v0",
+    "https://ipfs.io/api/v0",
+    "https://gateway.pinata.cloud/api/v0",
+    "https://cloudflare-ipfs.com/api/v0",
+    "https://dweb.link/api/v0",
+    "https://ipfs.infura.io:5001/api/v0"
+]
+GATEWAYS_API_WRITE = [
+    "http://127.0.0.1:8080/api/v0",
+    "http://127.0.0.1:5001/api/v0",
+    "https://ipfs.io/api/v0",
+    "https://gateway.pinata.cloud/api/v0",
+    "https://cloudflare-ipfs.com/api/v0",
+    "https://dweb.link/api/v0",
+]
+
 # Cell
 def get_coreurl(
     local:bool=True, # If local uses local node, else uses Infura.io gateway
+    write:bool=True, # If write select a gateway with write functionality
+    # change:bool=False # If change, try a different url than the last time
+    # idx:int=0 # Index indicating last change
 ):
     'Set the core url for convenience'
-    if local:
-        return f"http://127.0.0.1:5001/api/v0"
+    
+    if write:
+        if local:
+            return GATEWAYS_API_WRITE[0]
+        else:
+            return GATEWAYS_API_WRITE[2]     
     else:
-        return f"https://ipfs.infura.io:5001/api/v0"
+        if local:
+            return GATEWAYS_API_READ[0]
+        else:
+            return GATEWAYS_API_READ[6]
 
 
 def cat_items(
