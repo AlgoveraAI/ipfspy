@@ -16,7 +16,20 @@ GATEWAYS_API_READ = [
     "https://gateway.pinata.cloud/api/v0",
     "https://cloudflare-ipfs.com/api/v0",
     "https://dweb.link/api/v0",
-    "https://ipfs.infura.io:5001/api/v0"
+    "https://ipfs.infura.io:5001/api/v0",
+    "https://ipfs.eth.aragon.network/api/v0",
+    "https://permaweb.eu.org/api/v0",
+    "https://nftstorage.link/api/v0",
+    "https://ipfs.lain.la/api/v0",
+    "https://ipfs.mihir.ch/api/v0",
+    "https://ipfs.telos.miami/api/v0",
+    "https://jorropo.net/api/v0",
+    "https://cf-ipfs.com/api/v0",
+    "https://cloudflare-ipfs.com/api/v0",
+    "https://gateway.ipfs.io/api/v0",
+    "https://infura-ipfs.io/api/v0",
+    "https://via0.com/api/v0",
+    "https://ipfs.azurewebsites.net/api/v0"
 ]
 GATEWAYS_API_WRITE = [
     "http://127.0.0.1:8080/api/v0",
