@@ -55,6 +55,9 @@ def add_items(
         chunk_size = int(chunker.split('-')[1])
         data, headers = stream_directory(filepath, chunk_size=chunk_size)
 
+    print((f'{coreurl}/add', params, data, headers))
+    return
+
     response = requests.post(f'{coreurl}/add',
                              params=params,
                              data=data,
@@ -83,7 +86,9 @@ def ls_items(
     params['size'] = size
     params.update(kwargs)
 
-    return requests.post(f'{coreurl}/ls', params=params)
+    response = requests.post(f'{coreurl}/ls', params=params)
+
+    return response, parse_response(response)
 
 
 # doesnt save the file in the output folder given
@@ -102,7 +107,7 @@ def get_items(
 
     response = requests.post(f'{coreurl}/get', params=params)
 
-    return response
+    return response, parse_response(response)
 
 
 def cat_items(
@@ -116,7 +121,9 @@ def cat_items(
     params['arg'] = cid
     params.update(kwargs)
 
-    return requests.post(f'{coreurl}/cat', params=params)
+    response = requests.post(f'{coreurl}/cat', params=params)
+
+    return response, parse_response(response)
 
 # Cell
 def dag_export(
@@ -130,7 +137,9 @@ def dag_export(
     params['arg'] = path
     params.update(kwargs)
 
-    return requests.post(f'{coreurl}/dag/export', params=params)
+    response = requests.post(f'{coreurl}/dag/export', params=params)
+
+    return response, parse_response(response)
 
 
 def dag_get(
@@ -144,7 +153,9 @@ def dag_get(
     params['arg'] = path
     params['output-codec'] = output_codec
 
-    return requests.post(f'{coreurl}/dag/get', params=params)
+    response = requests.post(f'{coreurl}/dag/get', params=params)
+
+    return response, parse_response(response)
 
 
 def dag_stat(
@@ -158,7 +169,9 @@ def dag_stat(
     params['arg'] = path
     params.update(kwargs)
 
-    return requests.post(f'{coreurl}/dag/stat', params=params)
+    response = requests.post(f'{coreurl}/dag/stat', params=params)
+
+    return response, parse_response(response)
 
 # Cell
 def pin_add(
@@ -172,7 +185,9 @@ def pin_add(
     params['arg'] = ipfspath
     params['recursive'] = recursive
 
-    return requests.post(f'{coreurl}/pin/add', params=params)
+    response = requests.post(f'{coreurl}/pin/add', params=params)
+
+    return response, parse_response(response)
 
 
 def pin_ls(
@@ -186,7 +201,9 @@ def pin_ls(
     params['type'] = type_
     params.update(kwargs)
 
-    return requests.post(f'{coreurl}/pin/ls', params=params)
+    response = requests.post(f'{coreurl}/pin/ls', params=params)
+
+    return response, parse_response(response)
 
 
 def pin_rm(
@@ -202,7 +219,9 @@ def pin_rm(
     params['recursive'] = recursive
     params.update(kwargs)
 
-    return requests.post(f'{coreurl}/pin/rm', params=params)
+    response = requests.post(f'{coreurl}/pin/rm', params=params)
+
+    return response, parse_response(response)
 
 # Cell
 def rspin_add(
@@ -216,7 +235,9 @@ def rspin_add(
     params = {}
     params['arg'] = [service_name, service_edpt, service_key]
 
-    return requests.post(f'{coreurl}/pin/remote/service/add', params=params)
+    response = requests.post(f'{coreurl}/pin/remote/service/add', params=params)
+
+    return response, parse_response(response)
 
 
 def rspin_ls(
@@ -228,7 +249,9 @@ def rspin_ls(
     params = {}
     params.update(kwargs)
 
-    return requests.post(f'{coreurl}/pin/remote/service/ls', params=params)
+    response = requests.post(f'{coreurl}/pin/remote/service/ls', params=params)
+
+    return response, parse_response(response)
 
 
 def rspin_rm(
@@ -240,7 +263,9 @@ def rspin_rm(
     params = {}
     params['arg'] = service_name
 
-    return requests.post(f'{coreurl}/pin/remote/service/rm', params=params)
+    response = requests.post(f'{coreurl}/pin/remote/service/rm', params=params)
+
+    return response, parse_response(response)
 
 
 # Cell
@@ -259,7 +284,9 @@ def rpin_add(
     params['background'] = background
     params.update(kwargs)
 
-    return requests.post(f'{coreurl}/pin/remote/add', params=params)
+    response = requests.post(f'{coreurl}/pin/remote/add', params=params)
+
+    return response, parse_response(response)
 
 
 def rpin_ls(
@@ -273,7 +300,9 @@ def rpin_ls(
     params['service'] = service
     params.update(kwargs)
 
-    return requests.post(f'{coreurl}/pin/remote/ls', params=params)
+    response = requests.post(f'{coreurl}/pin/remote/ls', params=params)
+
+    return response, parse_response(response)
 
 
 def rpin_rm(
@@ -287,7 +316,9 @@ def rpin_rm(
     params['service'] = service
     params.update(kwargs)
 
-    return requests.post(f'{coreurl}/pin/remote/rm', params=params)
+    response = requests.post(f'{coreurl}/pin/remote/rm', params=params)
+
+    return response, parse_response(response)
 
 
 # Cell
@@ -301,7 +332,9 @@ def block_get(
     params = {}
     params['arg'] = arg
 
-    return requests.post(f'{coreurl}/block/get', params=params)
+    response = requests.post(f'{coreurl}/block/get', params=params)
+
+    return response, parse_response(response)
 
 
 def block_put(
@@ -320,8 +353,9 @@ def block_put(
     params['pin'] = pin
     params.update(kwargs)
 
-    return requests.post(f'{coreurl}/block/put', params=params, files={'files':open(filepath, 'rb')})
+    response = requests.post(f'{coreurl}/block/put', params=params, files={'files':open(filepath, 'rb')})
 
+    return response, parse_response(response)
 
 def block_rm(
     coreurl,
@@ -336,7 +370,9 @@ def block_rm(
     params['force'] = force
     params['quiet'] = quiet
 
-    return requests.post(f'{coreurl}/block/rm', params=params)
+    response = requests.post(f'{coreurl}/block/rm', params=params)
+
+    return response, parse_response(response)
 
 
 def block_stat(
@@ -349,7 +385,9 @@ def block_stat(
     params = {}
     params['arg'] = arg
 
-    return requests.post(f'{coreurl}/block/stat', params=params)
+    response = requests.post(f'{coreurl}/block/stat', params=params)
+
+    return response, parse_response(response)
 
 # Cell
 def ipns_view(
@@ -357,7 +395,9 @@ def ipns_view(
 ):
     'View files published to IPNS.'
 
-    return requests.get(f'https://gateway.ipfs.io/ipns/{ipns_hash}')
+    response = requests.get(f'https://gateway.ipfs.io/ipns/{ipns_hash}')
+
+    return response, parse_response(response)
 
 # Cell
 def mfs_chcid(
@@ -374,7 +414,9 @@ def mfs_chcid(
     params['cid-version'] = cid_version
     params.update(kwargs)
 
-    return response.post(f"{coreurl}/files/chcid", params=params)
+    response = response.post(f"{coreurl}/files/chcid", params=params)
+
+    return response, parse_response(response)
 
 
 def mfs_cp(
@@ -390,7 +432,9 @@ def mfs_cp(
     params['arg'] = [source_path, dest_path]
     params.update(kwargs)
 
-    return requests.post(f'{coreurl}/files/cp', params=params)
+    response = requests.post(f'{coreurl}/files/cp', params=params)
+
+    return response, parse_response(response)
 
 
 def mfs_flush(
@@ -401,7 +445,9 @@ def mfs_flush(
 
     params['arg'] = path
 
-    return requests.post(f'{coreurl}/files/flush',params=params)
+    response = requests.post(f'{coreurl}/files/flush',params=params)
+
+    return response, parse_response(response)
 
 
 def mfs_ls(
@@ -415,7 +461,9 @@ def mfs_ls(
     params['arg'] = path
     params.update(kwargs)
 
-    return requests.post(f'{coreurl}/files/ls', params=params)
+    response = requests.post(f'{coreurl}/files/ls', params=params)
+
+    return response, parse_response(response)
 
 
 def mfs_mkdir(
@@ -429,7 +477,9 @@ def mfs_mkdir(
     params['arg'] = path
     params.update(kwargs)
 
-    return requests.post(f"{coreurl}/files/mkdir", params=params)
+    response = requests.post(f"{coreurl}/files/mkdir", params=params)
+
+    return response, parse_response(response)
 
 
 def mfs_mv(
@@ -442,7 +492,9 @@ def mfs_mv(
     params = {}
     params['arg'] = [source_path, dest_path]
 
-    return requests.post(f"{coreurl}/files/mv", params=params)
+    response = requests.post(f"{coreurl}/files/mv", params=params)
+
+    return response, parse_response(response)
 
 
 def mfs_read(
@@ -456,7 +508,9 @@ def mfs_read(
     params['arg'] = path
     params.update(kwargs)
 
-    return requests.post(f"{coreurl}/files/read",params=params)
+    response = requests.post(f"{coreurl}/files/read",params=params)
+
+    return response, parse_response(response)
 
 
 def mfs_rm(
@@ -470,7 +524,9 @@ def mfs_rm(
     params['arg'] = path
     params.update(kwargs)
 
-    return requests.post(f"{coreurl}/files/rm", params=params)
+    response = requests.post(f"{coreurl}/files/rm", params=params)
+
+    return response, parse_response(response)
 
 
 def mfs_stat(
@@ -484,7 +540,9 @@ def mfs_stat(
     params['arg'] = path
     params.update(kwargs)
 
-    return requests.post(f"{coreurl}/files/stat", params=params)
+    response = requests.post(f"{coreurl}/files/stat", params=params)
+
+    return response, parse_response(response)
 
 
 def mfs_write(
@@ -503,14 +561,18 @@ def mfs_write(
     params['arg'] = path
     params.update(kwargs)
 
-    return requests.post(f"{coreurl}/files/write",params=params, files=files)
+    response = requests.post(f"{coreurl}/files/write",params=params, files=files)
+
+    return response, parse_response(response)
 
 # Cell
 def ipns_view(
     ipns_hash:str # IPNS address where the files are stored
 ):
     'View files published to IPNS'
-    return requests.get(f'https://gateway.ipfs.io/ipns/{ipns_hash}')
+    response = requests.get(f'https://gateway.ipfs.io/ipns/{ipns_hash}')
+
+    return response, parse_response(response)
 
 # Cell
 def get_peers(
@@ -528,7 +590,9 @@ def get_peers(
     params['latency'] = latency
     params['direction'] = direction
 
-    return requests.post(f"{coreurl}/swarm/peers", params=params).json()
+    response = requests.post(f"{coreurl}/swarm/peers", params=params).json()
+
+    return response, parse_response(response)
 
 # Cell
 def dht_find_peer(
@@ -542,7 +606,9 @@ def dht_find_peer(
     params['arg'] = key
     params['verbose'] = verbose
 
-    return requests.post(f'{coreurl}/dht/findpeer', params=params)
+    response = requests.post(f'{coreurl}/dht/findpeer', params=params)
+
+    return response, parse_response(response)
 
 def dht_value_provider(
     coreurl:str,
@@ -555,7 +621,9 @@ def dht_value_provider(
     params['arg'] = key
     params['verbose'] = verbose
 
-    return requests.post(f'{coreurl}/dht/findpeer', params=params)
+    response = requests.post(f'{coreurl}/dht/findpeer', params=params)
+
+    return response, parse_response(response)
 
 def dht_get_value(
     coreurl:str,
@@ -568,4 +636,6 @@ def dht_get_value(
     params['arg'] = key
     params['verbose'] = verbose
 
-    return requests.post(f'{coreurl}/dht/get', params=params).json()
+    response = requests.post(f'{coreurl}/dht/get', params=params).json()
+
+    return response, parse_response(response)
