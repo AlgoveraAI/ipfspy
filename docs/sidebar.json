@@ -2,6 +2,7 @@
   "ipfspy": {
     "Overview": "/",
     "utils": "utils.html",
+    "IPFSSpec": "ipfsspec.html",
     "HTTP API": "httpapi.html",
     "Estuary": "estuaryapi.html",
     "Pinata": "pinataapi.html"
