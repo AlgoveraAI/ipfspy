@@ -15,7 +15,7 @@ entries:
     - output: web,pdf
       title: IPFSSpec
       url: ipfsspec.html
-    - external_url: httpapi.html
+    - url: httpapi.html
       output: web,pdf
       title: HTTP API
     - output: web,pdf
