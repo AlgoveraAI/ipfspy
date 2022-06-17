@@ -10,7 +10,8 @@ import random
 import time
 import requests
 import pandas as pd
-from io import StringIO
+import imageio
+from io import StringIO,BytesIO
 from requests.exceptions import HTTPError
 from fsspec.spec import AbstractFileSystem
 from ipfsspec.core import IPFSBufferedFile
@@ -260,3 +261,10 @@ class IPFSFileSystem(AbstractFileSystem):
         r, data = self.gw.cat(cid)
 
         return pd.read_json(StringIO(data))
+
+    def read_image(self,
+        cid:str,
+    ):
+        data = self.cat_file(cid)
+
+        return imageio.v2.imread(BytesIO(data))
