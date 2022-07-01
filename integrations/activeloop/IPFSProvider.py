@@ -1,16 +1,23 @@
 import hub
+import requests
 
 from requests.exceptions import HTTPError
 from ipfspy.utils import GATEWAYS_API_READ, GATEWAYS_API_WRITE, parse_error_message, parse_response, get_coreurl
 from ipfspy.ipfsspec import IPFSGateway, IPFSFileSystem
 
 class IPFSProvider(hub.core.storage.provider.StorageProvider):
-    def __init__(self) -> None:
+    def __init__(
+        self,
+        coreurl:str='', # Core URL to use
+        storage_type:str=None, # specify type of gateway (e.g. Infura, Estuary, Web3.Storage, local node...)
+        api_key:str=None, # if applicable, api key for access to storage service
+    ) -> None:
         """Initialize the object, assign credentials if required."""
         super().__init__()
-        self.gateway = IPFSGateway()
-        self.fs = IPFSFileSystem()
-
+        self.coreurl = coreurl
+        self.fs = IPFSFileSystem(local=False, coreurl=self.coreurl)
+        self.storage_type = storage_type
+        self.api_key = api_key
 
     def __getitem__(self, cid, **kwargs):
         """Gets the object present at the path."""
@@ -18,7 +25,7 @@ class IPFSProvider(hub.core.storage.provider.StorageProvider):
         params['arg'] = cid
         params.update(kwargs)
 
-        res = self.session.post(f'{self.url}/get', params=params)
+        res = self.session.post(f'{self.coreurl}/get', params=params)
 
         if res.status_code == 200:
             return res, parse_response(res)
@@ -29,19 +36,16 @@ class IPFSProvider(hub.core.storage.provider.StorageProvider):
 
     def __setitem__(self, path, value):
         """Sets the object present at the path with the value"""
-        return self.gateway.apipost("add", path)
+        return self.fs.gw.apipost("add", path)
 
 
     def __delitem__(self, path):
         """Delete the object present at the path."""
-        return
+        # test = f"/pinning/pins/{path}"
 
+        params = {
+            'arg': path,
+        }
 
-    def __iter__(self):
-        """Generator function that iterates over the keys of the mapper"""
-        return self.fs.ls() # which cid to use here?
-
-
-    def __len__(self):
-        """Returns the number of files present in the directory at the root of the mapper"""
-        return
+        response = requests.post(f'{self.coreurl}/pin/rm', params=params)
+        return response
