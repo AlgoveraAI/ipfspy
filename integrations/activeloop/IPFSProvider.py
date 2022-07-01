@@ -8,8 +8,8 @@ from ipfspy.ipfsspec import IPFSGateway, IPFSFileSystem
 class IPFSProvider(hub.core.storage.provider.StorageProvider):
     def __init__(
         self,
-        coreurl:str, # Core URL to use
-        storage_type:str, # specify type of gateway (e.g. Infura, Estuary, Web3.Storage, local node...)
+        coreurl:str='', # Core URL to use
+        storage_type:str=None, # specify type of gateway (e.g. Infura, Estuary, Web3.Storage, local node...)
         api_key:str=None, # if applicable, api key for access to storage service
     ) -> None:
         """Initialize the object, assign credentials if required."""
@@ -25,7 +25,7 @@ class IPFSProvider(hub.core.storage.provider.StorageProvider):
         params['arg'] = cid
         params.update(kwargs)
 
-        res = self.session.post(f'{self.url}/get', params=params)
+        res = self.session.post(f'{self.coreurl}/get', params=params)
 
         if res.status_code == 200:
             return res, parse_response(res)
@@ -47,5 +47,5 @@ class IPFSProvider(hub.core.storage.provider.StorageProvider):
             'arg': path,
         }
 
-        response = requests.post('https://ipfs.infura.io:5001/api/v0/pin/rm', params=params)
+        response = requests.post(f'{self.coreurl}/pin/rm', params=params)
         return response
