@@ -201,7 +201,7 @@ def unpin(cred:str,#JWT Key
 def edit_hash(cred:str,#JWT Key
               cid:str, #IPFS CID
               name:str, #filename
-              pinataMetaData=None #Add keys and values associated with IPFS CID
+              metadata=None #Add keys and values associated with IPFS CID
 ):
 
     url = "https://api.pinata.cloud/pinning/hashMetadata"
