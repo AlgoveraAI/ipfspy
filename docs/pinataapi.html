@@ -32,6 +32,25 @@ nb_path: "nbs/04_pinataapi.ipynb"
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;creds.json&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    
+    <span class="n">creds</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">())[</span><span class="s2">&quot;Pinata&quot;</span><span class="p">][</span><span class="s2">&quot;JWT&quot;</span><span class="p">]</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
 
 <div class="output_wrapper">
 <div class="output">
@@ -40,7 +59,7 @@ nb_path: "nbs/04_pinataapi.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="upload_file" class="doc_header"><code>upload_file</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/pinataapi.py#L14" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>upload_file</code>(<strong><code>cred</code></strong>:<code>str</code>, <strong><code>path</code></strong>:<code>str</code>)</p>
+<h4 id="generate_apikey" class="doc_header"><code>generate_apikey</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/pinataapi.py#L12" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>generate_apikey</code>(<strong><code>cred</code></strong>:<code>str</code>, <strong><code>key_name</code></strong>:<code>str</code>, <strong><code>pinlist</code></strong>:<code>bool</code>=<em><code>False</code></em>, <strong><code>userPinnedDataTotal</code></strong>:<code>bool</code>=<em><code>False</code></em>, <strong><code>hashMetadata</code></strong>:<code>bool</code>=<em><code>True</code></em>, <strong><code>hashPinPolicy</code></strong>:<code>bool</code>=<em><code>False</code></em>, <strong><code>pinByHash</code></strong>:<code>bool</code>=<em><code>True</code></em>, <strong><code>pinFileToIPFS</code></strong>:<code>bool</code>=<em><code>True</code></em>, <strong><code>pinJSONToIPFS</code></strong>:<code>bool</code>=<em><code>True</code></em>, <strong><code>pinJobs</code></strong>:<code>bool</code>=<em><code>True</code></em>, <strong><code>unpin</code></strong>:<code>bool</code>=<em><code>True</code></em>, <strong><code>userPinPolicy</code></strong>:<code>bool</code>=<em><code>True</code></em>)</p>
 </blockquote>
 <table>
 <thead><tr>
@@ -55,13 +74,73 @@ nb_path: "nbs/04_pinataapi.ipynb"
 <td><strong><code>cred</code></strong></td>
 <td><code>str</code></td>
 <td></td>
-<td>JWT key</td>
+<td>JWT</td>
 </tr>
 <tr>
-<td><strong><code>path</code></strong></td>
+<td><strong><code>key_name</code></strong></td>
 <td><code>str</code></td>
 <td></td>
-<td>filepath</td>
+<td>Key name</td>
+</tr>
+<tr>
+<td><strong><code>pinlist</code></strong></td>
+<td><code>bool</code></td>
+<td><code>False</code></td>
+<td>list pins</td>
+</tr>
+<tr>
+<td><strong><code>userPinnedDataTotal</code></strong></td>
+<td><code>bool</code></td>
+<td><code>False</code></td>
+<td>total data stored</td>
+</tr>
+<tr>
+<td><strong><code>hashMetadata</code></strong></td>
+<td><code>bool</code></td>
+<td><code>True</code></td>
+<td>metadata</td>
+</tr>
+<tr>
+<td><strong><code>hashPinPolicy</code></strong></td>
+<td><code>bool</code></td>
+<td><code>False</code></td>
+<td>policy</td>
+</tr>
+<tr>
+<td><strong><code>pinByHash</code></strong></td>
+<td><code>bool</code></td>
+<td><code>True</code></td>
+<td>pin cid</td>
+</tr>
+<tr>
+<td><strong><code>pinFileToIPFS</code></strong></td>
+<td><code>bool</code></td>
+<td><code>True</code></td>
+<td>upload file to IPFS</td>
+</tr>
+<tr>
+<td><strong><code>pinJSONToIPFS</code></strong></td>
+<td><code>bool</code></td>
+<td><code>True</code></td>
+<td>upload json to IPFS</td>
+</tr>
+<tr>
+<td><strong><code>pinJobs</code></strong></td>
+<td><code>bool</code></td>
+<td><code>True</code></td>
+<td>see pin jobs</td>
+</tr>
+<tr>
+<td><strong><code>unpin</code></strong></td>
+<td><code>bool</code></td>
+<td><code>True</code></td>
+<td>unpin ipfs cid</td>
+</tr>
+<tr>
+<td><strong><code>userPinPolicy</code></strong></td>
+<td><code>bool</code></td>
+<td><code>True</code></td>
+<td>establish pin policy</td>
 </tr>
 </tbody>
 </table>
@@ -83,6 +162,49 @@ nb_path: "nbs/04_pinataapi.ipynb"
 </div>
     {% endraw %}
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Generate API Key</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">response</span> <span class="o">=</span> <span class="n">generate_apikey</span><span class="p">(</span><span class="n">creds</span><span class="p">,</span><span class="s2">&quot;Test&quot;</span><span class="p">)</span>
+<span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;pinata_api_key&#39;: &#39;c7ac8b7c6046bedce189&#39;,
+ &#39;pinata_api_secret&#39;: &#39;0a1a54734a5697ad0f551f02a06699c9653db3431f2408cdaae4f5e131948b72&#39;,
+ &#39;JWT&#39;: &#39;eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiJkMjhmMjBjZi1kZmUwLTRjOGYtOTI3Mi0yNmI5YzJkOGEzY2QiLCJlbWFpbCI6InZpbnRhZ2Vnb2xkMTIzQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJwaW5fcG9saWN5Ijp7InJlZ2lvbnMiOlt7ImlkIjoiTllDMSIsImRlc2lyZWRSZXBsaWNhdGlvbkNvdW50IjoxfV0sInZlcnNpb24iOjF9LCJtZmFfZW5hYmxlZCI6ZmFsc2UsInN0YXR1cyI6IkFDVElWRSJ9LCJhdXRoZW50aWNhdGlvblR5cGUiOiJzY29wZWRLZXkiLCJzY29wZWRLZXlLZXkiOiJjN2FjOGI3YzYwNDZiZWRjZTE4OSIsInNjb3BlZEtleVNlY3JldCI6IjBhMWE1NDczNGE1Njk3YWQwZjU1MWYwMmEwNjY5OWM5NjUzZGIzNDMxZjI0MDhjZGFhZTRmNWUxMzE5NDhiNzIiLCJpYXQiOjE2NTU3NTIyMDd9.PaGGYRRoZe2qjNB4JChyZ1Vqnk5YTErHjK63mb1r9Fo&#39;}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
@@ -94,7 +216,420 @@ nb_path: "nbs/04_pinataapi.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="pin" class="doc_header"><code>pin</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/pinataapi.py#L31" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>pin</code>(<strong><code>cred</code></strong>:<code>str</code>, <strong><code>cid</code></strong>:<code>str</code>, <strong><code>fn</code></strong>=<em><code>None</code></em>, <strong><code>pinataMetadata</code></strong>=<em><code>None</code></em>)</p>
+<h4 id="list_apikeys" class="doc_header"><code>list_apikeys</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/pinataapi.py#L61" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>list_apikeys</code>(<strong><code>creds</code></strong>:<code>str</code>)</p>
+</blockquote>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>List API Keys</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">list_apikeys</span><span class="p">(</span><span class="n">creds</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;keys&#39;: [{&#39;id&#39;: &#39;d32b5104-bf15-41d2-a014-db03d9514e60&#39;,
+   &#39;name&#39;: &#39;Test&#39;,
+   &#39;key&#39;: &#39;4bca7ba543fe03e27e05&#39;,
+   &#39;secret&#39;: &#39;37e753bff1863707458b76bc11f4a262:447108d55d32ef305c87f5ce46dc25733331810b574b89062efc909c23cf95e4dec2e51a13d0372712baa7d1834afa20d81b4ad7458cd3b592c71947bd52f3a4&#39;,
+   &#39;max_uses&#39;: None,
+   &#39;uses&#39;: 0,
+   &#39;user_id&#39;: &#39;d28f20cf-dfe0-4c8f-9272-26b9c2d8a3cd&#39;,
+   &#39;scopes&#39;: {&#39;endpoints&#39;: {&#39;data&#39;: {&#39;pinList&#39;: False,
+      &#39;userPinnedDataTotal&#39;: False},
+     &#39;pinning&#39;: {&#39;unpin&#39;: True,
+      &#39;pinJobs&#39;: True,
+      &#39;pinByHash&#39;: True,
+      &#39;hashMetadata&#39;: True,
+      &#39;hashPinPolicy&#39;: False,
+      &#39;pinFileToIPFS&#39;: True,
+      &#39;pinJSONToIPFS&#39;: True,
+      &#39;userPinPolicy&#39;: True}}},
+   &#39;revoked&#39;: False,
+   &#39;createdAt&#39;: &#39;2022-06-20T17:02:39.761Z&#39;,
+   &#39;updatedAt&#39;: &#39;2022-06-20T17:02:39.761Z&#39;},
+  {&#39;id&#39;: &#39;b929bb84-dfc8-434d-9120-0b8eeb19afd3&#39;,
+   &#39;name&#39;: &#39;Admin&#39;,
+   &#39;key&#39;: &#39;9fdb8c6e01e449fa7ac5&#39;,
+   &#39;secret&#39;: &#39;b6abb1cb3161908497cda135a5753865:61b626953286b9bec34132a49d49f18b95441fcc32226e829b99fec0591a46e39fc2474c7b6249e634135dd829d31071dc1a599574f9d329aed226082ef2b2b9&#39;,
+   &#39;max_uses&#39;: None,
+   &#39;uses&#39;: 0,
+   &#39;user_id&#39;: &#39;d28f20cf-dfe0-4c8f-9272-26b9c2d8a3cd&#39;,
+   &#39;scopes&#39;: {&#39;admin&#39;: True},
+   &#39;revoked&#39;: False,
+   &#39;createdAt&#39;: &#39;2022-06-20T16:54:31.017Z&#39;,
+   &#39;updatedAt&#39;: &#39;2022-06-20T16:54:31.017Z&#39;}],
+ &#39;count&#39;: 2}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="revoke_apikey" class="doc_header"><code>revoke_apikey</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/pinataapi.py#L77" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>revoke_apikey</code>(<strong><code>creds</code></strong>:<code>str</code>, <strong><code>revoke_apikey</code></strong>:<code>str</code>)</p>
+</blockquote>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Revoke API Key</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">revoke_apikey</span><span class="p">(</span><span class="s2">&quot;Admin JWT&quot;</span><span class="p">,</span><span class="s2">&quot;API Key&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;&#34;Revoked&#34;&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="upload_file" class="doc_header"><code>upload_file</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/pinataapi.py#L96" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>upload_file</code>(<strong><code>cred</code></strong>:<code>str</code>, <strong><code>name</code></strong>:<code>str</code>, <strong><code>fpaths</code></strong>:<code>list</code>, <strong><code>metadata</code></strong>:<code>dict</code>, <strong><code>cid_version</code></strong>:<code>str</code>=<em><code>'1'</code></em>, <strong><code>directory</code></strong>:<code>bool</code>=<em><code>False</code></em>)</p>
+</blockquote>
+<table>
+<thead><tr>
+<th></th>
+<th>Type</th>
+<th>Default</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>cred</code></strong></td>
+<td><code>str</code></td>
+<td></td>
+<td>JWT key</td>
+</tr>
+<tr>
+<td><strong><code>name</code></strong></td>
+<td><code>str</code></td>
+<td></td>
+<td>filename</td>
+</tr>
+<tr>
+<td><strong><code>fpaths</code></strong></td>
+<td><code>list</code></td>
+<td></td>
+<td>filepaths</td>
+</tr>
+<tr>
+<td><strong><code>metadata</code></strong></td>
+<td><code>dict</code></td>
+<td></td>
+<td>metadata</td>
+</tr>
+<tr>
+<td><strong><code>cid_version</code></strong></td>
+<td><code>str</code></td>
+<td><code>1</code></td>
+<td>IPFS cid</td>
+</tr>
+<tr>
+<td><strong><code>directory</code></strong></td>
+<td><code>bool</code></td>
+<td><code>False</code></td>
+<td>upload directory</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Upload File to IPFS with metadata</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;AdultData&quot;</span><span class="p">}</span>
+
+<span class="n">upload_file</span><span class="p">(</span><span class="n">creds</span><span class="p">,</span><span class="s2">&quot;adult_data.csv&quot;</span><span class="p">,</span><span class="s2">&quot;output/adult_data.csv&quot;</span><span class="p">,</span><span class="n">metadata</span><span class="p">,</span><span class="n">cid_version</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">directory</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;{&#34;IpfsHash&#34;:&#34;bafybeibcsnxt2sqzsvfg4lzg3iuxkfit37l3rz5gqmdxwsgec56qalmxie&#34;,&#34;PinSize&#34;:3975284,&#34;Timestamp&#34;:&#34;2022-06-17T22:43:08.303Z&#34;,&#34;isDuplicate&#34;:true}&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="upload_jsonfile" class="doc_header"><code>upload_jsonfile</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/pinataapi.py#L129" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>upload_jsonfile</code>(<strong><code>cred</code></strong>:<code>str</code>, <strong><code>name</code></strong>:<code>str</code>, <strong><code>fpaths</code></strong>:<code>list</code>, <strong><code>metadata</code></strong>:<code>dict</code>, <strong><code>cid_version</code></strong>:<code>str</code>, <strong><code>directory</code></strong>:<code>bool</code>=<em><code>False</code></em>)</p>
+</blockquote>
+<table>
+<thead><tr>
+<th></th>
+<th>Type</th>
+<th>Default</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong><code>cred</code></strong></td>
+<td><code>str</code></td>
+<td></td>
+<td>JWT key</td>
+</tr>
+<tr>
+<td><strong><code>name</code></strong></td>
+<td><code>str</code></td>
+<td></td>
+<td>filename</td>
+</tr>
+<tr>
+<td><strong><code>fpaths</code></strong></td>
+<td><code>list</code></td>
+<td></td>
+<td>filepaths</td>
+</tr>
+<tr>
+<td><strong><code>metadata</code></strong></td>
+<td><code>dict</code></td>
+<td></td>
+<td>metadata</td>
+</tr>
+<tr>
+<td><strong><code>cid_version</code></strong></td>
+<td><code>str</code></td>
+<td></td>
+<td>IPFS cid</td>
+</tr>
+<tr>
+<td><strong><code>directory</code></strong></td>
+<td><code>bool</code></td>
+<td><code>False</code></td>
+<td>upload directory</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This endpoint is optimized for JSON files</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span><span class="s2">&quot;Vote&quot;</span><span class="p">}</span>
+<span class="n">j_file</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;output/ens_airdrop_sample.json&quot;</span><span class="p">,</span><span class="s2">&quot;rb&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
+<span class="n">upload_jsonfile</span><span class="p">(</span><span class="n">creds</span><span class="p">,</span><span class="s2">&quot;ens_airdrop_Nov8th2021.json&quot;</span><span class="p">,</span><span class="n">j_file</span><span class="p">,</span><span class="n">metadata</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;{&#34;IpfsHash&#34;:&#34;bafkreiaaxib73t4qmqkehi42dnsvava3gvghohg5sibmuuvsb4lakxdhum&#34;,&#34;PinSize&#34;:13163,&#34;Timestamp&#34;:&#34;2022-06-20T18:24:02.266Z&#34;,&#34;isDuplicate&#34;:true}&#39;</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_markdown rendered_html output_subarea ">
+<h4 id="pin" class="doc_header"><code>pin</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/pinataapi.py#L159" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>pin</code>(<strong><code>cred</code></strong>:<code>str</code>, <strong><code>cid</code></strong>:<code>str</code>, <strong><code>fn</code></strong>=<em><code>None</code></em>, <strong><code>pinataMetadata</code></strong>=<em><code>None</code></em>)</p>
 </blockquote>
 <table>
 <thead><tr>
@@ -149,6 +684,48 @@ nb_path: "nbs/04_pinataapi.ipynb"
 </div>
     {% endraw %}
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Pin files</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;dApp&quot;</span><span class="p">:</span><span class="s2">&quot;Ethereum Name Service&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;token&quot;</span><span class="p">:</span><span class="s2">&quot;ENS&quot;</span>
+           <span class="p">}</span>
+
+<span class="n">pin</span><span class="p">(</span><span class="n">creds</span><span class="p">,</span><span class="s2">&quot;QmUUSHH2ycqciruPaRcptpUQDDeRiMV3G9PxA6KUupXTJV&quot;</span><span class="p">,</span><span class="n">fn</span><span class="o">=</span><span class="s2">&quot;ens_airdrop&quot;</span><span class="p">,</span><span class="n">pinataMetadata</span><span class="o">=</span><span class="n">metadata</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>{&#34;id&#34;:&#34;b14c23f3-2295-4b90-9e1f-f9d0fecff895&#34;,&#34;ipfsHash&#34;:&#34;QmUUSHH2ycqciruPaRcptpUQDDeRiMV3G9PxA6KUupXTJV&#34;,&#34;status&#34;:&#34;prechecking&#34;,&#34;name&#34;:&#34;ens_airdrop&#34;}
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
@@ -160,7 +737,7 @@ nb_path: "nbs/04_pinataapi.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="unpin" class="doc_header"><code>unpin</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/pinataapi.py#L61" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>unpin</code>(<strong><code>cred</code></strong>:<code>str</code>, <strong><code>cid</code></strong>:<code>str</code>)</p>
+<h4 id="unpin" class="doc_header"><code>unpin</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/pinataapi.py#L185" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>unpin</code>(<strong><code>cred</code></strong>:<code>str</code>, <strong><code>cid</code></strong>:<code>str</code>)</p>
 </blockquote>
 <table>
 <thead><tr>
@@ -203,6 +780,82 @@ nb_path: "nbs/04_pinataapi.ipynb"
 </div>
     {% endraw %}
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Unpin IPFS CID</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">unpin</span><span class="p">(</span><span class="n">creds</span><span class="p">,</span><span class="s2">&quot;QmUUSHH2ycqciruPaRcptpUQDDeRiMV3G9PxA6KUupXTJV&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;Response [200]&gt;
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If IPFS CID isn't pinned. A 500 error message will be returned</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">unpin</span><span class="p">(</span><span class="n">creds</span><span class="p">,</span><span class="s2">&quot;QmZnxARhJWsCbTxiAzoRhnxHgMtoEkNJNS8DGLCBEMvm4V&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>&lt;Response [500]&gt;
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
@@ -214,7 +867,7 @@ nb_path: "nbs/04_pinataapi.ipynb"
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="edit_hash" class="doc_header"><code>edit_hash</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/pinataapi.py#L77" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>edit_hash</code>(<strong><code>cred</code></strong>:<code>str</code>, <strong><code>cid</code></strong>:<code>str</code>, <strong><code>pinataMetaData</code></strong>=<em><code>None</code></em>)</p>
+<h4 id="edit_hash" class="doc_header"><code>edit_hash</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/pinataapi.py#L201" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>edit_hash</code>(<strong><code>cred</code></strong>:<code>str</code>, <strong><code>cid</code></strong>:<code>str</code>, <strong><code>name</code></strong>:<code>str</code>, <strong><code>metadata</code></strong>=<em><code>None</code></em>)</p>
 </blockquote>
 <table>
 <thead><tr>
@@ -238,7 +891,13 @@ nb_path: "nbs/04_pinataapi.ipynb"
 <td>IPFS CID</td>
 </tr>
 <tr>
-<td><strong><code>pinataMetaData</code></strong></td>
+<td><strong><code>name</code></strong></td>
+<td><code>str</code></td>
+<td></td>
+<td>filename</td>
+</tr>
+<tr>
+<td><strong><code>metadata</code></strong></td>
 <td></td>
 <td><code>None</code></td>
 <td>Add keys and values associated with IPFS CID</td>
@@ -263,9 +922,28 @@ nb_path: "nbs/04_pinataapi.ipynb"
 </div>
     {% endraw %}
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Edit metadata of already pinned IPFS CID</p>
+
+</div>
+</div>
+</div>
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;Test&quot;</span><span class="p">}</span>
+
+<span class="n">edit_hash</span><span class="p">(</span><span class="n">creds</span><span class="p">,</span><span class="s2">&quot;bafybeibcsnxt2sqzsvfg4lzg3iuxkfit37l3rz5gqmdxwsgec56qalmxie&quot;</span><span class="p">,</span><span class="s2">&quot;name&quot;</span><span class="p">,</span><span class="n">metadata</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
 
 <div class="output_wrapper">
 <div class="output">
@@ -273,47 +951,9 @@ nb_path: "nbs/04_pinataapi.ipynb"
 <div class="output_area">
 
 
-<div class="output_markdown rendered_html output_subarea ">
-<h4 id="pin_policy" class="doc_header"><code>pin_policy</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/pinataapi.py#L96" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>pin_policy</code>(<strong><code>cred</code></strong>:<code>str</code>, <strong><code>cid</code></strong>:<code>str</code>, <strong><code>replications</code></strong>=<em><code>int</code></em>, <strong><code>region</code></strong>=<em><code>'NYC1'</code></em>)</p>
-</blockquote>
-<p>FRA1 - Frankfurt, Germany (max 2 replications)
-NYC1 - New York City, USA (max 2 replications)</p>
-<table>
-<thead><tr>
-<th></th>
-<th>Type</th>
-<th>Default</th>
-<th>Details</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong><code>cred</code></strong></td>
-<td><code>str</code></td>
-<td></td>
-<td>JWT Key</td>
-</tr>
-<tr>
-<td><strong><code>cid</code></strong></td>
-<td><code>str</code></td>
-<td></td>
-<td>IPFS CID</td>
-</tr>
-<tr>
-<td><strong><code>replications</code></strong></td>
-<td><code>type</code></td>
-<td><code>int</code></td>
-<td>Replication amount</td>
-</tr>
-<tr>
-<td><strong><code>region</code></strong></td>
-<td><code>str</code></td>
-<td><code>NYC1</code></td>
-<td>Region CID is pinned to either FRA1 or NYC1</td>
-</tr>
-</tbody>
-</table>
 
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;Response [200]&gt;</pre>
 </div>
 
 </div>
@@ -324,16 +964,28 @@ NYC1 - New York City, USA (max 2 replications)</p>
 </div>
     {% endraw %}
 
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If IPFS CID is not actively pinned. A 500 error message will be returned</p>
 
 </div>
-    {% endraw %}
-
+</div>
+</div>
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">metadata</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span><span class="s2">&quot;Test&quot;</span><span class="p">}</span>
+
+<span class="n">edit_hash</span><span class="p">(</span><span class="n">creds</span><span class="p">,</span><span class="s2">&quot;QmUUSHH2ycqciruPaRcptpUQDDeRiMV3G9PxA6KUupXTJV&quot;</span><span class="p">,</span><span class="s2">&quot;name&quot;</span><span class="p">,</span><span class="n">metadata</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
 
 <div class="output_wrapper">
 <div class="output">
@@ -341,60 +993,15 @@ NYC1 - New York City, USA (max 2 replications)</p>
 <div class="output_area">
 
 
-<div class="output_markdown rendered_html output_subarea ">
-<h4 id="globalpin_policy" class="doc_header"><code>globalpin_policy</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/pinataapi.py#L124" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>globalpin_policy</code>(<strong><code>cred</code></strong>:<code>str</code>, <strong><code>replications</code></strong>:<code>int</code>, <strong><code>migratepins</code></strong>:<code>bool</code>, <strong><code>region</code></strong>=<em><code>'NYC1'</code></em>)</p>
-</blockquote>
-<p>FRA1 - Frankfurt, Germany (max 2 replications)
-NYC1 - New York City, USA (max 2 replications)</p>
-<table>
-<thead><tr>
-<th></th>
-<th>Type</th>
-<th>Default</th>
-<th>Details</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong><code>cred</code></strong></td>
-<td><code>str</code></td>
-<td></td>
-<td>JWT Key</td>
-</tr>
-<tr>
-<td><strong><code>replications</code></strong></td>
-<td><code>int</code></td>
-<td></td>
-<td>Replication amount</td>
-</tr>
-<tr>
-<td><strong><code>migratepins</code></strong></td>
-<td><code>bool</code></td>
-<td></td>
-<td>Move pins from previous region to new region</td>
-</tr>
-<tr>
-<td><strong><code>region</code></strong></td>
-<td><code>str</code></td>
-<td><code>NYC1</code></td>
-<td>Region CID is pinned to either FRA1 or NYC1</td>
-</tr>
-</tbody>
-</table>
 
+<div class="output_text output_subarea output_execute_result">
+<pre>&lt;Response [500]&gt;</pre>
 </div>
 
 </div>
 
 </div>
 </div>
-
-</div>
-    {% endraw %}
-
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
 
 </div>
     {% endraw %}
@@ -410,7 +1017,7 @@ NYC1 - New York City, USA (max 2 replications)</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_pinned_jobs" class="doc_header"><code>get_pinned_jobs</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/pinataapi.py#L158" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_pinned_jobs</code>(<strong><code>cred</code></strong>:<code>str</code>, <strong><code>params</code></strong>=<em><code>None</code></em>)</p>
+<h4 id="get_pinned_jobs" class="doc_header"><code>get_pinned_jobs</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/pinataapi.py#L226" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_pinned_jobs</code>(<strong><code>cred</code></strong>:<code>str</code>, <strong><code>params</code></strong>=<em><code>None</code></em>)</p>
 </blockquote>
 <p>'sort' - Sort the results by the date added to the pinning queue (see value options below)
 'ASC' - Sort by ascending dates
@@ -468,6 +1075,46 @@ NYC1 - New York City, USA (max 2 replications)</p>
 </div>
     {% endraw %}
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Retrieve pinned jobs. If there are pending pin jobs, they will be returned in json format.</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">get_pinned_jobs</span><span class="p">(</span><span class="n">creds</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;count&#39;: 0, &#39;rows&#39;: []}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
@@ -479,7 +1126,7 @@ NYC1 - New York City, USA (max 2 replications)</p>
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_pinned_files" class="doc_header"><code>get_pinned_files</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/pinataapi.py#L189" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_pinned_files</code>(<strong><code>cred</code></strong>:<code>str</code>, <strong><code>params</code></strong>=<em><code>None</code></em>)</p>
+<h4 id="get_pinned_files" class="doc_header"><code>get_pinned_files</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/pinataapi.py#L257" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_pinned_files</code>(<strong><code>cred</code></strong>:<code>str</code>, <strong><code>params</code></strong>=<em><code>None</code></em>)</p>
 </blockquote>
 <p>Query Parameters = params</p>
 <p>hashContains: (string) - Filter on alphanumeric characters inside of pin hashes. Hashes which do not include the characters passed in will not be returned.
@@ -539,6 +1186,57 @@ if there's 30 records that match your query, and you passed in a pageLimit of 10
 </div>
     {% endraw %}
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Retrieve pinned files and use filtering arguments such as <code>hashContains</code> and <code>status</code> to filter by IPFS CID and get only the file that is pinned. Pinata keeps a log of all the times an IPFS CID is pinned and unpinned. Therefore, without the <code>status</code> filter multiple records would be returned.</p>
+
+</div>
+</div>
+</div>
+    {% raw %}
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">get_pinned_files</span><span class="p">(</span><span class="n">creds</span><span class="p">,</span><span class="n">params</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;hashContains&quot;</span><span class="p">:</span><span class="s2">&quot;QmUUSHH2ycqciruPaRcptpUQDDeRiMV3G9PxA6KUupXTJV&quot;</span><span class="p">,</span><span class="s2">&quot;status&quot;</span><span class="p">:</span><span class="s2">&quot;pinned&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;count&#39;: 1,
+ &#39;rows&#39;: [{&#39;id&#39;: &#39;b14c23f3-2295-4b90-9e1f-f9d0fecff895&#39;,
+   &#39;ipfs_pin_hash&#39;: &#39;QmUUSHH2ycqciruPaRcptpUQDDeRiMV3G9PxA6KUupXTJV&#39;,
+   &#39;size&#39;: 43621138,
+   &#39;user_id&#39;: &#39;d28f20cf-dfe0-4c8f-9272-26b9c2d8a3cd&#39;,
+   &#39;date_pinned&#39;: &#39;2022-06-20T18:34:47.814Z&#39;,
+   &#39;date_unpinned&#39;: None,
+   &#39;metadata&#39;: {&#39;name&#39;: &#39;ens_airdrop&#39;,
+    &#39;keyvalues&#39;: {&#39;dApp&#39;: &#39;Ethereum Name Service&#39;, &#39;token&#39;: &#39;ENS&#39;}},
+   &#39;regions&#39;: [{&#39;regionId&#39;: &#39;NYC1&#39;,
+     &#39;currentReplicationCount&#39;: 1,
+     &#39;desiredReplicationCount&#39;: 1}]}]}</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    {% endraw %}
+
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
@@ -550,7 +1248,7 @@ if there's 30 records that match your query, and you passed in a pageLimit of 10
 
 
 <div class="output_markdown rendered_html output_subarea ">
-<h4 id="get_datausage" class="doc_header"><code>get_datausage</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/pinataapi.py#L221" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_datausage</code>(<strong><code>cred</code></strong>:<code>str</code>, <strong><code>params</code></strong>=<em><code>None</code></em>)</p>
+<h4 id="get_datausage" class="doc_header"><code>get_datausage</code><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/ipfspy/pinataapi.py#L289" class="source_link" style="float:right">[source]</a></h4><blockquote><p><code>get_datausage</code>(<strong><code>cred</code></strong>:<code>str</code>, <strong><code>params</code></strong>=<em><code>None</code></em>)</p>
 </blockquote>
 <table>
 <thead><tr>
@@ -593,6 +1291,13 @@ if there's 30 records that match your query, and you passed in a pageLimit of 10
 </div>
     {% endraw %}
 
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Retrieve data usage stats. The stats are in bytes.</p>
+
+</div>
+</div>
+</div>
     {% raw %}
     
 <div class="cell border-box-sizing code_cell rendered">
@@ -600,7 +1305,7 @@ if there's 30 records that match your query, and you passed in a pageLimit of 10
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">notebook2script</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">get_datausage</span><span class="p">(</span><span class="n">creds</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 </pre></div>
 
     </div>
@@ -612,14 +1317,14 @@ if there's 30 records that match your query, and you passed in a pageLimit of 10
 
 <div class="output_area">
 
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Converted 00_utils.ipynb.
-Converted 01_httpapi.ipynb.
-Converted 02_estuaryapi.ipynb.
-Converted 03_pinataapi.ipynb.
-Converted index.ipynb.
-</pre>
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>{&#39;pin_count&#39;: -148,
+ &#39;pin_size_total&#39;: 389444640,
+ &#39;pin_size_with_replications_total&#39;: 389444640}</pre>
 </div>
+
 </div>
 
 </div>
