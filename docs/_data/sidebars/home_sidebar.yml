@@ -12,18 +12,18 @@ entries:
     - output: web,pdf
       title: utils
       url: utils.html
-    - output: web,pdf
-      title: IPFSSpec
-      url: ipfsspec.html
-    - external_url: httpapi.html
+    - external_url: ipfshttpapi.html
       output: web,pdf
-      title: HTTP API
+      title: IPFS HTTP API
     - output: web,pdf
       title: Estuary
       url: estuaryapi.html
     - output: web,pdf
       title: Pinata
       url: pinataapi.html
+    - output: web,pdf
+      title: Tuotial - IPFS + ML
+      url: tutorial.fastai.html
     output: web
     title: ipfspy
   output: web
