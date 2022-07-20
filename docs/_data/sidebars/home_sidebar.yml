@@ -9,9 +9,6 @@ entries:
     - output: web,pdf
       title: Overview
       url: /
-    - output: web,pdf
-      title: utils
-      url: utils.html
     - external_url: ipfshttpapi.html
       output: web,pdf
       title: IPFS HTTP API
@@ -22,7 +19,7 @@ entries:
       title: Pinata
       url: pinataapi.html
     - output: web,pdf
-      title: Tuotial - IPFS + ML
+      title: Tutorial - IPFS + ML
       url: tutorial.fastai.html
     output: web
     title: ipfspy
