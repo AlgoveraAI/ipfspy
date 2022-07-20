@@ -1,10 +1,9 @@
 {
   "ipfspy": {
     "Overview": "/",
-    "utils": "utils.html",
-    "IPFSSpec": "ipfsspec.html",
-    "HTTP API": "httpapi.html",
+    "IPFS HTTP API": "ipfshttpapi.html",
     "Estuary": "estuaryapi.html",
-    "Pinata": "pinataapi.html"
+    "Pinata": "pinataapi.html",
+    "Tuotial - IPFS + ML": "tutorial.fastai.html"
   }
 }
