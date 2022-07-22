@@ -44,7 +44,7 @@ index = {"parse_response": "00_utils.ipynb",
          "upload_jsonfile": "03_pinataapi.ipynb",
          "pin": "03_pinataapi.ipynb",
          "unpin": "03_pinataapi.ipynb",
-         "edit_hash": "03_pinataapi.ipynb",
+         "edit_metadata": "03_pinataapi.ipynb",
          "get_pinned_jobs": "03_pinataapi.ipynb",
          "get_pinned_files": "03_pinataapi.ipynb",
          "get_datausage": "03_pinataapi.ipynb"}
