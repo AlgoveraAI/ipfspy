@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.0.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Python API for interacting with Pinata">
+
+<title>ipfspy - Pinata</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+span.underline{text-decoration: underline;}
+div.column{display: inline-block; vertical-align: top; width: 50%;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+<meta property="og:title" content="ipfspy - Pinata">
+<meta property="og:description" content="Python API for interacting with Pinata">
+<meta property="og:site-name" content="ipfspy">
+<meta name="twitter:title" content="ipfspy - Pinata">
+<meta name="twitter:description" content="Python API for interacting with Pinata">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">ipfspy</span>
+  </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/AlgoveraAI/ipfspy/tree/master/"><i class="bi bi-github" role="img">
+</i> 
+ </a>
+  </li>  
+</ul>
+              <div class="quarto-toggle-container">
+                  <a href="" class="quarto-reader-toggle nav-link" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+              </div>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Pinata</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#generate_apikey" id="toc-generate_apikey" class="nav-link active" data-scroll-target="#generate_apikey">generate_apikey</a></li>
+  <li><a href="#list_apikeys" id="toc-list_apikeys" class="nav-link" data-scroll-target="#list_apikeys">list_apikeys</a></li>
+  <li><a href="#revoke_apikey" id="toc-revoke_apikey" class="nav-link" data-scroll-target="#revoke_apikey">revoke_apikey</a></li>
+  <li><a href="#upload_file" id="toc-upload_file" class="nav-link" data-scroll-target="#upload_file">upload_file</a></li>
+  <li><a href="#upload_jsonfile" id="toc-upload_jsonfile" class="nav-link" data-scroll-target="#upload_jsonfile">upload_jsonfile</a></li>
+  <li><a href="#pin" id="toc-pin" class="nav-link" data-scroll-target="#pin">pin</a></li>
+  <li><a href="#unpin" id="toc-unpin" class="nav-link" data-scroll-target="#unpin">unpin</a></li>
+  <li><a href="#edit_metadata" id="toc-edit_metadata" class="nav-link" data-scroll-target="#edit_metadata">edit_metadata</a></li>
+  <li><a href="#get_pinned_jobs" id="toc-get_pinned_jobs" class="nav-link" data-scroll-target="#get_pinned_jobs">get_pinned_jobs</a></li>
+  <li><a href="#get_pinned_files" id="toc-get_pinned_files" class="nav-link" data-scroll-target="#get_pinned_files">get_pinned_files</a></li>
+  <li><a href="#get_datausage" id="toc-get_datausage" class="nav-link" data-scroll-target="#get_datausage">get_datausage</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Pinata</h1>
+</div>
+
+<div>
+  <div class="description">
+    Python API for interacting with Pinata
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+    
+  </div>
+  
+
+</header>
+
+<!-- WARNING: THIS FILE WAS AUTOGENERATED! DO NOT EDIT! -->
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(<span class="st">"creds.json"</span>) <span class="im">as</span> f:</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    creds <span class="op">=</span> json.loads(f.read())[<span class="st">"Pinata"</span>][<span class="st">"JWT"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<hr>
+<section id="generate_apikey" class="level4">
+<h4 class="anchored" data-anchor-id="generate_apikey">generate_apikey</h4>
+<blockquote class="blockquote">
+<pre><code> generate_apikey (cred:str, key_name:str, pinlist:bool=False,
+                  userPinnedDataTotal:bool=False, hashMetadata:bool=True,
+                  hashPinPolicy:bool=False, pinByHash:bool=True,
+                  pinFileToIPFS:bool=True, pinJSONToIPFS:bool=True,
+                  pinJobs:bool=True, unpin:bool=True,
+                  userPinPolicy:bool=True)</code></pre>
+</blockquote>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>cred</td>
+<td>str</td>
+<td></td>
+<td>JWT</td>
+</tr>
+<tr class="even">
+<td>key_name</td>
+<td>str</td>
+<td></td>
+<td>Key name</td>
+</tr>
+<tr class="odd">
+<td>pinlist</td>
+<td>bool</td>
+<td>False</td>
+<td>list pins</td>
+</tr>
+<tr class="even">
+<td>userPinnedDataTotal</td>
+<td>bool</td>
+<td>False</td>
+<td>total data stored</td>
+</tr>
+<tr class="odd">
+<td>hashMetadata</td>
+<td>bool</td>
+<td>True</td>
+<td>metadata</td>
+</tr>
+<tr class="even">
+<td>hashPinPolicy</td>
+<td>bool</td>
+<td>False</td>
+<td>policy</td>
+</tr>
+<tr class="odd">
+<td>pinByHash</td>
+<td>bool</td>
+<td>True</td>
+<td>pin cid</td>
+</tr>
+<tr class="even">
+<td>pinFileToIPFS</td>
+<td>bool</td>
+<td>True</td>
+<td>upload file to IPFS</td>
+</tr>
+<tr class="odd">
+<td>pinJSONToIPFS</td>
+<td>bool</td>
+<td>True</td>
+<td>upload json to IPFS</td>
+</tr>
+<tr class="even">
+<td>pinJobs</td>
+<td>bool</td>
+<td>True</td>
+<td>see pin jobs</td>
+</tr>
+<tr class="odd">
+<td>unpin</td>
+<td>bool</td>
+<td>True</td>
+<td>unpin ipfs cid</td>
+</tr>
+<tr class="even">
+<td>userPinPolicy</td>
+<td>bool</td>
+<td>True</td>
+<td>establish pin policy</td>
+</tr>
+</tbody>
+</table>
+<p>Generate API Key</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>response <span class="op">=</span> generate_apikey(creds,<span class="st">"Test"</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>response.json()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>{'pinata_api_key': '443e2dadf1e6a47c2754',
+ 'pinata_api_secret': '0f84d67fe64136d4d9ddbfb1235a8ab1fd490f12c1f6fcc532b758062695a1dc',
+ 'JWT': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiJkMjhmMjBjZi1kZmUwLTRjOGYtOTI3Mi0yNmI5YzJkOGEzY2QiLCJlbWFpbCI6InZpbnRhZ2Vnb2xkMTIzQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJwaW5fcG9saWN5Ijp7InJlZ2lvbnMiOlt7ImlkIjoiTllDMSIsImRlc2lyZWRSZXBsaWNhdGlvbkNvdW50IjoxfV0sInZlcnNpb24iOjF9LCJtZmFfZW5hYmxlZCI6ZmFsc2UsInN0YXR1cyI6IkFDVElWRSJ9LCJhdXRoZW50aWNhdGlvblR5cGUiOiJzY29wZWRLZXkiLCJzY29wZWRLZXlLZXkiOiI0NDNlMmRhZGYxZTZhNDdjMjc1NCIsInNjb3BlZEtleVNlY3JldCI6IjBmODRkNjdmZTY0MTM2ZDRkOWRkYmZiMTIzNWE4YWIxZmQ0OTBmMTJjMWY2ZmNjNTMyYjc1ODA2MjY5NWExZGMiLCJpYXQiOjE2NTg0OTk3NDF9.Rd4F1zBE8wTPIwi4mD1x3pdEnfEM2Ik7zjiw0vQ7AC8'}</code></pre>
+</div>
+</div>
+<hr>
+</section>
+<section id="list_apikeys" class="level4">
+<h4 class="anchored" data-anchor-id="list_apikeys">list_apikeys</h4>
+<blockquote class="blockquote">
+<pre><code> list_apikeys (cred:str)</code></pre>
+</blockquote>
+<p>List API Keys</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>newest_apikey <span class="op">=</span> list_apikeys(creds).json()[<span class="st">"keys"</span>][<span class="dv">0</span>]<span class="op">;</span>newest_apikey</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>{'id': '1ff9d58d-d7fa-4598-9863-c53a806faff6',
+ 'name': 'Test',
+ 'key': '443e2dadf1e6a47c2754',
+ 'secret': 'ed7a3bdc89fb353b6c4f4155a9adb7f5:d15adb31f816663e2612ff5f89a5497abc30a5100ab83575247ba67cc9d49a7d61293d77c94049a8d83a82d8f02423357f311b26204bb57e7be9181d324e6424',
+ 'max_uses': None,
+ 'uses': 0,
+ 'user_id': 'd28f20cf-dfe0-4c8f-9272-26b9c2d8a3cd',
+ 'scopes': {'endpoints': {'data': {'pinList': False,
+    'userPinnedDataTotal': False},
+   'pinning': {'unpin': True,
+    'pinJobs': True,
+    'pinByHash': True,
+    'hashMetadata': True,
+    'hashPinPolicy': False,
+    'pinFileToIPFS': True,
+    'pinJSONToIPFS': True,
+    'userPinPolicy': True}}},
+ 'revoked': False,
+ 'createdAt': '2022-07-22T14:22:21.191Z',
+ 'updatedAt': '2022-07-22T14:22:21.191Z'}</code></pre>
+</div>
+</div>
+<hr>
+</section>
+<section id="revoke_apikey" class="level4">
+<h4 class="anchored" data-anchor-id="revoke_apikey">revoke_apikey</h4>
+<blockquote class="blockquote">
+<pre><code> revoke_apikey (cred:str, revoke_apikey:str)</code></pre>
+</blockquote>
+<p>Revoke API Key</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>revoke_apikey(creds,response.json()[<span class="st">"JWT"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;Response [200]&gt;</code></pre>
+</div>
+</div>
+<hr>
+</section>
+<section id="upload_file" class="level4">
+<h4 class="anchored" data-anchor-id="upload_file">upload_file</h4>
+<blockquote class="blockquote">
+<pre><code> upload_file (cred:str, name:str, fpaths:list, metadata:dict,
+              cid_version:str='1', directory:bool=False)</code></pre>
+</blockquote>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>cred</td>
+<td>str</td>
+<td></td>
+<td>JWT key</td>
+</tr>
+<tr class="even">
+<td>name</td>
+<td>str</td>
+<td></td>
+<td>filename</td>
+</tr>
+<tr class="odd">
+<td>fpaths</td>
+<td>list</td>
+<td></td>
+<td>filepaths</td>
+</tr>
+<tr class="even">
+<td>metadata</td>
+<td>dict</td>
+<td></td>
+<td>metadata</td>
+</tr>
+<tr class="odd">
+<td>cid_version</td>
+<td>str</td>
+<td>1</td>
+<td>IPFS cid</td>
+</tr>
+<tr class="even">
+<td>directory</td>
+<td>bool</td>
+<td>False</td>
+<td>upload directory</td>
+</tr>
+</tbody>
+</table>
+<p>Upload File to IPFS with metadata</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>metadata <span class="op">=</span> {<span class="st">"type"</span>:<span class="st">"AdultData"</span>}</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>upload_file(creds,<span class="st">"adult_data.csv"</span>,<span class="st">"output/adult_data.csv"</span>,metadata,cid_version<span class="op">=</span><span class="dv">1</span>,directory<span class="op">=</span><span class="va">False</span>).text</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>'{"IpfsHash":"bafybeibcsnxt2sqzsvfg4lzg3iuxkfit37l3rz5gqmdxwsgec56qalmxie","PinSize":3975284,"Timestamp":"2022-06-17T22:43:08.303Z","isDuplicate":true}'</code></pre>
+</div>
+</div>
+<hr>
+</section>
+<section id="upload_jsonfile" class="level4">
+<h4 class="anchored" data-anchor-id="upload_jsonfile">upload_jsonfile</h4>
+<blockquote class="blockquote">
+<pre><code> upload_jsonfile (cred:str, name:str, fpaths:list, metadata:dict,
+                  cid_version:str, directory:bool=False)</code></pre>
+</blockquote>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>cred</td>
+<td>str</td>
+<td></td>
+<td>JWT key</td>
+</tr>
+<tr class="even">
+<td>name</td>
+<td>str</td>
+<td></td>
+<td>filename</td>
+</tr>
+<tr class="odd">
+<td>fpaths</td>
+<td>list</td>
+<td></td>
+<td>filepaths</td>
+</tr>
+<tr class="even">
+<td>metadata</td>
+<td>dict</td>
+<td></td>
+<td>metadata</td>
+</tr>
+<tr class="odd">
+<td>cid_version</td>
+<td>str</td>
+<td></td>
+<td>IPFS cid</td>
+</tr>
+<tr class="even">
+<td>directory</td>
+<td>bool</td>
+<td>False</td>
+<td>upload directory</td>
+</tr>
+</tbody>
+</table>
+<p>This endpoint is optimized for JSON files</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>metadata <span class="op">=</span> {<span class="st">"name"</span>:<span class="st">"Vote"</span>}</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>upload_jsonfile(creds,<span class="st">"ens_airdrop_Nov8th2021.json"</span>,<span class="st">"output/ens_airdrop_Nov8th2021.json"</span>,metadata,cid_version<span class="op">=</span><span class="dv">1</span>,directory<span class="op">=</span><span class="va">False</span>).text</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>'{"IpfsHash":"bafkreid56by3qspgyxvppq3ggj2x4tec3akpnlffbhangjzzfc3lfh66yq","PinSize":45,"Timestamp":"2022-07-22T14:29:51.674Z","isDuplicate":true}'</code></pre>
+</div>
+</div>
+<hr>
+</section>
+<section id="pin" class="level4">
+<h4 class="anchored" data-anchor-id="pin">pin</h4>
+<blockquote class="blockquote">
+<pre><code> pin (cred:str, cid:str, fn=None, pinataMetadata=None)</code></pre>
+</blockquote>
+<table class="table">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 25%">
+<col style="width: 34%">
+<col style="width: 34%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>cred</td>
+<td>str</td>
+<td></td>
+<td>JWT key</td>
+</tr>
+<tr class="even">
+<td>cid</td>
+<td>str</td>
+<td></td>
+<td>IPFS cid</td>
+</tr>
+<tr class="odd">
+<td>fn</td>
+<td>NoneType</td>
+<td>None</td>
+<td>Name of file</td>
+</tr>
+<tr class="even">
+<td>pinataMetadata</td>
+<td>NoneType</td>
+<td>None</td>
+<td>Add keys and values associated with IPFS CID</td>
+</tr>
+</tbody>
+</table>
+<p>Pin files</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>metadata <span class="op">=</span> {<span class="st">"dApp"</span>:<span class="st">"Ethereum Name Service"</span>,</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>            <span class="st">"token"</span>:<span class="st">"ENS"</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>           }</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>pin(creds,<span class="st">"QmUUSHH2ycqciruPaRcptpUQDDeRiMV3G9PxA6KUupXTJV"</span>,fn<span class="op">=</span><span class="st">"ens_airdrop"</span>,pinataMetadata<span class="op">=</span>metadata)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>{"id":"8cba5496-3cd4-4edb-92d7-023c0ce9c145","ipfsHash":"QmUUSHH2ycqciruPaRcptpUQDDeRiMV3G9PxA6KUupXTJV","status":"prechecking","name":"ens_airdrop"}</code></pre>
+</div>
+</div>
+<hr>
+</section>
+<section id="unpin" class="level4">
+<h4 class="anchored" data-anchor-id="unpin">unpin</h4>
+<blockquote class="blockquote">
+<pre><code> unpin (cred:str, cid:str)</code></pre>
+</blockquote>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>cred</td>
+<td>str</td>
+<td>JWT Key</td>
+</tr>
+<tr class="even">
+<td>cid</td>
+<td>str</td>
+<td>IPFS CID</td>
+</tr>
+</tbody>
+</table>
+<p>Unpin IPFS CID</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>unpin(creds,<span class="st">"QmUUSHH2ycqciruPaRcptpUQDDeRiMV3G9PxA6KUupXTJV"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;Response [200]&gt;</code></pre>
+</div>
+</div>
+<p>If IPFS CID isn’t pinned. A 500 error message will be returned</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>unpin(creds,<span class="st">"QmZnxARhJWsCbTxiAzoRhnxHgMtoEkNJNS8DGLCBEMvm4V"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>&lt;Response [500]&gt;</code></pre>
+</div>
+</div>
+<hr>
+</section>
+<section id="edit_metadata" class="level4">
+<h4 class="anchored" data-anchor-id="edit_metadata">edit_metadata</h4>
+<blockquote class="blockquote">
+<pre><code> edit_metadata (cred:str, cid:str, name:str, metadata=None)</code></pre>
+</blockquote>
+<table class="table">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 25%">
+<col style="width: 34%">
+<col style="width: 34%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>cred</td>
+<td>str</td>
+<td></td>
+<td>JWT Key</td>
+</tr>
+<tr class="even">
+<td>cid</td>
+<td>str</td>
+<td></td>
+<td>IPFS CID</td>
+</tr>
+<tr class="odd">
+<td>name</td>
+<td>str</td>
+<td></td>
+<td>filename</td>
+</tr>
+<tr class="even">
+<td>metadata</td>
+<td>NoneType</td>
+<td>None</td>
+<td>Add keys and values associated with IPFS CID</td>
+</tr>
+</tbody>
+</table>
+<p>Edit metadata of already pinned IPFS CID</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>metadata <span class="op">=</span> {<span class="st">"type"</span>:<span class="st">"Test"</span>}</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>edit_metadata(creds,<span class="st">"bafybeibcsnxt2sqzsvfg4lzg3iuxkfit37l3rz5gqmdxwsgec56qalmxie"</span>,<span class="st">"name"</span>,metadata)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;Response [200]&gt;</code></pre>
+</div>
+</div>
+<p>If IPFS CID is not actively pinned. A 500 error message will be returned</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>metadata <span class="op">=</span> {<span class="st">"type"</span>:<span class="st">"Test"</span>}</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>edit_metadata(creds,<span class="st">"QmUUSHH2ycqciruPaRcptpUQDDeRiMV3G9PxA6KUupXTJV"</span>,<span class="st">"name"</span>,metadata)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;Response [500]&gt;</code></pre>
+</div>
+</div>
+<hr>
+</section>
+<section id="get_pinned_jobs" class="level4">
+<h4 class="anchored" data-anchor-id="get_pinned_jobs">get_pinned_jobs</h4>
+<blockquote class="blockquote">
+<pre><code> get_pinned_jobs (cred:str, params=None)</code></pre>
+</blockquote>
+<p>‘sort’ - Sort the results by the date added to the pinning queue (see value options below)</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>cred</td>
+<td>str</td>
+<td></td>
+<td>JWT Key</td>
+</tr>
+<tr class="even">
+<td>params</td>
+<td>NoneType</td>
+<td>None</td>
+<td>filtering pinned jobs</td>
+</tr>
+</tbody>
+</table>
+<p>Retrieve pinned jobs. If there are pending pin jobs, they will be returned in json format.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>get_pinned_jobs(creds).json()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>{'count': 0, 'rows': []}</code></pre>
+</div>
+</div>
+<hr>
+</section>
+<section id="get_pinned_files" class="level4">
+<h4 class="anchored" data-anchor-id="get_pinned_files">get_pinned_files</h4>
+<blockquote class="blockquote">
+<pre><code> get_pinned_files (cred:str, params=None)</code></pre>
+</blockquote>
+<p>Query Parameters = params</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>cred</td>
+<td>str</td>
+<td></td>
+<td>JWT Key</td>
+</tr>
+<tr class="even">
+<td>params</td>
+<td>NoneType</td>
+<td>None</td>
+<td>Filter returned pinned files</td>
+</tr>
+</tbody>
+</table>
+<p>Retrieve pinned files and use filtering arguments such as <code>hashContains</code> and <code>status</code> to filter by IPFS CID and get only the file that is pinned. Pinata keeps a log of all the times an IPFS CID is pinned and unpinned. Therefore, without the <code>status</code> filter multiple records would be returned.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>get_pinned_files(creds,params<span class="op">=</span>{<span class="st">"hashContains"</span>:<span class="st">"bafybeibcsnxt2sqzsvfg4lzg3iuxkfit37l3rz5gqmdxwsgec56qalmxie"</span>,<span class="st">"status"</span>:<span class="st">"pinned"</span>}).json()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>{'count': 1,
+ 'rows': [{'id': 'a1a93991-99bc-4c12-9553-2e689046cf65',
+   'ipfs_pin_hash': 'bafybeibcsnxt2sqzsvfg4lzg3iuxkfit37l3rz5gqmdxwsgec56qalmxie',
+   'size': 3975284,
+   'user_id': 'd28f20cf-dfe0-4c8f-9272-26b9c2d8a3cd',
+   'date_pinned': '2022-06-17T22:43:08.303Z',
+   'date_unpinned': None,
+   'metadata': {'name': 'name',
+    'keyvalues': {'Type': 'Test',
+     'type': 'Test',
+     'company': 'Pinata',
+     'filetype': 'json'}},
+   'regions': [{'regionId': 'NYC1',
+     'currentReplicationCount': 1,
+     'desiredReplicationCount': 1}]}]}</code></pre>
+</div>
+</div>
+<hr>
+</section>
+<section id="get_datausage" class="level4">
+<h4 class="anchored" data-anchor-id="get_datausage">get_datausage</h4>
+<blockquote class="blockquote">
+<pre><code> get_datausage (cred:str, params=None)</code></pre>
+</blockquote>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>cred</td>
+<td>str</td>
+<td></td>
+<td>JWT Key</td>
+</tr>
+<tr class="even">
+<td>params</td>
+<td>NoneType</td>
+<td>None</td>
+<td>Filter returned data usage statistics</td>
+</tr>
+</tbody>
+</table>
+<p>Retrieve data usage stats. The stats are in bytes.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>get_datausage(creds).json()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>{'pin_count': -223,
+ 'pin_size_total': 349265187,
+ 'pin_size_with_replications_total': 349265187}</code></pre>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      let href = ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
