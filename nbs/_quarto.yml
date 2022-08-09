@@ -23,14 +23,14 @@ website:
   open-graph: true
   reader-mode: true
   repo-branch: master
-  repo-url: https://github.com/AlgoveraAI/ipfspy
+  repo-url: "https://github.com/AlgoveraAI/ipfspy"
   repo-actions: [issue]
   navbar:
     background: primary
     search: true
     right:
       - icon: github
-        href: https://github.com/AlgoveraAI/ipfspy
+        href: "https://github.com/AlgoveraAI/ipfspy"
   sidebar:
     style: "floating"
 
