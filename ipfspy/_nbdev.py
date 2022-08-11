@@ -54,7 +54,7 @@ modules = ["utils.py",
            "estuaryapi.py",
            "pinataapi.py"]
 
-doc_url = "algoveraai.github.io/ipfspy//ipfspy/"
+doc_url = "algoveraai.github.io/ipfspy/"
 
 git_url = "https://github.com/AlgoveraAI/ipfspy/tree/master/"
 
