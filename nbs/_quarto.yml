@@ -16,6 +16,7 @@ format:
 
 website:
   title: "ipfspy"
+  site-url: "https://algoveraai.github.io/ipfspy/"
   description: "A python library by Algovera to interact with IPFS and IPFS ecosystem such as the common pinning services"
   execute: 
     enabled: false
@@ -23,14 +24,14 @@ website:
   open-graph: true
   reader-mode: true
   repo-branch: master
-  repo-url: "https://github.com/AlgoveraAI/ipfspy"
+  repo-url: "https://github.com/AlgoveraAI/ipfspy/tree/master"
   repo-actions: [issue]
   navbar:
     background: primary
     search: true
     right:
       - icon: github
-        href: "https://github.com/AlgoveraAI/ipfspy"
+        href: "https://github.com/AlgoveraAI/ipfspy/tree/master"
   sidebar:
     style: "floating"
 
