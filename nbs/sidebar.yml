@@ -1,9 +1,0 @@
-website:
-  sidebar:
-    contents:
-      - index.ipynb
-      - 00_utils.ipynb
-      - 01_ipfshttpapi.ipynb
-      - 02_estuaryapi.ipynb
-      - 03_pinataapi.ipynb
-      - 04_tutorial.fastai.ipynb
