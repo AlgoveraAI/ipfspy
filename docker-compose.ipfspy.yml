@@ -1,0 +1,23 @@
+version: "3.6"
+services:
+  ipfs:
+    image: ipfs/go-ipfs:v0.7.0
+    container_name: "ipfs"
+    ports:
+      - 4001:4001 # for the webui
+      - 5001:5001 # for the rtc (read/write)
+      - 8080:8080 # for the gateway (write)
+      
+  backend:
+    build:
+      context: ./
+      dockerfile: Dockerfile.ipfspy
+    container_name: backend
+    ports: 
+      - 8888:8888 # for the jupyter notebook
+    environment:
+      - IPFSHTTP_LOCAL_HOST=ipfs
+    volumes:
+      - ./:/app
+    working_dir: /app
+    command: bash -c "pip install jupyterlab fastai nbdev; jupyter-lab --ip=0.0.0.0 --no-browser --allow-root"
