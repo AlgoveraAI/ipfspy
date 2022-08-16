@@ -14,7 +14,7 @@ import dag_cbor
 from requests.exceptions import HTTPError
 import time
 
-from .utils import parse_error_message, parse_response, IPFSGateway, GATEWAY_MAP
+from .utils import parse_error_message, parse_response, IPFSGateway, GATEWAY_MAP, make_infura_auth
 
 from ipfshttpclient.multipart import stream_files, stream_directory
 
@@ -29,20 +29,22 @@ class IPFSApi():
         self.gateway = None
         self._gateways = None
 
-        self.change_gateway_type = gateway_type
+        self.change_gateway_type = gateway_type, None
         self.timeout = timeout
         self.full_structure = None
     
     @property
     def change_gateway_type(self):
-        return self.gateway_type
+        return self.gateway_type, None
 
     @change_gateway_type.setter    
     def change_gateway_type(self, 
         value, 
         ):
-        self.gateway_type = value
+        self.gateway_type = value[0]
         self._gateways = [IPFSGateway(g) for g in GATEWAY_MAP[self.gateway_type]] 
+        if self.gateway_type == 'infura':
+            self._gateways[0].auth = value[1]
         print(f"Changed to {self.gateway_type} node")
     
     def _find_gateway(self):
@@ -664,7 +666,7 @@ class IPFSApi():
         else:
             raise HTTPError (parse_error_message(response))
 
-# %% ../nbs/01_ipfshttpapi.ipynb 52
+# %% ../nbs/01_ipfshttpapi.ipynb 55
 class DownloadDir:
     'Download a IPFS directory to your local disk'
     def __init__(self,

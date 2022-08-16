@@ -201,5 +201,6 @@ d = { 'settings': { 'allowed_cell_metadata_keys': '',
                               'ipfspy.utils.dict_get': 'https://algoveraai.github.io/ipfspy/utils.html#dict_get',
                               'ipfspy.utils.dict_hash': 'https://algoveraai.github.io/ipfspy/utils.html#dict_hash',
                               'ipfspy.utils.dict_put': 'https://algoveraai.github.io/ipfspy/utils.html#dict_put',
+                              'ipfspy.utils.make_infura_auth': 'https://algoveraai.github.io/ipfspy/utils.html#make_infura_auth',
                               'ipfspy.utils.parse_error_message': 'https://algoveraai.github.io/ipfspy/utils.html#parse_error_message',
                               'ipfspy.utils.parse_response': 'https://algoveraai.github.io/ipfspy/utils.html#parse_response'}}}
