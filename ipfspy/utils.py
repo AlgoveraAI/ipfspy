@@ -2,7 +2,7 @@
 
 # %% auto 0
 __all__ = ['GATEWAY_MAP', 'parse_response', 'parse_error_message', 'IPFSGateway', 'dict_get', 'dict_put', 'dict_hash',
-           'dict_equal']
+           'dict_equal', 'make_infura_auth']
 
 # %% ../nbs/00_utils.ipynb 3
 import requests
@@ -14,6 +14,7 @@ from typing import Union, Dict, Any
 import time
 import os
 import hashlib
+import base64
 
 # %% ../nbs/00_utils.ipynb 5
 def parse_response(
@@ -67,8 +68,9 @@ except: pass
 
 # %% ../nbs/00_utils.ipynb 8
 class IPFSGateway:
-    def __init__(self, url):
+    def __init__(self, url, auth=None):
         self.url = url
+        self.auth = auth
         self.state = "unknown"
         self.min_backoff = 1e-9
         self.max_backoff = 5
@@ -122,6 +124,8 @@ class IPFSGateway:
         try:
             data = kwargs.pop('data') if 'data'  in kwargs else {}
             headers = kwargs.pop('headers') if 'headers' in kwargs else {}
+            if self.auth != None: 
+                headers.update(self.auth)
             files = kwargs.pop('files') if 'files' in kwargs else {}
             params = kwargs['params'] if 'params' in kwargs else kwargs
 
@@ -158,7 +162,7 @@ class IPFSGateway:
 
     def _init_state(self):
         try:
-            res = self.session.post(self.url + "/api/v0/version")
+            res = self.session.post(self.url + "/api/v0/version", headers=self.auth)
             if res.ok:
                 self.state = "online"
             else:
@@ -234,3 +238,9 @@ def dict_equal(*args):
                 return False
 
     return True
+
+# %% ../nbs/00_utils.ipynb 10
+def make_infura_auth(username, password):
+    creds = f"{username}:{password}"
+    creds = base64.b64encode(bytes(creds, 'ascii')).decode("ascii")
+    return {'Authorization': f'Basic {creds}'}
