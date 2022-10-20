@@ -11,7 +11,6 @@ Gemfile.lock
 _tmp*
 tmp*
 tags
-
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -143,3 +142,6 @@ checklink/cookies.txt
 
 /test_docs/
 sidebar.yml
+
+output/
+
