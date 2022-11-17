@@ -2,13 +2,16 @@ website:
   sidebar:
     contents:
       - index.ipynb
-      - section: Docs
+      - section: ipfspy Docs
         contents:
         - 01_ipfshttpapi.ipynb
         - 02_estuaryapi.ipynb
         - 03_pinataapi.ipynb
+      - section: ipfsspec Docs
+        contents:
         - 06_ipfsspec.asyn.ipynb
       - section: Tutorials
         contents:
-        - 90_tutorial.fastai.ipynb
-        - 91_tutorial.fastaiipfsspec.ipynb
+        - 90_tutorial.ipfsspec.ipynb
+        - 91_tutorial.fastaiandipfspy.ipynb
+        - 92_tutorial.fastaiipfsspec.ipynb

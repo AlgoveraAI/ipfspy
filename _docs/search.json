@@ -212,42 +212,42 @@
   {
     "objectID": "tutorial.fastaiandipfspy.html",
     "href": "tutorial.fastaiandipfspy.html",
-    "title": "Tutorial - IPFS + ML using ipfspy.ipfshttpapi",
+    "title": "Using IPFS in ML with ipfspy.ipfshttpapi",
     "section": "",
     "text": "In this tutorial, we will see how we can use IPFS as the storage for datasets and model in ML workflow."
   },
   {
     "objectID": "tutorial.fastaiandipfspy.html#add-a-dataset-to-ipfs-using-infura-node",
     "href": "tutorial.fastaiandipfspy.html#add-a-dataset-to-ipfs-using-infura-node",
-    "title": "Tutorial - IPFS + ML using ipfspy.ipfshttpapi",
+    "title": "Using IPFS in ML with ipfspy.ipfshttpapi",
     "section": "Add a dataset to IPFS using infura node",
     "text": "Add a dataset to IPFS using infura node\n\napi = IPFSApi()\n\nChanged to local node\n\n\n\napi.change_gateway_type = 'infura'\n\nChanged to infura node\n\n\n\nres, obj = api.add_items('output/adult_data.csv'); obj\n\n[{'Name': 'adult_data.csv', 'Bytes': 262144},\n {'Name': 'adult_data.csv', 'Bytes': 524288},\n {'Name': 'adult_data.csv', 'Bytes': 786432},\n {'Name': 'adult_data.csv', 'Bytes': 1048576},\n {'Name': 'adult_data.csv', 'Bytes': 1310720},\n {'Name': 'adult_data.csv', 'Bytes': 1572864},\n {'Name': 'adult_data.csv', 'Bytes': 1835008},\n {'Name': 'adult_data.csv', 'Bytes': 2097152},\n {'Name': 'adult_data.csv', 'Bytes': 2359296},\n {'Name': 'adult_data.csv', 'Bytes': 2621440},\n {'Name': 'adult_data.csv', 'Bytes': 2883584},\n {'Name': 'adult_data.csv', 'Bytes': 3145728},\n {'Name': 'adult_data.csv', 'Bytes': 3407872},\n {'Name': 'adult_data.csv', 'Bytes': 3670016},\n {'Name': 'adult_data.csv', 'Bytes': 3932160},\n {'Name': 'adult_data.csv', 'Bytes': 3974475},\n {'Name': 'adult_data.csv',\n  'Hash': 'QmZnxARhJWsCbTxiAzoRhnxHgMtoEkNJNS8DGLCBEMvm4V',\n  'Size': '3975476'}]"
   },
   {
     "objectID": "tutorial.fastaiandipfspy.html#retrieving-a-dataset-from-ipfs-using-public-node",
     "href": "tutorial.fastaiandipfspy.html#retrieving-a-dataset-from-ipfs-using-public-node",
-    "title": "Tutorial - IPFS + ML using ipfspy.ipfshttpapi",
+    "title": "Using IPFS in ML with ipfspy.ipfshttpapi",
     "section": "Retrieving a dataset from IPFS using public node",
     "text": "Retrieving a dataset from IPFS using public node\n\napi.change_gateway_type = 'public'\n\nChanged to public node\n\n\n\nres, obj = api.cat_items('QmZnxARhJWsCbTxiAzoRhnxHgMtoEkNJNS8DGLCBEMvm4V')\n\n\nwith open('output/adult_data_dl.csv', 'wb') as f:\n    f.write(res.content)\n\n\ndf = pd.read_csv('output/adult_data_dl.csv')\n\n\ndf.columns = [col.strip() for col in df.columns]"
   },
   {
     "objectID": "tutorial.fastaiandipfspy.html#building-a-tabular-model",
     "href": "tutorial.fastaiandipfspy.html#building-a-tabular-model",
-    "title": "Tutorial - IPFS + ML using ipfspy.ipfshttpapi",
+    "title": "Using IPFS in ML with ipfspy.ipfshttpapi",
     "section": "Building a tabular model",
     "text": "Building a tabular model\n\nsplits = RandomSplitter()(range_of(df))\ncat_names = ['workclass', 'education', 'marital-status', 'occupation', 'relationship', 'race']\ncont_names = ['age', 'fnlwgt', 'education-num']\nprocs = [Categorify, FillMissing, Normalize]\ny_names = 'salary'\ny_block = CategoryBlock()\n\n\nto = TabularPandas(df, procs=procs, cat_names=cat_names, cont_names=cont_names,\n                   y_names=y_names, y_block=y_block, splits=splits)\n\ndls = to.dataloaders(bs=64)\n\n\nlearn = tabular_learner(dls, [200,100], metrics=accuracy)\n\n\nlearn.fit_one_cycle(3, 1e-3)\n\n\n\n\n\n\n\n  \n    \n      epoch\n      train_loss\n      valid_loss\n      accuracy\n      time\n    \n  \n  \n    \n      0\n      0.376169\n      0.351168\n      0.838913\n      00:02\n    \n    \n      1\n      0.368451\n      0.349306\n      0.836456\n      00:02\n    \n    \n      2\n      0.357292\n      0.343430\n      0.840756\n      00:02\n    \n  \n\n\n\n\nlearn.export('output/testmodel.pkl')"
   },
   {
     "objectID": "tutorial.fastaiandipfspy.html#adding-modelconfig_files-to-ipfs",
     "href": "tutorial.fastaiandipfspy.html#adding-modelconfig_files-to-ipfs",
-    "title": "Tutorial - IPFS + ML using ipfspy.ipfshttpapi",
+    "title": "Using IPFS in ML with ipfspy.ipfshttpapi",
     "section": "Adding model+config_files to IPFS",
     "text": "Adding model+config_files to IPFS\n\napi.change_gateway_type = 'infura'\n\nChanged to infura node\n\n\n\nres, obj = api.add_items('output/testmodel.pkl'); obj\n\n[{'Name': 'testmodel.pkl', 'Bytes': 242379},\n {'Name': 'testmodel.pkl',\n  'Hash': 'QmR77qXp7CYEg6kHA3z77mcayTmm9hoXz7YQHFz9WjphiE',\n  'Size': '242393'}]"
   },
   {
     "objectID": "tutorial.fastaiandipfspy.html#retrieving-modelconfig_files-from-ipfs",
     "href": "tutorial.fastaiandipfspy.html#retrieving-modelconfig_files-from-ipfs",
-    "title": "Tutorial - IPFS + ML using ipfspy.ipfshttpapi",
+    "title": "Using IPFS in ML with ipfspy.ipfshttpapi",
     "section": "Retrieving model+config_files from IPFS",
     "text": "Retrieving model+config_files from IPFS\n\napi.change_gateway_type = 'public'\n\nChanged to public node\n\n\n\nres, obj = api.cat_items('QmR77qXp7CYEg6kHA3z77mcayTmm9hoXz7YQHFz9WjphiE')\n\n\nwith open('output/testmodel_dl.pkl', 'wb') as f:\n    f.write(res.content)\n\n\nlearn = load_learner('output/testmodel_dl.pkl')\n\n\ndl = learn.dls.test_dl(df.iloc[:10])\n\n\nlearn.get_preds(dl=dl)\n\n\n\n\n\n\n\n\n(tensor([[0.9282, 0.0718],\n         [0.3556, 0.6444],\n         [0.9667, 0.0333],\n         [0.8731, 0.1269],\n         [0.4372, 0.5628],\n         [0.1317, 0.8683],\n         [0.9819, 0.0181],\n         [0.5074, 0.4926],\n         [0.8733, 0.1267],\n         [0.1803, 0.8197]]),\n tensor([[0],\n         [0],\n         [0],\n         [0],\n         [0],\n         [0],\n         [0],\n         [1],\n         [1],\n         [1]], dtype=torch.int8))"
   },
@@ -271,13 +271,6 @@
     "title": "Welcome to IPFSPy by Algovera",
     "section": "How to use",
     "text": "How to use\n\nipfshttpapi\nExtend the IPFSApi\n\napi = IPFSApi()\n\nChanged to local node\n\n\nChange to other nodes like below. You can choose one of local infura or public\n\napi.change_gateway_type = 'infura', auth\n\nChanged to infura node\n\n\n\napi.change_gateway_type = 'local', None\n\nChanged to local node\n\n\nTo add a file to IPFS,\n\nres, obj = api.add_items('output/test.txt'); obj\n\n[{'Name': 'test.txt', 'Bytes': 20},\n {'Name': 'test.txt',\n  'Hash': 'QmbwFKzLj9m2qwBFYTVrBotf4QujvzTb1GBV9wFcNPMctm',\n  'Size': '28'}]\n\n\nTo retrieve a file from IPFS\n\nresponse, content = api.cat_items(cid='QmbwFKzLj9m2qwBFYTVrBotf4QujvzTb1GBV9wFcNPMctm'); content\n\n\"\\n'''\\nFirst file\\n'''\\n\"\n\n\n\n\nipfsspec\n\nimport fsspec, io, os, asyncio\nfrom ipfspy.ipfsspec.asyn import AsyncIPFSFileSystem\nfrom fsspec import register_implementation\n\nRegister the ipfsspec to fsspec\n\nregister_implementation(AsyncIPFSFileSystem.protocol, AsyncIPFSFileSystem)\nclass fs:\n    ipfs = fsspec.filesystem(\"ipfs\")\n    file = fsspec.filesystem(\"file\")\n\nChanged to local node\n\n\nLike ipfspy.ipfshttpapi, you can change the node as such\n\nfs.ipfs.change_gateway_type = 'public'\n\nChanged to public node\n\n\n\nfs.ipfs.change_gateway_type = 'local'\n\nChanged to local node\n\n\nAdd a file to IPFS using fsspec-like api\n\nput_file_res = fs.ipfs.put(path='output/test.txt', rpath='/test_put_file'); put_file_res\n\n'QmbwFKzLj9m2qwBFYTVrBotf4QujvzTb1GBV9wFcNPMctm'\n\n\nRetrieve a file from IPFs using fsspec-like api\n\nfs.ipfs.cat('QmbwFKzLj9m2qwBFYTVrBotf4QujvzTb1GBV9wFcNPMctm')\n\nb\"\\n'''\\nFirst file\\n'''\\n\""
-  },
-  {
-    "objectID": "core.html",
-    "href": "core.html",
-    "title": "core",
-    "section": "",
-    "text": "source\n\nfoo\n\n foo ()"
   },
   {
     "objectID": "ipfsspec.bufferedfile.html",

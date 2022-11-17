@@ -2,54 +2,50 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://algoveraai.github.io/ipfspy/ipfsspec.gateway.html</loc>
-    <lastmod>2022-11-17T09:59:28.069Z</lastmod>
+    <lastmod>2022-11-17T10:31:08.919Z</lastmod>
   </url>
   <url>
     <loc>https://algoveraai.github.io/ipfspy/ipfsspec.asyn.html</loc>
-    <lastmod>2022-11-17T09:59:28.389Z</lastmod>
+    <lastmod>2022-11-17T10:31:09.239Z</lastmod>
   </url>
   <url>
     <loc>https://algoveraai.github.io/ipfspy/pinataapi.html</loc>
-    <lastmod>2022-11-17T09:59:28.789Z</lastmod>
+    <lastmod>2022-11-17T10:31:09.639Z</lastmod>
   </url>
   <url>
     <loc>https://algoveraai.github.io/ipfspy/ipfshttpapi.html</loc>
-    <lastmod>2022-11-17T09:59:29.379Z</lastmod>
+    <lastmod>2022-11-17T10:31:10.249Z</lastmod>
   </url>
   <url>
     <loc>https://algoveraai.github.io/ipfspy/tutorial.ipfsspec.html</loc>
-    <lastmod>2022-11-17T09:59:29.689Z</lastmod>
+    <lastmod>2022-11-17T10:38:42.239Z</lastmod>
   </url>
   <url>
     <loc>https://algoveraai.github.io/ipfspy/utils.html</loc>
-    <lastmod>2022-11-17T09:59:29.989Z</lastmod>
+    <lastmod>2022-11-17T10:31:10.849Z</lastmod>
   </url>
   <url>
     <loc>https://algoveraai.github.io/ipfspy/ipfsspec.tracing.html</loc>
-    <lastmod>2022-11-17T09:59:30.249Z</lastmod>
+    <lastmod>2022-11-17T10:31:11.139Z</lastmod>
   </url>
   <url>
     <loc>https://algoveraai.github.io/ipfspy/tutorial.fastaiipfsspec.html</loc>
-    <lastmod>2022-11-17T09:59:30.579Z</lastmod>
+    <lastmod>2022-11-17T10:38:42.589Z</lastmod>
   </url>
   <url>
     <loc>https://algoveraai.github.io/ipfspy/estuaryapi.html</loc>
-    <lastmod>2022-11-17T09:59:30.959Z</lastmod>
+    <lastmod>2022-11-17T10:31:11.849Z</lastmod>
   </url>
   <url>
     <loc>https://algoveraai.github.io/ipfspy/tutorial.fastaiandipfspy.html</loc>
-    <lastmod>2022-11-17T09:59:31.289Z</lastmod>
+    <lastmod>2022-11-17T10:38:48.699Z</lastmod>
   </url>
   <url>
     <loc>https://algoveraai.github.io/ipfspy/index.html</loc>
-    <lastmod>2022-11-17T09:59:31.609Z</lastmod>
-  </url>
-  <url>
-    <loc>https://algoveraai.github.io/ipfspy/core.html</loc>
-    <lastmod>2022-11-17T09:59:31.899Z</lastmod>
+    <lastmod>2022-11-17T10:31:12.499Z</lastmod>
   </url>
   <url>
     <loc>https://algoveraai.github.io/ipfspy/ipfsspec.bufferedfile.html</loc>
-    <lastmod>2022-11-17T09:59:32.199Z</lastmod>
+    <lastmod>2022-11-17T10:31:12.779Z</lastmod>
   </url>
 </urlset>
