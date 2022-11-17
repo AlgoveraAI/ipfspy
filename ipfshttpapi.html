@@ -1,0 +1,1883 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="IPFS HTTP API based Python functions to interact with IPFS">
+
+<title>ipfspy - IPFS HTTP API</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+<meta property="og:title" content="ipfspy - IPFS HTTP API">
+<meta property="og:description" content="IPFS HTTP API based Python functions to interact with IPFS">
+<meta property="og:site-name" content="ipfspy">
+<meta name="twitter:title" content="ipfspy - IPFS HTTP API">
+<meta name="twitter:description" content="IPFS HTTP API based Python functions to interact with IPFS">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">ipfspy</span>
+    </a>
+  </div>
+          <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">IPFS HTTP API</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Welcome to IPFSPy by Algovera</a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">ipfspy Docs</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ipfshttpapi.html" class="sidebar-item-text sidebar-link active">IPFS HTTP API</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./estuaryapi.html" class="sidebar-item-text sidebar-link">Estuary</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./pinataapi.html" class="sidebar-item-text sidebar-link">Pinata</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">ipfsspec Docs</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ipfsspec.asyn.html" class="sidebar-item-text sidebar-link">IPFSSpec</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Tutorials</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tutorial.ipfsspec.html" class="sidebar-item-text sidebar-link">Using <code>ipfspy.ipfspec</code> to interact with IPFS</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tutorial.fastaiandipfspy.html" class="sidebar-item-text sidebar-link">Using IPFS in ML with <code>ipfspy.ipfshttpapi</code></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./tutorial.fastaiipfsspec.html" class="sidebar-item-text sidebar-link">Using IPFS in ML with <code>ipfspy.ipfspec</code></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#ipfsapi" id="toc-ipfsapi" class="nav-link active" data-scroll-target="#ipfsapi">IPFSApi</a></li>
+  <li><a href="#choosing-your-gateway" id="toc-choosing-your-gateway" class="nav-link" data-scroll-target="#choosing-your-gateway">Choosing your gateway</a></li>
+  <li><a href="#unixfs" id="toc-unixfs" class="nav-link" data-scroll-target="#unixfs">UnixFS</a>
+  <ul class="collapse">
+  <li><a href="#add_items" id="toc-add_items" class="nav-link" data-scroll-target="#add_items">add_items</a></li>
+  <li><a href="#ipfsapi.add_items" id="toc-ipfsapi.add_items" class="nav-link" data-scroll-target="#ipfsapi.add_items">IPFSApi.add_items</a></li>
+  <li><a href="#ls_items" id="toc-ls_items" class="nav-link" data-scroll-target="#ls_items">ls_items</a></li>
+  <li><a href="#ipfsapi.ls_items" id="toc-ipfsapi.ls_items" class="nav-link" data-scroll-target="#ipfsapi.ls_items">IPFSApi.ls_items</a></li>
+  <li><a href="#cat_items" id="toc-cat_items" class="nav-link" data-scroll-target="#cat_items">cat_items</a></li>
+  <li><a href="#ipfsapi.cat_items" id="toc-ipfsapi.cat_items" class="nav-link" data-scroll-target="#ipfsapi.cat_items">IPFSApi.cat_items</a></li>
+  <li><a href="#get_items" id="toc-get_items" class="nav-link" data-scroll-target="#get_items">get_items</a></li>
+  <li><a href="#how-to-download-a-directory-from-ipfs" id="toc-how-to-download-a-directory-from-ipfs" class="nav-link" data-scroll-target="#how-to-download-a-directory-from-ipfs">How to download a directory from IPFS</a></li>
+  <li><a href="#downloaddir" id="toc-downloaddir" class="nav-link" data-scroll-target="#downloaddir">DownloadDir</a></li>
+  </ul></li>
+  <li><a href="#dags" id="toc-dags" class="nav-link" data-scroll-target="#dags">DAGs</a>
+  <ul class="collapse">
+  <li><a href="#ipfsapi.dag_get" id="toc-ipfsapi.dag_get" class="nav-link" data-scroll-target="#ipfsapi.dag_get">IPFSApi.dag_get</a></li>
+  <li><a href="#ipfsapi.dag_export" id="toc-ipfsapi.dag_export" class="nav-link" data-scroll-target="#ipfsapi.dag_export">IPFSApi.dag_export</a></li>
+  <li><a href="#ipfsapi.dag_stat" id="toc-ipfsapi.dag_stat" class="nav-link" data-scroll-target="#ipfsapi.dag_stat">IPFSApi.dag_stat</a></li>
+  <li><a href="#making-use-of-dags" id="toc-making-use-of-dags" class="nav-link" data-scroll-target="#making-use-of-dags">Making use of DAGs</a></li>
+  </ul></li>
+  <li><a href="#local-pinning" id="toc-local-pinning" class="nav-link" data-scroll-target="#local-pinning">Local Pinning</a>
+  <ul class="collapse">
+  <li><a href="#pin-an-ipfs-object-locally" id="toc-pin-an-ipfs-object-locally" class="nav-link" data-scroll-target="#pin-an-ipfs-object-locally">Pin an IPFS object locally</a></li>
+  <li><a href="#ipfsapi.pin_add" id="toc-ipfsapi.pin_add" class="nav-link" data-scroll-target="#ipfsapi.pin_add">IPFSApi.pin_add</a></li>
+  <li><a href="#ipfsapi.pin_ls" id="toc-ipfsapi.pin_ls" class="nav-link" data-scroll-target="#ipfsapi.pin_ls">IPFSApi.pin_ls</a></li>
+  <li><a href="#ipfsapi.pin_rm" id="toc-ipfsapi.pin_rm" class="nav-link" data-scroll-target="#ipfsapi.pin_rm">IPFSApi.pin_rm</a></li>
+  </ul></li>
+  <li><a href="#remote-pinning-service" id="toc-remote-pinning-service" class="nav-link" data-scroll-target="#remote-pinning-service">Remote Pinning Service</a>
+  <ul class="collapse">
+  <li><a href="#ipfsapi.rspin_add" id="toc-ipfsapi.rspin_add" class="nav-link" data-scroll-target="#ipfsapi.rspin_add">IPFSApi.rspin_add</a></li>
+  <li><a href="#ipfsapi.rspin_ls" id="toc-ipfsapi.rspin_ls" class="nav-link" data-scroll-target="#ipfsapi.rspin_ls">IPFSApi.rspin_ls</a></li>
+  <li><a href="#ipfsapi.rspin_rm" id="toc-ipfsapi.rspin_rm" class="nav-link" data-scroll-target="#ipfsapi.rspin_rm">IPFSApi.rspin_rm</a></li>
+  <li><a href="#work-with-remote-pinning-service" id="toc-work-with-remote-pinning-service" class="nav-link" data-scroll-target="#work-with-remote-pinning-service">Work with remote pinning service</a></li>
+  </ul></li>
+  <li><a href="#remote-pinning" id="toc-remote-pinning" class="nav-link" data-scroll-target="#remote-pinning">Remote Pinning</a>
+  <ul class="collapse">
+  <li><a href="#ipfsapi.rpin_add" id="toc-ipfsapi.rpin_add" class="nav-link" data-scroll-target="#ipfsapi.rpin_add">IPFSApi.rpin_add</a></li>
+  <li><a href="#ipfsapi.rpin_ls" id="toc-ipfsapi.rpin_ls" class="nav-link" data-scroll-target="#ipfsapi.rpin_ls">IPFSApi.rpin_ls</a></li>
+  <li><a href="#ipfsapi.rpin_rm" id="toc-ipfsapi.rpin_rm" class="nav-link" data-scroll-target="#ipfsapi.rpin_rm">IPFSApi.rpin_rm</a></li>
+  </ul></li>
+  <li><a href="#block" id="toc-block" class="nav-link" data-scroll-target="#block">Block</a>
+  <ul class="collapse">
+  <li><a href="#ipfsapi.block_get" id="toc-ipfsapi.block_get" class="nav-link" data-scroll-target="#ipfsapi.block_get">IPFSApi.block_get</a></li>
+  <li><a href="#ipfsapi.block_put" id="toc-ipfsapi.block_put" class="nav-link" data-scroll-target="#ipfsapi.block_put">IPFSApi.block_put</a></li>
+  <li><a href="#ipfsapi.block_rm" id="toc-ipfsapi.block_rm" class="nav-link" data-scroll-target="#ipfsapi.block_rm">IPFSApi.block_rm</a></li>
+  <li><a href="#ipfsapi.block_stat" id="toc-ipfsapi.block_stat" class="nav-link" data-scroll-target="#ipfsapi.block_stat">IPFSApi.block_stat</a></li>
+  <li><a href="#work-with-blocks" id="toc-work-with-blocks" class="nav-link" data-scroll-target="#work-with-blocks">Work with blocks</a></li>
+  </ul></li>
+  <li><a href="#mutable-file-system-files" id="toc-mutable-file-system-files" class="nav-link" data-scroll-target="#mutable-file-system-files">Mutable File System (files)</a>
+  <ul class="collapse">
+  <li><a href="#ipfsapi.mfs_chcid" id="toc-ipfsapi.mfs_chcid" class="nav-link" data-scroll-target="#ipfsapi.mfs_chcid">IPFSApi.mfs_chcid</a></li>
+  <li><a href="#ipfsapi.mfs_cp" id="toc-ipfsapi.mfs_cp" class="nav-link" data-scroll-target="#ipfsapi.mfs_cp">IPFSApi.mfs_cp</a></li>
+  <li><a href="#ipfsapi.mfs_flush" id="toc-ipfsapi.mfs_flush" class="nav-link" data-scroll-target="#ipfsapi.mfs_flush">IPFSApi.mfs_flush</a></li>
+  <li><a href="#ipfsapi.mfs_ls" id="toc-ipfsapi.mfs_ls" class="nav-link" data-scroll-target="#ipfsapi.mfs_ls">IPFSApi.mfs_ls</a></li>
+  <li><a href="#ipfsapi.mfs_mkdir" id="toc-ipfsapi.mfs_mkdir" class="nav-link" data-scroll-target="#ipfsapi.mfs_mkdir">IPFSApi.mfs_mkdir</a></li>
+  <li><a href="#ipfsapi.mfs_mv" id="toc-ipfsapi.mfs_mv" class="nav-link" data-scroll-target="#ipfsapi.mfs_mv">IPFSApi.mfs_mv</a></li>
+  <li><a href="#ipfsapi.mfs_read" id="toc-ipfsapi.mfs_read" class="nav-link" data-scroll-target="#ipfsapi.mfs_read">IPFSApi.mfs_read</a></li>
+  <li><a href="#ipfsapi.mfs_rm" id="toc-ipfsapi.mfs_rm" class="nav-link" data-scroll-target="#ipfsapi.mfs_rm">IPFSApi.mfs_rm</a></li>
+  <li><a href="#ipfsapi.mfs_stat" id="toc-ipfsapi.mfs_stat" class="nav-link" data-scroll-target="#ipfsapi.mfs_stat">IPFSApi.mfs_stat</a></li>
+  <li><a href="#ipfsapi.mfs_write" id="toc-ipfsapi.mfs_write" class="nav-link" data-scroll-target="#ipfsapi.mfs_write">IPFSApi.mfs_write</a></li>
+  <li><a href="#working-with-mfs" id="toc-working-with-mfs" class="nav-link" data-scroll-target="#working-with-mfs">Working with MFS</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">IPFS HTTP API</h1>
+</div>
+
+<div>
+  <div class="description">
+    IPFS HTTP API based Python functions to interact with IPFS
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<!-- WARNING: THIS FILE WAS AUTOGENERATED! DO NOT EDIT! -->
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/ipfshttpapi.py#L23" target="_blank" style="float:right; font-size:smaller">source</a></p>
+<section id="ipfsapi" class="level3">
+<h3 class="anchored" data-anchor-id="ipfsapi">IPFSApi</h3>
+<blockquote class="blockquote">
+<pre><code> IPFSApi (gateway_type='local', timeout=10, **kwargs)</code></pre>
+</blockquote>
+<p>Initialize self. See help(type(self)) for accurate signature.</p>
+<table class="table">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 25%">
+<col style="width: 34%">
+<col style="width: 34%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>gateway_type</td>
+<td>str</td>
+<td>local</td>
+<td>Gateway to use - <code>public</code>, <code>infura</code>, <code>local</code></td>
+</tr>
+<tr class="even">
+<td>timeout</td>
+<td>int</td>
+<td>10</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>kwargs</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="choosing-your-gateway" class="level2">
+<h2 class="anchored" data-anchor-id="choosing-your-gateway">Choosing your gateway</h2>
+<p>By default, the <a href="https://algoveraai.github.io/ipfspy/ipfshttpapi.html#ipfsapi"><code>IPFSApi</code></a> uses the <code>local</code> node.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>api <span class="op">=</span> IPFSApi()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Changed to local node</code></pre>
+</div>
+</div>
+<p>To change to <code>infura</code> or <code>public</code> use the <code>change_gateway_type</code> method</p>
+<p>Infura needs authorization, you can use the <a href="https://algoveraai.github.io/ipfspy/utils.html#make_infura_auth"><code>make_infura_auth</code></a> to make the auth in required type. And when using the <code>chage_gateway_type</code> pass auth as the second variable in the <code>tuple</code>. For <code>public</code> and <code>local</code>, you can pass <code>None</code> as the second variable.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>api.change_gateway_type <span class="op">=</span> <span class="st">'infura'</span>, auth</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>api.change_gateway_type <span class="op">=</span> <span class="st">'public'</span>, <span class="va">None</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>api.change_gateway_type <span class="op">=</span> <span class="st">'local'</span>, <span class="va">None</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="unixfs" class="level2">
+<h2 class="anchored" data-anchor-id="unixfs">UnixFS</h2>
+<section id="add_items" class="level3">
+<h3 class="anchored" data-anchor-id="add_items">add_items</h3>
+<ul>
+<li>only available on <code>local</code> and <code>infura</code> nodes</li>
+</ul>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/ipfshttpapi.py#L84" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="ipfsapi.add_items" class="level3">
+<h3 class="anchored" data-anchor-id="ipfsapi.add_items">IPFSApi.add_items</h3>
+<blockquote class="blockquote">
+<pre><code> IPFSApi.add_items (filepath:Union[str,List[str]], directory:bool=False,
+                    wrap_with_directory:bool=False,
+                    chunker:str='size-262144', pin:bool=True,
+                    hash_:str='sha2-256', progress:str='true',
+                    silent:str='false', cid_version:int=0, **kwargs)</code></pre>
+</blockquote>
+<p>add file/directory to ipfs</p>
+<table class="table">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 25%">
+<col style="width: 34%">
+<col style="width: 34%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>filepath</td>
+<td>typing.Union[str, typing.List[str]]</td>
+<td></td>
+<td>Path to the file/directory to be added to IPFS</td>
+</tr>
+<tr class="even">
+<td>directory</td>
+<td>bool</td>
+<td>False</td>
+<td>Is filepath a directory</td>
+</tr>
+<tr class="odd">
+<td>wrap_with_directory</td>
+<td>bool</td>
+<td>False</td>
+<td>True if path is a directory</td>
+</tr>
+<tr class="even">
+<td>chunker</td>
+<td>str</td>
+<td>size-262144</td>
+<td>Chunking algorithm, size-[bytes], rabin-[min]-[avg]-[max] or buzhash</td>
+</tr>
+<tr class="odd">
+<td>pin</td>
+<td>bool</td>
+<td>True</td>
+<td>Pin this object when adding</td>
+</tr>
+<tr class="even">
+<td>hash_</td>
+<td>str</td>
+<td>sha2-256</td>
+<td>Hash function to use. Implies CIDv1 if not sha2-256</td>
+</tr>
+<tr class="odd">
+<td>progress</td>
+<td>str</td>
+<td>true</td>
+<td>Stream progress data</td>
+</tr>
+<tr class="even">
+<td>silent</td>
+<td>str</td>
+<td>false</td>
+<td>Write no output</td>
+</tr>
+<tr class="odd">
+<td>cid_version</td>
+<td>int</td>
+<td>0</td>
+<td>CID version</td>
+</tr>
+<tr class="even">
+<td>kwargs</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<section id="using-local-ipfs-node" class="level4">
+<h4 class="anchored" data-anchor-id="using-local-ipfs-node">Using local IPFS Node</h4>
+<blockquote class="blockquote">
+<p>Important: This requires a local IPFS Node to be run. Set up your local node using info <a href="https://ipfs.io/#install">here</a>.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>Note: Full list of available <code>params</code> on <code>add</code> function can be found <a href="https://docs.ipfs.io/reference/http/api/#api-v0-add">here</a></p>
+</blockquote>
+<p>Upload a file</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>response, jsonobject <span class="op">=</span> api.add_items(filepath<span class="op">=</span><span class="st">"../README.md"</span>)<span class="op">;</span> jsonobject</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Upload multiple files</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>response, jsonobject <span class="op">=</span> api.add_items(filepath<span class="op">=</span>[<span class="st">"../README.md"</span>, <span class="st">'output/test.txt'</span>])<span class="op">;</span> jsonobject</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You can view the added file on <a href="https://ipfs.io/ipfs/QmfQ5hFqZ2DFUwTfnaPEuVXXSXsq552AXMvjrQtbkQKWLZ">ipfs.io</a></p>
+<p>To view any CID on ipfs.io <code>https://ipfs.io/ipfs/CID</code></p>
+<p>Upload multiple file wrapped in a directory</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>response, jsonobject <span class="op">=</span> api.add_items(filepath<span class="op">=</span>[<span class="st">"../README.md"</span>, <span class="st">'output/test.txt'</span>], wrap_with_directory<span class="op">=</span><span class="st">'true'</span>)<span class="op">;</span> jsonobject</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Upload a directory</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>response, jsonobject <span class="op">=</span> api.add_items(filepath<span class="op">=</span><span class="st">'output'</span>, directory<span class="op">=</span><span class="va">True</span>)<span class="op">;</span> jsonobject[<span class="op">-</span><span class="dv">4</span>:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="using-infura.io-gateway" class="level4">
+<h4 class="anchored" data-anchor-id="using-infura.io-gateway">Using infura.io gateway</h4>
+<p>This works without a local IPFS node running but requires registration. You can register <a href="https://infura.io">here</a></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>api.change_gateway_type <span class="op">=</span> <span class="st">'infura'</span>, auth</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>response, jsonobject <span class="op">=</span> api.add_items(<span class="st">"../README.md"</span>)<span class="op">;</span> jsonobject</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>response, jsonobject <span class="op">=</span> api.add_items(filepath<span class="op">=</span><span class="st">'output'</span>, directory<span class="op">=</span><span class="va">True</span>)<span class="op">;</span> jsonobject[<span class="op">-</span><span class="dv">4</span>:]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You can view the added file on <a href="https://ipfs.infura.io/ipfs/QmfQ5hFqZ2DFUwTfnaPEuVXXSXsq552AXMvjrQtbkQKWLZ">infura.io</a></p>
+<p>To view any CID on infura <code>https://ipfs.infura.io/ipfs/CID</code></p>
+</section>
+</section>
+<section id="ls_items" class="level3">
+<h3 class="anchored" data-anchor-id="ls_items">ls_items</h3>
+<ul>
+<li>only available on <code>local</code> and <code>public</code> nodes. <code>ls</code> not implemented on <code>infura</code></li>
+</ul>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/ipfshttpapi.py#L127" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="ipfsapi.ls_items" class="level3">
+<h3 class="anchored" data-anchor-id="ipfsapi.ls_items">IPFSApi.ls_items</h3>
+<blockquote class="blockquote">
+<pre><code> IPFSApi.ls_items (cid:str, resolve_type:bool=True, size:bool=True,
+                   **kwargs)</code></pre>
+</blockquote>
+<p>List directory contents for Unix filesystem objects</p>
+<table class="table">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 25%">
+<col style="width: 34%">
+<col style="width: 34%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>cid</td>
+<td>str</td>
+<td></td>
+<td>The path to the IPFS object(s) to list links from</td>
+</tr>
+<tr class="even">
+<td>resolve_type</td>
+<td>bool</td>
+<td>True</td>
+<td>Resolve linked objects to find out their types</td>
+</tr>
+<tr class="odd">
+<td>size</td>
+<td>bool</td>
+<td>True</td>
+<td>Resolve linked objects to find out their file size</td>
+</tr>
+<tr class="even">
+<td>kwargs</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>api.change_gateway_type <span class="op">=</span> <span class="st">'local'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>response, content <span class="op">=</span> api.ls_items(<span class="st">'QmeyTiqrD6oo4eQXbAt7hZn3ASzpcP3Kvb1rc9qznEowEw'</span>)<span class="op">;</span> content</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>api.change_gateway_type <span class="op">=</span> <span class="st">'public'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>response, content <span class="op">=</span> api.ls_items(<span class="st">'QmeyTiqrD6oo4eQXbAt7hZn3ASzpcP3Kvb1rc9qznEowEw'</span>)<span class="op">;</span> content</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="cat_items" class="level3">
+<h3 class="anchored" data-anchor-id="cat_items">cat_items</h3>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/ipfshttpapi.py#L169" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="ipfsapi.cat_items" class="level3">
+<h3 class="anchored" data-anchor-id="ipfsapi.cat_items">IPFSApi.cat_items</h3>
+<blockquote class="blockquote">
+<pre><code> IPFSApi.cat_items (cid:str, **kwargs)</code></pre>
+</blockquote>
+<p>Show IPFS object data</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>cid</td>
+<td>str</td>
+<td>The path to the IPFS object(s) to be output</td>
+</tr>
+<tr class="even">
+<td>kwargs</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>When given a file CID</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>api.change_gateway_type <span class="op">=</span> <span class="st">'local'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>response, content <span class="op">=</span> api.cat_items(cid<span class="op">=</span><span class="st">'QmUfwG4P6EA5xbD3De5bS7XKcBion8ReQj7m9ZjxaPvq3B'</span>)<span class="op">;</span> content</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>When given a directory CID (this will throw an error)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>response, content <span class="op">=</span> api.cat_items(cid<span class="op">=</span><span class="st">'QmeyTiqrD6oo4eQXbAt7hZn3ASzpcP3Kvb1rc9qznEowEw'</span>)<span class="op">;</span> content</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>api.change_gateway_type <span class="op">=</span> <span class="st">'public'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>response, content <span class="op">=</span> api.cat_items(cid<span class="op">=</span><span class="st">'QmUfwG4P6EA5xbD3De5bS7XKcBion8ReQj7m9ZjxaPvq3B'</span>)<span class="op">;</span> content</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>api.change_gateway_type <span class="op">=</span> <span class="st">'infura'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>response, content <span class="op">=</span> api.cat_items(cid<span class="op">=</span><span class="st">'QmUfwG4P6EA5xbD3De5bS7XKcBion8ReQj7m9ZjxaPvq3B'</span>)<span class="op">;</span> content</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="get_items" class="level3">
+<h3 class="anchored" data-anchor-id="get_items">get_items</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>response, content <span class="op">=</span> api.get_items(cid<span class="op">=</span><span class="st">'QmUfwG4P6EA5xbD3De5bS7XKcBion8ReQj7m9ZjxaPvq3B'</span>)<span class="op">;</span> content</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="how-to-download-a-directory-from-ipfs" class="level3">
+<h3 class="anchored" data-anchor-id="how-to-download-a-directory-from-ipfs">How to download a directory from IPFS</h3>
+<ul>
+<li>only available on local and public</li>
+</ul>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/ipfshttpapi.py#L671" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="downloaddir" class="level3">
+<h3 class="anchored" data-anchor-id="downloaddir">DownloadDir</h3>
+<blockquote class="blockquote">
+<pre><code> DownloadDir (gateway_type:str, root_cid:str, output_fol:str)</code></pre>
+</blockquote>
+<p>Download a IPFS directory to your local disk</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>gateway_type</td>
+<td>str</td>
+<td>Gateway to use - works on local and public</td>
+</tr>
+<tr class="even">
+<td>root_cid</td>
+<td>str</td>
+<td>Root CID of the directory</td>
+</tr>
+<tr class="odd">
+<td>output_fol</td>
+<td>str</td>
+<td>Path to save in your local disk</td>
+</tr>
+</tbody>
+</table>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>download <span class="op">=</span> DownloadDir(<span class="st">'local'</span>, <span class="st">'QmWJvSt7QGY2yhr9mrfAm76vRvxXA5ygB4zd2SmfD43vtX'</span>, <span class="st">'output2'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>download.download()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>download.full_structure</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="dags" class="level2">
+<h2 class="anchored" data-anchor-id="dags">DAGs</h2>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/ipfshttpapi.py#L205" target="_blank" style="float:right; font-size:smaller">source</a></p>
+<section id="ipfsapi.dag_get" class="level3">
+<h3 class="anchored" data-anchor-id="ipfsapi.dag_get">IPFSApi.dag_get</h3>
+<blockquote class="blockquote">
+<pre><code> IPFSApi.dag_get (cid:str, output_codec:str='dag-json')</code></pre>
+</blockquote>
+<p>Get a DAG node from IPFS.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>cid</td>
+<td>str</td>
+<td></td>
+<td>The path to the IPFS DAG node</td>
+</tr>
+<tr class="even">
+<td>output_codec</td>
+<td>str</td>
+<td>dag-json</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/ipfshttpapi.py#L187" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="ipfsapi.dag_export" class="level3">
+<h3 class="anchored" data-anchor-id="ipfsapi.dag_export">IPFSApi.dag_export</h3>
+<blockquote class="blockquote">
+<pre><code> IPFSApi.dag_export (cid:str, **kwargs)</code></pre>
+</blockquote>
+<p>Streams the selected DAG as a .car stream on stdout.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>cid</td>
+<td>str</td>
+<td>The path to the IPFS DAG node</td>
+</tr>
+<tr class="even">
+<td>kwargs</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/ipfshttpapi.py#L223" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="ipfsapi.dag_stat" class="level3">
+<h3 class="anchored" data-anchor-id="ipfsapi.dag_stat">IPFSApi.dag_stat</h3>
+<blockquote class="blockquote">
+<pre><code> IPFSApi.dag_stat (cid:str, **kwargs)</code></pre>
+</blockquote>
+<p>Gets stats for a DAG.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>cid</td>
+<td>str</td>
+<td>The path to the IPFS DAG node</td>
+</tr>
+<tr class="even">
+<td>kwargs</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="making-use-of-dags" class="level3">
+<h3 class="anchored" data-anchor-id="making-use-of-dags">Making use of DAGs</h3>
+<p>Let’s take a look at the DAG structure of the folder we uploaded earlier</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>response, content <span class="op">=</span> api.dag_get(<span class="st">'QmeyTiqrD6oo4eQXbAt7hZn3ASzpcP3Kvb1rc9qznEowEw'</span>)<span class="op">;</span> content</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><code>dag_get</code> method returns a <code>dict</code> with <code>data</code> and <code>links</code>. <code>data</code> is not exciting for a directory. Under the <code>links</code>, we can see files/directories that are in the uploaded directory.</p>
+<p>Let’s see the number of files/directories in the links</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="bu">len</span>(content[<span class="st">'Links'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s take a look at the first link</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>content[<span class="st">'Links'</span>][<span class="dv">0</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="local-pinning" class="level2">
+<h2 class="anchored" data-anchor-id="local-pinning">Local Pinning</h2>
+<section id="pin-an-ipfs-object-locally" class="level3">
+<h3 class="anchored" data-anchor-id="pin-an-ipfs-object-locally">Pin an IPFS object locally</h3>
+<p>More info on this can be found <a href="https://docs.ipfs.io/how-to/pin-files/">here</a></p>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/ipfshttpapi.py#L241" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="ipfsapi.pin_add" class="level3">
+<h3 class="anchored" data-anchor-id="ipfsapi.pin_add">IPFSApi.pin_add</h3>
+<blockquote class="blockquote">
+<pre><code> IPFSApi.pin_add (cid:str, recursive:str='true')</code></pre>
+</blockquote>
+<p>Pin objects to local storage.</p>
+<table class="table">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 25%">
+<col style="width: 34%">
+<col style="width: 34%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>cid</td>
+<td>str</td>
+<td></td>
+<td>Path to IPFS object(s) to be pinned</td>
+</tr>
+<tr class="even">
+<td>recursive</td>
+<td>str</td>
+<td>true</td>
+<td>Recursively pin the object linked to by the specified object(s)</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/ipfshttpapi.py#L259" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="ipfsapi.pin_ls" class="level3">
+<h3 class="anchored" data-anchor-id="ipfsapi.pin_ls">IPFSApi.pin_ls</h3>
+<blockquote class="blockquote">
+<pre><code> IPFSApi.pin_ls (type_:str='all', **kwargs)</code></pre>
+</blockquote>
+<p>List objects pinned to local storage.</p>
+<table class="table">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 25%">
+<col style="width: 34%">
+<col style="width: 34%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>type_</td>
+<td>str</td>
+<td>all</td>
+<td>The type of pinned keys to list. Can be “direct”, “indirect”, “recursive”, or “all”</td>
+</tr>
+<tr class="even">
+<td>kwargs</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/ipfshttpapi.py#L277" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="ipfsapi.pin_rm" class="level3">
+<h3 class="anchored" data-anchor-id="ipfsapi.pin_rm">IPFSApi.pin_rm</h3>
+<blockquote class="blockquote">
+<pre><code> IPFSApi.pin_rm (cid:str, recursive:str='true', **kwargs)</code></pre>
+</blockquote>
+<p>List objects pinned to local storage.</p>
+<table class="table">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 25%">
+<col style="width: 34%">
+<col style="width: 34%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>cid</td>
+<td>str</td>
+<td></td>
+<td>Path to object(s) to be unpinned</td>
+</tr>
+<tr class="even">
+<td>recursive</td>
+<td>str</td>
+<td>true</td>
+<td>Recursively unpin the object linked to by the specified object(s)</td>
+</tr>
+<tr class="odd">
+<td>kwargs</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>response, content <span class="op">=</span> api.pin_add(<span class="st">'QmUfwG4P6EA5xbD3De5bS7XKcBion8ReQj7m9ZjxaPvq3B'</span>)<span class="op">;</span> content</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s list all the items pinned locally.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>response, content <span class="op">=</span> api.pin_ls()<span class="op">;</span> <span class="bu">len</span>(content[<span class="dv">0</span>][<span class="st">'Keys'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="bu">list</span>(content[<span class="dv">0</span>][<span class="st">'Keys'</span>].keys())[:<span class="dv">10</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The item we added above is also part of it.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>content[<span class="dv">0</span>][<span class="st">'Keys'</span>][<span class="st">'QmUfwG4P6EA5xbD3De5bS7XKcBion8ReQj7m9ZjxaPvq3B'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>What does the <code>Type</code> : <code>recursive</code> means? - Direct pins - Single block and no others in relation to it. - Recursive pins - Given block and all of its children. - Indirect pins - the result of a given block’s parent being pinned recursively.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>response, content <span class="op">=</span> api.pin_rm(<span class="st">'QmUfwG4P6EA5xbD3De5bS7XKcBion8ReQj7m9ZjxaPvq3B'</span>)<span class="op">;</span> response.status_code</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="remote-pinning-service" class="level2">
+<h2 class="anchored" data-anchor-id="remote-pinning-service">Remote Pinning Service</h2>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/ipfshttpapi.py#L297" target="_blank" style="float:right; font-size:smaller">source</a></p>
+<section id="ipfsapi.rspin_add" class="level3">
+<h3 class="anchored" data-anchor-id="ipfsapi.rspin_add">IPFSApi.rspin_add</h3>
+<blockquote class="blockquote">
+<pre><code> IPFSApi.rspin_add (service_name:str, service_edpt:str, service_key:str)</code></pre>
+</blockquote>
+<p>Pin object to remote pinning service.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>service_name</td>
+<td>str</td>
+<td>Name of the remote pinning service to use</td>
+</tr>
+<tr class="even">
+<td>service_edpt</td>
+<td>str</td>
+<td>Service endpoint</td>
+</tr>
+<tr class="odd">
+<td>service_key</td>
+<td>str</td>
+<td>Service key</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/ipfshttpapi.py#L315" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="ipfsapi.rspin_ls" class="level3">
+<h3 class="anchored" data-anchor-id="ipfsapi.rspin_ls">IPFSApi.rspin_ls</h3>
+<blockquote class="blockquote">
+<pre><code> IPFSApi.rspin_ls (**kwargs)</code></pre>
+</blockquote>
+<p>List remote pinning services.</p>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/ipfshttpapi.py#L332" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="ipfsapi.rspin_rm" class="level3">
+<h3 class="anchored" data-anchor-id="ipfsapi.rspin_rm">IPFSApi.rspin_rm</h3>
+<blockquote class="blockquote">
+<pre><code> IPFSApi.rspin_rm (service_name:str)</code></pre>
+</blockquote>
+<p>Remove remote pinning service.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>service_name</td>
+<td>str</td>
+<td>Name of pinning service to remove</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="work-with-remote-pinning-service" class="level3">
+<h3 class="anchored" data-anchor-id="work-with-remote-pinning-service">Work with remote pinning service</h3>
+<p>More info on this can be found <a href="https://docs.ipfs.io/how-to/work-with-pinning-services/">here</a> and <a href="https://ipfs.github.io/pinning-services-api-spec/">here</a></p>
+<p>Adding your <code>Pinata</code> to your IPFS node 1. Create an account with Pinata 2. use <code>rspin_add</code> method to add the service</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>os.environ[<span class="st">"pinata_api_secret"</span>] <span class="op">=</span> <span class="st">'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySW5mb3JtYXRpb24iOnsiaWQiOiJhZDkxMTQ3Yy0yMmE5LTQ1MjgtODk2OS05ZTdjMjAwNzE2ZjAiLCJlbWFpbCI6Im1hcnNoYXRoQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJwaW5fcG9saWN5Ijp7InJlZ2lvbnMiOlt7ImlkIjoiRlJBMSIsImRlc2lyZWRSZXBsaWNhdGlvbkNvdW50IjoxfV0sInZlcnNpb24iOjF9LCJtZmFfZW5hYmxlZCI6ZmFsc2V9LCJhdXRoZW50aWNhdGlvblR5cGUiOiJzY29wZWRLZXkiLCJzY29wZWRLZXlLZXkiOiIxMjc4NDQ5OGY3YzI0ZjczNDBjMiIsInNjb3BlZEtleVNlY3JldCI6ImQyYmNlZjFlODVlZjgyOTcwNGE0ZTk4NGRmYjc3ZWE0MDhlY2NkODk1MjMxMzI2YjVlMmZlZDQxMTBhZmQyMGEiLCJpYXQiOjE2NTM5Njk0MDN9.Fa055BjXNmERyl_ZAA9NJscdt0HqbiX0ByY8pU5uLNY'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<blockquote class="blockquote">
+<p>Note: For <code>pinata</code> the <code>service_key</code> is also called <code>JWT</code></p>
+</blockquote>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="01_ipfshttpapi_files/figure-html/15b124bc-1-image.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">image.png</figcaption><p></p>
+</figure>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>res, content <span class="op">=</span> api.rspin_add(<span class="st">'pinata'</span>, <span class="st">'https://api.pinata.cloud/psa'</span>, os.environ[<span class="st">'pinata_api_secret'</span>])<span class="op">;</span>res.status_code</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s list the pinned services to see if we successfully added <code>pinata</code></p>
+<p><code>Pinata</code> has been added</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>response, content <span class="op">=</span> api.rspin_ls()<span class="op">;</span> content</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="remote-pinning" class="level2">
+<h2 class="anchored" data-anchor-id="remote-pinning">Remote Pinning</h2>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/ipfshttpapi.py#L348" target="_blank" style="float:right; font-size:smaller">source</a></p>
+<section id="ipfsapi.rpin_add" class="level3">
+<h3 class="anchored" data-anchor-id="ipfsapi.rpin_add">IPFSApi.rpin_add</h3>
+<blockquote class="blockquote">
+<pre><code> IPFSApi.rpin_add (cid:str, service:str, background:str='false', **kwargs)</code></pre>
+</blockquote>
+<p>Pin object to remote pinning service.</p>
+<table class="table">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 25%">
+<col style="width: 34%">
+<col style="width: 34%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>cid</td>
+<td>str</td>
+<td></td>
+<td>Path to IPFS object(s) to be pinned</td>
+</tr>
+<tr class="even">
+<td>service</td>
+<td>str</td>
+<td></td>
+<td>Name of the remote pinning service to use</td>
+</tr>
+<tr class="odd">
+<td>background</td>
+<td>str</td>
+<td>false</td>
+<td>Add to the queue on the remote service and return immediately (does not wait for pinned status)</td>
+</tr>
+<tr class="even">
+<td>kwargs</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/ipfshttpapi.py#L371" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="ipfsapi.rpin_ls" class="level3">
+<h3 class="anchored" data-anchor-id="ipfsapi.rpin_ls">IPFSApi.rpin_ls</h3>
+<blockquote class="blockquote">
+<pre><code> IPFSApi.rpin_ls (service:str, **kwargs)</code></pre>
+</blockquote>
+<p>List objects pinned to remote pinning service.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>service</td>
+<td>str</td>
+<td>Name of the remote pinning service to use</td>
+</tr>
+<tr class="even">
+<td>kwargs</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/ipfshttpapi.py#L389" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="ipfsapi.rpin_rm" class="level3">
+<h3 class="anchored" data-anchor-id="ipfsapi.rpin_rm">IPFSApi.rpin_rm</h3>
+<blockquote class="blockquote">
+<pre><code> IPFSApi.rpin_rm (service:str, **kwargs)</code></pre>
+</blockquote>
+<p>Remove pins from remote pinning service.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>service</td>
+<td>str</td>
+<td>Name of the remote pinning service to use</td>
+</tr>
+<tr class="even">
+<td>kwargs</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Let’s add a new file to IPFS and pin it to <code>pinata</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>response, content <span class="op">=</span> api.add_items(filepath<span class="op">=</span><span class="st">'output/test.txt'</span>)<span class="op">;</span> content</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>response, content <span class="op">=</span> api.rpin_add(<span class="st">'QmTT8vwdbnP9Ls8bSY1LMyW4a8bEwTYZa5izEoJMBtTPfb'</span>, <span class="st">'pinata'</span>)<span class="op">;</span> response.status_code</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>As can ber seen, we have successfully added the file to <code>pinata</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>response, content <span class="op">=</span> api.rpin_ls(<span class="st">'pinata'</span>)<span class="op">;</span> content</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="block" class="level2">
+<h2 class="anchored" data-anchor-id="block">Block</h2>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/ipfshttpapi.py#L407" target="_blank" style="float:right; font-size:smaller">source</a></p>
+<section id="ipfsapi.block_get" class="level3">
+<h3 class="anchored" data-anchor-id="ipfsapi.block_get">IPFSApi.block_get</h3>
+<blockquote class="blockquote">
+<pre><code> IPFSApi.block_get (cid:str)</code></pre>
+</blockquote>
+<p>Get a raw IPFS block.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>cid</td>
+<td>str</td>
+<td>The base58 multihash of an existing block to get</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/ipfshttpapi.py#L424" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="ipfsapi.block_put" class="level3">
+<h3 class="anchored" data-anchor-id="ipfsapi.block_put">IPFSApi.block_put</h3>
+<blockquote class="blockquote">
+<pre><code> IPFSApi.block_put (filepath:str, mhtype:str='sha2-256', mhlen:int=-1,
+                    pin:str=False, **kwargs)</code></pre>
+</blockquote>
+<p>Store input as an IPFS block.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>filepath</td>
+<td>str</td>
+<td></td>
+<td>Path to file</td>
+</tr>
+<tr class="even">
+<td>mhtype</td>
+<td>str</td>
+<td>sha2-256</td>
+<td>multihash hash function.</td>
+</tr>
+<tr class="odd">
+<td>mhlen</td>
+<td>int</td>
+<td>-1</td>
+<td>Multihash hash length</td>
+</tr>
+<tr class="even">
+<td>pin</td>
+<td>str</td>
+<td>False</td>
+<td>pin added blocks recursively</td>
+</tr>
+<tr class="odd">
+<td>kwargs</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/ipfshttpapi.py#L447" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="ipfsapi.block_rm" class="level3">
+<h3 class="anchored" data-anchor-id="ipfsapi.block_rm">IPFSApi.block_rm</h3>
+<blockquote class="blockquote">
+<pre><code> IPFSApi.block_rm (cid:str, force:str='false', quiet:str='false')</code></pre>
+</blockquote>
+<p>Remove IPFS block(s).</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>cid</td>
+<td>str</td>
+<td></td>
+<td>Bash58 encoded multihash of block(s) to remove</td>
+</tr>
+<tr class="even">
+<td>force</td>
+<td>str</td>
+<td>false</td>
+<td>Ignore nonexistent blocks.</td>
+</tr>
+<tr class="odd">
+<td>quiet</td>
+<td>str</td>
+<td>false</td>
+<td>Write minimal output.</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/ipfshttpapi.py#L467" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="ipfsapi.block_stat" class="level3">
+<h3 class="anchored" data-anchor-id="ipfsapi.block_stat">IPFSApi.block_stat</h3>
+<blockquote class="blockquote">
+<pre><code> IPFSApi.block_stat (cid:str)</code></pre>
+</blockquote>
+<p>Print information of a raw IPFS block.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>cid</td>
+<td>str</td>
+<td>Bash58 encoded multihash of block(s) to remove</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="work-with-blocks" class="level3">
+<h3 class="anchored" data-anchor-id="work-with-blocks">Work with blocks</h3>
+<p>To explore the <code>blocks</code> modeule, let’s add a large file</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>response, content <span class="op">=</span> api.add_items(<span class="st">'output/adult_data.csv'</span>)<span class="op">;</span> content</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>As you can see from below, adding it results in <code>blocks</code> and we are given the <code>root CID</code></p>
+<p>We can take a look at the <code>CIDs</code> of different block like below</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>response, content <span class="op">=</span> api.ls_items(<span class="st">'QmZnxARhJWsCbTxiAzoRhnxHgMtoEkNJNS8DGLCBEMvm4V'</span>)<span class="op">;</span>content</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>blocks <span class="op">=</span> content[<span class="dv">0</span>][<span class="st">"Objects"</span>][<span class="dv">0</span>][<span class="st">"Links"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Number of blocks: </span><span class="sc">{</span><span class="bu">len</span>(blocks)<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Here, we can see the three blocks of the total 16 blocks.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>blocks[:<span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s read whats in the first and second block</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a>response, content <span class="op">=</span> api.cat_items(blocks[<span class="dv">0</span>][<span class="st">'Hash'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.text[:<span class="dv">100</span>])<span class="op">;</span> <span class="bu">len</span>(response.text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a>response, content <span class="op">=</span> api.cat_items(blocks[<span class="dv">1</span>][<span class="st">'Hash'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(response.text[:<span class="dv">100</span>])<span class="op">;</span> <span class="bu">len</span>(response.text)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can also read using the <code>cat</code> method under the <code>blocks</code> module in which case if block is an intermediate block it will only print the raw binary data.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a>response, content <span class="op">=</span> api.block_get(blocks[<span class="dv">0</span>][<span class="st">'Hash'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a>response.text[:<span class="dv">300</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="add-a-block" class="level4">
+<h4 class="anchored" data-anchor-id="add-a-block">Add a block</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a>response, content <span class="op">=</span> api.block_put(<span class="st">'../README.md'</span>)<span class="op">;</span> content</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="get-stat-on-a-block" class="level4">
+<h4 class="anchored" data-anchor-id="get-stat-on-a-block">Get stat on a block</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a>response, content <span class="op">=</span> api.block_stat(<span class="st">'bafkreicb2n4nhac6nwsviqe2ik4pt22ukewf7zfz2j2aof2au3a2qgi3oa'</span>)<span class="op">;</span> content</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="remove-a-block" class="level4">
+<h4 class="anchored" data-anchor-id="remove-a-block">Remove a block</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a>response, content <span class="op">=</span> api.block_rm(<span class="st">'bafkreicb2n4nhac6nwsviqe2ik4pt22ukewf7zfz2j2aof2au3a2qgi3oa'</span>)<span class="op">;</span> response.status_code</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="mutable-file-system-files" class="level2">
+<h2 class="anchored" data-anchor-id="mutable-file-system-files">Mutable File System (files)</h2>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/ipfshttpapi.py#L484" target="_blank" style="float:right; font-size:smaller">source</a></p>
+<section id="ipfsapi.mfs_chcid" class="level3">
+<h3 class="anchored" data-anchor-id="ipfsapi.mfs_chcid">IPFSApi.mfs_chcid</h3>
+<blockquote class="blockquote">
+<pre><code> IPFSApi.mfs_chcid (path:str='/', cid_version:int=0, **kwargs)</code></pre>
+</blockquote>
+<p>Change the CID version or hash function of the root node of a given path.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>path</td>
+<td>str</td>
+<td>/</td>
+<td>Path to change</td>
+</tr>
+<tr class="even">
+<td>cid_version</td>
+<td>int</td>
+<td>0</td>
+<td>Cid version to use</td>
+</tr>
+<tr class="odd">
+<td>kwargs</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/ipfshttpapi.py#L504" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="ipfsapi.mfs_cp" class="level3">
+<h3 class="anchored" data-anchor-id="ipfsapi.mfs_cp">IPFSApi.mfs_cp</h3>
+<blockquote class="blockquote">
+<pre><code> IPFSApi.mfs_cp (source_path:str, dest_path:str, **kwargs)</code></pre>
+</blockquote>
+<p>Add references to IPFS files and directories in MFS (or copy within MFS).</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>source_path</td>
+<td>str</td>
+<td>Source IPFS or MFS path to copy</td>
+</tr>
+<tr class="even">
+<td>dest_path</td>
+<td>str</td>
+<td>Destination within MFS</td>
+</tr>
+<tr class="odd">
+<td>kwargs</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/ipfshttpapi.py#L523" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="ipfsapi.mfs_flush" class="level3">
+<h3 class="anchored" data-anchor-id="ipfsapi.mfs_flush">IPFSApi.mfs_flush</h3>
+<blockquote class="blockquote">
+<pre><code> IPFSApi.mfs_flush (path:str='/')</code></pre>
+</blockquote>
+<p>Flush a given path’s data to disk</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>path</td>
+<td>str</td>
+<td>/</td>
+<td>Path to flush</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/ipfshttpapi.py#L538" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="ipfsapi.mfs_ls" class="level3">
+<h3 class="anchored" data-anchor-id="ipfsapi.mfs_ls">IPFSApi.mfs_ls</h3>
+<blockquote class="blockquote">
+<pre><code> IPFSApi.mfs_ls (path:str='/', **kwargs)</code></pre>
+</blockquote>
+<p>List directories in the local mutable namespace.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>path</td>
+<td>str</td>
+<td>/</td>
+<td>Path to show listing for</td>
+</tr>
+<tr class="even">
+<td>kwargs</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/ipfshttpapi.py#L556" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="ipfsapi.mfs_mkdir" class="level3">
+<h3 class="anchored" data-anchor-id="ipfsapi.mfs_mkdir">IPFSApi.mfs_mkdir</h3>
+<blockquote class="blockquote">
+<pre><code> IPFSApi.mfs_mkdir (path:str, **kwargs)</code></pre>
+</blockquote>
+<p>Make directories.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>path</td>
+<td>str</td>
+<td>Path to dir to make</td>
+</tr>
+<tr class="even">
+<td>kwargs</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/ipfshttpapi.py#L574" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="ipfsapi.mfs_mv" class="level3">
+<h3 class="anchored" data-anchor-id="ipfsapi.mfs_mv">IPFSApi.mfs_mv</h3>
+<blockquote class="blockquote">
+<pre><code> IPFSApi.mfs_mv (source_path:str, dest_path:str)</code></pre>
+</blockquote>
+<p>Move files.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>source_path</td>
+<td>str</td>
+<td>Source file to move</td>
+</tr>
+<tr class="even">
+<td>dest_path</td>
+<td>str</td>
+<td>Destination path for file to be moved to</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/ipfshttpapi.py#L591" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="ipfsapi.mfs_read" class="level3">
+<h3 class="anchored" data-anchor-id="ipfsapi.mfs_read">IPFSApi.mfs_read</h3>
+<blockquote class="blockquote">
+<pre><code> IPFSApi.mfs_read (path, **kwargs)</code></pre>
+</blockquote>
+<p>Read a file in a given MFS.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>path</td>
+<td>Path to file to be read</td>
+</tr>
+<tr class="even">
+<td>kwargs</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/ipfshttpapi.py#L609" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="ipfsapi.mfs_rm" class="level3">
+<h3 class="anchored" data-anchor-id="ipfsapi.mfs_rm">IPFSApi.mfs_rm</h3>
+<blockquote class="blockquote">
+<pre><code> IPFSApi.mfs_rm (path, **kwargs)</code></pre>
+</blockquote>
+<p>Read a file in a given MFS.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>path</td>
+<td>File to remove</td>
+</tr>
+<tr class="even">
+<td>kwargs</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/ipfshttpapi.py#L627" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="ipfsapi.mfs_stat" class="level3">
+<h3 class="anchored" data-anchor-id="ipfsapi.mfs_stat">IPFSApi.mfs_stat</h3>
+<blockquote class="blockquote">
+<pre><code> IPFSApi.mfs_stat (path, **kwargs)</code></pre>
+</blockquote>
+<p>Display file status.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>path</td>
+<td>Path to node to stat</td>
+</tr>
+<tr class="even">
+<td>kwargs</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/ipfshttpapi.py#L645" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="ipfsapi.mfs_write" class="level3">
+<h3 class="anchored" data-anchor-id="ipfsapi.mfs_write">IPFSApi.mfs_write</h3>
+<blockquote class="blockquote">
+<pre><code> IPFSApi.mfs_write (path, filepath, create=True, **kwargs)</code></pre>
+</blockquote>
+<p>Display file status.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>path</td>
+<td></td>
+<td></td>
+<td>Path to write to</td>
+</tr>
+<tr class="even">
+<td>filepath</td>
+<td></td>
+<td></td>
+<td>File to add</td>
+</tr>
+<tr class="odd">
+<td>create</td>
+<td>bool</td>
+<td>True</td>
+<td>Create the file if it does not exist</td>
+</tr>
+<tr class="even">
+<td>kwargs</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="working-with-mfs" class="level3">
+<h3 class="anchored" data-anchor-id="working-with-mfs">Working with MFS</h3>
+<p>Making a directory</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb87"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb87-1"><a href="#cb87-1" aria-hidden="true" tabindex="-1"></a>response, content <span class="op">=</span> api.mfs_mkdir(<span class="st">'/test'</span>)<span class="op">;</span> response.status_code</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>
