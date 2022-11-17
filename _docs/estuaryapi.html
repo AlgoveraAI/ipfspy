@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Python API for interacting with Estuary">
+
+<title>ipfspy - Estuary</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="styles.css">
+<meta property="og:title" content="ipfspy - Estuary">
+<meta property="og:description" content="Python API for interacting with Estuary">
+<meta property="og:site-name" content="ipfspy">
+<meta name="twitter:title" content="ipfspy - Estuary">
+<meta name="twitter:description" content="Python API for interacting with Estuary">
+<meta name="twitter:card" content="summary">
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">ipfspy</span>
+    </a>
+  </div>
+          <div id="quarto-search" class="" title="Search"></div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Estuary</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">ipfspy</a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Docs</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ipfshttpapi.html" class="sidebar-item-text sidebar-link">IPFS HTTP API</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./estuaryapi.html" class="sidebar-item-text sidebar-link active">Estuary</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./pinataapi.html" class="sidebar-item-text sidebar-link">Pinata</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ipfsspec.asyn.html" class="sidebar-item-text sidebar-link">IPFSSpec</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Tutorials</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  90_tutorial.fastai.ipynb
+  </li>
+          <li class="sidebar-item">
+  91_tutorial.fastaiipfsspec.ipynb
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#est_get_viewer" id="toc-est_get_viewer" class="nav-link active" data-scroll-target="#est_get_viewer">est_get_viewer</a></li>
+  <li><a href="#standard-ipfs-pinning-api" id="toc-standard-ipfs-pinning-api" class="nav-link" data-scroll-target="#standard-ipfs-pinning-api">Standard IPFS Pinning API</a>
+  <ul class="collapse">
+  <li><a href="#list_pins" id="toc-list_pins" class="nav-link" data-scroll-target="#list_pins">list_pins</a></li>
+  <li><a href="#add_pin" id="toc-add_pin" class="nav-link" data-scroll-target="#add_pin">add_pin</a></li>
+  <li><a href="#get_pin" id="toc-get_pin" class="nav-link" data-scroll-target="#get_pin">get_pin</a></li>
+  <li><a href="#replace_pin" id="toc-replace_pin" class="nav-link" data-scroll-target="#replace_pin">replace_pin</a></li>
+  <li><a href="#remove_pin" id="toc-remove_pin" class="nav-link" data-scroll-target="#remove_pin">remove_pin</a></li>
+  <li><a href="#collections" id="toc-collections" class="nav-link" data-scroll-target="#collections">Collections</a></li>
+  <li><a href="#create_coll" id="toc-create_coll" class="nav-link" data-scroll-target="#create_coll">create_coll</a></li>
+  <li><a href="#add_content" id="toc-add_content" class="nav-link" data-scroll-target="#add_content">add_content</a></li>
+  <li><a href="#list_colls" id="toc-list_colls" class="nav-link" data-scroll-target="#list_colls">list_colls</a></li>
+  <li><a href="#list_coll_content" id="toc-list_coll_content" class="nav-link" data-scroll-target="#list_coll_content">list_coll_content</a></li>
+  <li><a href="#list_content_path" id="toc-list_content_path" class="nav-link" data-scroll-target="#list_content_path">list_content_path</a></li>
+  <li><a href="#add_content_path" id="toc-add_content_path" class="nav-link" data-scroll-target="#add_content_path">add_content_path</a></li>
+  <li><a href="#estuary-base-api" id="toc-estuary-base-api" class="nav-link" data-scroll-target="#estuary-base-api">Estuary base API</a></li>
+  <li><a href="#add_key" id="toc-add_key" class="nav-link" data-scroll-target="#add_key">add_key</a></li>
+  <li><a href="#add_data" id="toc-add_data" class="nav-link" data-scroll-target="#add_data">add_data</a></li>
+  <li><a href="#add_cid" id="toc-add_cid" class="nav-link" data-scroll-target="#add_cid">add_cid</a></li>
+  <li><a href="#add_car" id="toc-add_car" class="nav-link" data-scroll-target="#add_car">add_car</a></li>
+  <li><a href="#make_deal" id="toc-make_deal" class="nav-link" data-scroll-target="#make_deal">make_deal</a></li>
+  <li><a href="#view_data_cid" id="toc-view_data_cid" class="nav-link" data-scroll-target="#view_data_cid">view_data_cid</a></li>
+  <li><a href="#list_data" id="toc-list_data" class="nav-link" data-scroll-target="#list_data">list_data</a></li>
+  <li><a href="#list_deals" id="toc-list_deals" class="nav-link" data-scroll-target="#list_deals">list_deals</a></li>
+  <li><a href="#get_deal_status" id="toc-get_deal_status" class="nav-link" data-scroll-target="#get_deal_status">get_deal_status</a></li>
+  <li><a href="#get_node_stats" id="toc-get_node_stats" class="nav-link" data-scroll-target="#get_node_stats">get_node_stats</a></li>
+  <li><a href="#get_deal_data" id="toc-get_deal_data" class="nav-link" data-scroll-target="#get_deal_data">get_deal_data</a></li>
+  <li><a href="#get_miner_ask" id="toc-get_miner_ask" class="nav-link" data-scroll-target="#get_miner_ask">get_miner_ask</a></li>
+  <li><a href="#get_failure_logs" id="toc-get_failure_logs" class="nav-link" data-scroll-target="#get_failure_logs">get_failure_logs</a></li>
+  <li><a href="#get_deal_logs" id="toc-get_deal_logs" class="nav-link" data-scroll-target="#get_deal_logs">get_deal_logs</a></li>
+  <li><a href="#get_provider_stats" id="toc-get_provider_stats" class="nav-link" data-scroll-target="#get_provider_stats">get_provider_stats</a></li>
+  <li><a href="#list_providers" id="toc-list_providers" class="nav-link" data-scroll-target="#list_providers">list_providers</a></li>
+  <li><a href="#downloading-data" id="toc-downloading-data" class="nav-link" data-scroll-target="#downloading-data">Downloading data</a></li>
+  <li><a href="#get_data" id="toc-get_data" class="nav-link" data-scroll-target="#get_data">get_data</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Estuary</h1>
+</div>
+
+<div>
+  <div class="description">
+    Python API for interacting with Estuary
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<!-- WARNING: THIS FILE WAS AUTOGENERATED! DO NOT EDIT! -->
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/estuaryapi.py#L15" target="_blank" style="float:right; font-size:smaller">source</a></p>
+<section id="est_get_viewer" class="level3">
+<h3 class="anchored" data-anchor-id="est_get_viewer">est_get_viewer</h3>
+<blockquote class="blockquote">
+<pre><code> est_get_viewer (api_key:str)</code></pre>
+</blockquote>
+<p>View your Estuary account details</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>api_key</td>
+<td>str</td>
+<td>Your Estuary API key</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="standard-ipfs-pinning-api" class="level2">
+<h2 class="anchored" data-anchor-id="standard-ipfs-pinning-api">Standard IPFS Pinning API</h2>
+<blockquote class="blockquote">
+<p>Pinning to/interacting with IPFS through Estuary</p>
+</blockquote>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/estuaryapi.py#L28" target="_blank" style="float:right; font-size:smaller">source</a></p>
+<section id="list_pins" class="level3">
+<h3 class="anchored" data-anchor-id="list_pins">list_pins</h3>
+<blockquote class="blockquote">
+<pre><code> list_pins (api_key:str)</code></pre>
+</blockquote>
+<p>List all your pins</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>api_key</td>
+<td>str</td>
+<td>Your Estuary API key</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/estuaryapi.py#L43" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="add_pin" class="level3">
+<h3 class="anchored" data-anchor-id="add_pin">add_pin</h3>
+<blockquote class="blockquote">
+<pre><code> add_pin (api_key:str, file_name:str, cid:str)</code></pre>
+</blockquote>
+<p>Add a new pin object for the current access token.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>api_key</td>
+<td>str</td>
+<td>Your Estuary API key</td>
+</tr>
+<tr class="even">
+<td>file_name</td>
+<td>str</td>
+<td>File name to pin</td>
+</tr>
+<tr class="odd">
+<td>cid</td>
+<td>str</td>
+<td>CID to attach</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/estuaryapi.py#L65" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="get_pin" class="level3">
+<h3 class="anchored" data-anchor-id="get_pin">get_pin</h3>
+<blockquote class="blockquote">
+<pre><code> get_pin (api_key:str, pin_id:str)</code></pre>
+</blockquote>
+<p>Get a pinned object by ID</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>api_key</td>
+<td>str</td>
+<td>Your Estuary API key</td>
+</tr>
+<tr class="even">
+<td>pin_id</td>
+<td>str</td>
+<td>Unique pin ID</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/estuaryapi.py#L81" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="replace_pin" class="level3">
+<h3 class="anchored" data-anchor-id="replace_pin">replace_pin</h3>
+<blockquote class="blockquote">
+<pre><code> replace_pin (api_key:str, pin_id:str)</code></pre>
+</blockquote>
+<p>Replace a pinned object by ID</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>api_key</td>
+<td>str</td>
+<td>Your Estuary API key</td>
+</tr>
+<tr class="even">
+<td>pin_id</td>
+<td>str</td>
+<td>Unique pin ID</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/estuaryapi.py#L97" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="remove_pin" class="level3">
+<h3 class="anchored" data-anchor-id="remove_pin">remove_pin</h3>
+<blockquote class="blockquote">
+<pre><code> remove_pin (api_key:str, pin_id:str)</code></pre>
+</blockquote>
+<p>Remove a pinned object by ID</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>api_key</td>
+<td>str</td>
+<td>Your Estuary API key</td>
+</tr>
+<tr class="even">
+<td>pin_id</td>
+<td>str</td>
+<td>Unique pin ID</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="collections" class="level3">
+<h3 class="anchored" data-anchor-id="collections">Collections</h3>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/estuaryapi.py#L113" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="create_coll" class="level3">
+<h3 class="anchored" data-anchor-id="create_coll">create_coll</h3>
+<blockquote class="blockquote">
+<pre><code> create_coll (api_key:str, name:str, description:str)</code></pre>
+</blockquote>
+<p>Create new collection</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>api_key</td>
+<td>str</td>
+<td>Your Estuary API key</td>
+</tr>
+<tr class="even">
+<td>name</td>
+<td>str</td>
+<td>Collection name</td>
+</tr>
+<tr class="odd">
+<td>description</td>
+<td>str</td>
+<td>Collection description</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/estuaryapi.py#L135" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="add_content" class="level3">
+<h3 class="anchored" data-anchor-id="add_content">add_content</h3>
+<blockquote class="blockquote">
+<pre><code> add_content (api_key:str, collection_id:str, data:list, cids:list)</code></pre>
+</blockquote>
+<p>Add data to Collection</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>api_key</td>
+<td>str</td>
+<td>Your Estuary API key</td>
+</tr>
+<tr class="even">
+<td>collection_id</td>
+<td>str</td>
+<td>Collection ID</td>
+</tr>
+<tr class="odd">
+<td>data</td>
+<td>list</td>
+<td>List of paths to data to be added</td>
+</tr>
+<tr class="even">
+<td>cids</td>
+<td>list</td>
+<td>List of respective CIDs</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/estuaryapi.py#L160" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="list_colls" class="level3">
+<h3 class="anchored" data-anchor-id="list_colls">list_colls</h3>
+<blockquote class="blockquote">
+<pre><code> list_colls (api_key:str)</code></pre>
+</blockquote>
+<p>List your collections</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>api_key</td>
+<td>str</td>
+<td>Your Estuary API key</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/estuaryapi.py#L174" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="list_coll_content" class="level3">
+<h3 class="anchored" data-anchor-id="list_coll_content">list_coll_content</h3>
+<blockquote class="blockquote">
+<pre><code> list_coll_content (api_key:str, collection_id:str)</code></pre>
+</blockquote>
+<p>List contents of a collection from ID</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>api_key</td>
+<td>str</td>
+<td>Your Estuary API key</td>
+</tr>
+<tr class="even">
+<td>collection_id</td>
+<td>str</td>
+<td>Collection ID</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/estuaryapi.py#L189" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="list_content_path" class="level3">
+<h3 class="anchored" data-anchor-id="list_content_path">list_content_path</h3>
+<blockquote class="blockquote">
+<pre><code> list_content_path (api_key:str, collection_id:str, path:str)</code></pre>
+</blockquote>
+<p>List content of a path in collection</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>api_key</td>
+<td>str</td>
+<td>Your Estuary API key</td>
+</tr>
+<tr class="even">
+<td>collection_id</td>
+<td>str</td>
+<td>Collection ID</td>
+</tr>
+<tr class="odd">
+<td>path</td>
+<td>str</td>
+<td>Path in collection to list files from</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/estuaryapi.py#L209" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="add_content_path" class="level3">
+<h3 class="anchored" data-anchor-id="add_content_path">add_content_path</h3>
+<blockquote class="blockquote">
+<pre><code> add_content_path (api_key:str, collection_id:str, path:str)</code></pre>
+</blockquote>
+<p>Add content to a specific file system path in an IPFS collection</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>api_key</td>
+<td>str</td>
+<td>Your Estuary API key</td>
+</tr>
+<tr class="even">
+<td>collection_id</td>
+<td>str</td>
+<td>Collection ID</td>
+</tr>
+<tr class="odd">
+<td>path</td>
+<td>str</td>
+<td>Path in collection to add files to</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="estuary-base-api" class="level3">
+<h3 class="anchored" data-anchor-id="estuary-base-api">Estuary base API</h3>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/estuaryapi.py#L230" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="add_key" class="level3">
+<h3 class="anchored" data-anchor-id="add_key">add_key</h3>
+<blockquote class="blockquote">
+<pre><code> add_key (api_key, expiry='24h')</code></pre>
+</blockquote>
+<p>Add client safe upload key</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Default</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>api_key</td>
+<td></td>
+<td></td>
+<td>Your Estuary API key</td>
+</tr>
+<tr class="even">
+<td>expiry</td>
+<td>str</td>
+<td>24h</td>
+<td>Expiry of upload key</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/estuaryapi.py#L250" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="add_data" class="level3">
+<h3 class="anchored" data-anchor-id="add_data">add_data</h3>
+<blockquote class="blockquote">
+<pre><code> add_data (api_key:str, path_to_file:str)</code></pre>
+</blockquote>
+<p>Upload file to Estuary</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>api_key</td>
+<td>str</td>
+<td>Your Estuary API key</td>
+</tr>
+<tr class="even">
+<td>path_to_file</td>
+<td>str</td>
+<td>Path to file you want to upload</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/estuaryapi.py#L270" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="add_cid" class="level3">
+<h3 class="anchored" data-anchor-id="add_cid">add_cid</h3>
+<blockquote class="blockquote">
+<pre><code> add_cid (api_key:str, file_name:str, cid:str)</code></pre>
+</blockquote>
+<p>Use an existing IPFS CID to make storage deals.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>api_key</td>
+<td>str</td>
+<td>Your Estuary API key</td>
+</tr>
+<tr class="even">
+<td>file_name</td>
+<td>str</td>
+<td>File name to add to CID</td>
+</tr>
+<tr class="odd">
+<td>cid</td>
+<td>str</td>
+<td>CID for file</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/estuaryapi.py#L292" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="add_car" class="level3">
+<h3 class="anchored" data-anchor-id="add_car">add_car</h3>
+<blockquote class="blockquote">
+<pre><code> add_car (api_key:str, path_to_file:str)</code></pre>
+</blockquote>
+<p>Write a Content-Addressable Archive (CAR) file, and make storage deals for its contents.</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>api_key</td>
+<td>str</td>
+<td>Your Estuary API key</td>
+</tr>
+<tr class="even">
+<td>path_to_file</td>
+<td>str</td>
+<td>Path to file to store</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/estuaryapi.py#L311" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="make_deal" class="level3">
+<h3 class="anchored" data-anchor-id="make_deal">make_deal</h3>
+<blockquote class="blockquote">
+<pre><code> make_deal (api_key:str, content_id:str, provider_id:str)</code></pre>
+</blockquote>
+<p>Make a deal with a storage provider and a file you have already uploaded to Estuary</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>api_key</td>
+<td>str</td>
+<td>Your Estuary API key</td>
+</tr>
+<tr class="even">
+<td>content_id</td>
+<td>str</td>
+<td>Content ID on Estuary</td>
+</tr>
+<tr class="odd">
+<td>provider_id</td>
+<td>str</td>
+<td>Provider ID</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/estuaryapi.py#L331" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="view_data_cid" class="level3">
+<h3 class="anchored" data-anchor-id="view_data_cid">view_data_cid</h3>
+<blockquote class="blockquote">
+<pre><code> view_data_cid (api_key:str, cid:str)</code></pre>
+</blockquote>
+<p>View CID information</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>api_key</td>
+<td>str</td>
+<td>Your Estuary API key</td>
+</tr>
+<tr class="even">
+<td>cid</td>
+<td>str</td>
+<td>CID</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/estuaryapi.py#L346" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="list_data" class="level3">
+<h3 class="anchored" data-anchor-id="list_data">list_data</h3>
+<blockquote class="blockquote">
+<pre><code> list_data (api_key:str)</code></pre>
+</blockquote>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>api_key</td>
+<td>str</td>
+<td>Your Estuary API key</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/estuaryapi.py#L358" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="list_deals" class="level3">
+<h3 class="anchored" data-anchor-id="list_deals">list_deals</h3>
+<blockquote class="blockquote">
+<pre><code> list_deals (api_key:str)</code></pre>
+</blockquote>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>api_key</td>
+<td>str</td>
+<td>Your Estuary API key</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/estuaryapi.py#L370" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="get_deal_status" class="level3">
+<h3 class="anchored" data-anchor-id="get_deal_status">get_deal_status</h3>
+<blockquote class="blockquote">
+<pre><code> get_deal_status (api_key:str, deal_id:str)</code></pre>
+</blockquote>
+<p>Get deal status by id</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>api_key</td>
+<td>str</td>
+<td>Your Estuary API key</td>
+</tr>
+<tr class="even">
+<td>deal_id</td>
+<td>str</td>
+<td>Deal ID</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/estuaryapi.py#L385" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="get_node_stats" class="level3">
+<h3 class="anchored" data-anchor-id="get_node_stats">get_node_stats</h3>
+<blockquote class="blockquote">
+<pre><code> get_node_stats ()</code></pre>
+</blockquote>
+<p>Get Estuary node stats</p>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/estuaryapi.py#L393" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="get_deal_data" class="level3">
+<h3 class="anchored" data-anchor-id="get_deal_data">get_deal_data</h3>
+<blockquote class="blockquote">
+<pre><code> get_deal_data ()</code></pre>
+</blockquote>
+<p>Get on-chain deal data</p>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/estuaryapi.py#L401" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="get_miner_ask" class="level3">
+<h3 class="anchored" data-anchor-id="get_miner_ask">get_miner_ask</h3>
+<blockquote class="blockquote">
+<pre><code> get_miner_ask (miner_id:str)</code></pre>
+</blockquote>
+<p>Get the query ask and verified ask for any miner</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>miner_id</td>
+<td>str</td>
+<td>Miner ID</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/estuaryapi.py#L411" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="get_failure_logs" class="level3">
+<h3 class="anchored" data-anchor-id="get_failure_logs">get_failure_logs</h3>
+<blockquote class="blockquote">
+<pre><code> get_failure_logs (miner_id:str)</code></pre>
+</blockquote>
+<p>Get all of the failure logs for a specific miner</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>miner_id</td>
+<td>str</td>
+<td>Miner ID</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/estuaryapi.py#L421" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="get_deal_logs" class="level3">
+<h3 class="anchored" data-anchor-id="get_deal_logs">get_deal_logs</h3>
+<blockquote class="blockquote">
+<pre><code> get_deal_logs (provider_id:str)</code></pre>
+</blockquote>
+<p>Get deal logs by provider</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>provider_id</td>
+<td>str</td>
+<td>Provider ID</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/estuaryapi.py#L431" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="get_provider_stats" class="level3">
+<h3 class="anchored" data-anchor-id="get_provider_stats">get_provider_stats</h3>
+<blockquote class="blockquote">
+<pre><code> get_provider_stats (provider_id:str)</code></pre>
+</blockquote>
+<p>Get provider stats</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>provider_id</td>
+<td>str</td>
+<td>Provider ID</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/estuaryapi.py#L441" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="list_providers" class="level3">
+<h3 class="anchored" data-anchor-id="list_providers">list_providers</h3>
+<blockquote class="blockquote">
+<pre><code> list_providers ()</code></pre>
+</blockquote>
+<p>List Estuary providers</p>
+</section>
+<section id="downloading-data" class="level3">
+<h3 class="anchored" data-anchor-id="downloading-data">Downloading data</h3>
+<hr>
+<p><a href="https://github.com/AlgoveraAI/ipfspy/tree/master/blob/master/ipfspy/estuaryapi.py#L448" target="_blank" style="float:right; font-size:smaller">source</a></p>
+</section>
+<section id="get_data" class="level3">
+<h3 class="anchored" data-anchor-id="get_data">get_data</h3>
+<blockquote class="blockquote">
+<pre><code> get_data (cid:str, path_name:str)</code></pre>
+</blockquote>
+<p>Download data from Estuary CID</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th><strong>Type</strong></th>
+<th><strong>Details</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>cid</td>
+<td>str</td>
+<td>Data CID</td>
+</tr>
+<tr class="even">
+<td>path_name</td>
+<td>str</td>
+<td>Path and filename to store the file at</td>
+</tr>
+</tbody>
+</table>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

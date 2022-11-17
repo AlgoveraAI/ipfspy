@@ -13,6 +13,7 @@ import pandas as pd
 import dag_cbor
 from requests.exceptions import HTTPError
 import time
+import os
 
 from .utils import parse_error_message, parse_response, IPFSGateway, GATEWAY_MAP, make_infura_auth
 

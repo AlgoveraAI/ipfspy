@@ -40,9 +40,9 @@ Ipfspy has two different implementations to interact with IPFS
 
     Advantages of fsspec-like implementations
 
-    -   many data science libraries like `dask`, `pandas` and `xarray`
-        uses fsspec for path and file handling
-    -   provides an uniform APIs
+    - many data science libraries like `dask`, `pandas` and `xarray`
+      uses fsspec for path and file handling
+    - provides an uniform APIs
 
     Since many data science use fsspec, by implementing ipfsspec, fsspec
     supports IPFS.
