@@ -76,13 +76,13 @@ Change to other nodes like below. You can choose one of `local` `infura`
 or `public`
 
 ``` python
-api.change_gateway_type = 'infura'
+api.change_gateway_type = 'infura', auth
 ```
 
     Changed to infura node
 
 ``` python
-api.change_gateway_type = 'local'
+api.change_gateway_type = 'local', None
 ```
 
     Changed to local node
